@@ -348,20 +348,20 @@ export default function Home() {
             </div>
 
             {/* Mobile Layout - Will be shown via CSS on small screens */}
-            <div className="mobile-layout absolute inset-0 flex flex-col items-center justify-center space-y-1" style={{ transform: 'translateY(5%)', display: 'none' }}>
+            <div className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1" style={{ transform: 'translateY(5%)', display: 'none', paddingLeft: '7vw', paddingRight: '7vw' }}>
               {/* KDRAMA Logo */}
-              <div className="flex justify-center mb-0.5">
+              <div className="mb-0.5">
                 <Image
                   src="/assets/kdrama-logo.svg"
                   alt="KDRAMA Logo"
                   width={90}
                   height={32}
-                  className="object-contain brightness-0 invert mobile-logo" // Invert to make it white
+                  className="object-contain brightness-0 invert mobile-logo"
                 />
               </div>
 
               {/* Flags */}
-              <div className="flex justify-center mb-0.5">
+              <div className="mb-0.5">
                 <div className="flex items-center space-x-[2px] mobile-flags">
                   <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
                   <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
@@ -372,134 +372,125 @@ export default function Home() {
               </div>
 
               {/* Navigation Links */}
-              <div className="flex flex-col items-center mobile-nav">
-                <a href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white' }}>
+              <div className="flex flex-col items-start mobile-nav w-full">
+                <a href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
                   artworks
                 </a>
-                <a href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white' }}>
+                <a href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
                   photography
                 </a>
-                <a href="/music" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white' }}>
+                <a href="/music" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
                   music
                 </a>
-                
-                {/* Mobile Music Player */}
-                <div className="flex items-center mt-1 mb-1 px-0.5 py-0.5 mobile-music-player-row" style={{ 
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)', 
-                  borderRadius: '4px',
-                  width: '90%', 
-                  maxWidth: '170px',
-                  minWidth: '0',
-                  flexDirection: 'row',
-                  justifyContent: 'start',
-                  gap: '4px'
-                }}>
+
+                {/* Mobile Music Player - left-aligned, in nav flow */}
+                <div className="flex flex-row items-center mt-1 mb-1 w-full" style={{ maxWidth: '100%', gap: '8px' }}>
                   {/* Album Cover */}
-                  <div style={{ 
-                    width: '13px', 
-                    height: '13px', 
+                  <div style={{
+                    width: '22px',
+                    height: '22px',
                     backgroundColor: '#ADD8E6',
                     flexShrink: 0
                   }}></div>
                   {/* Song Info */}
-                  <div style={{ 
-                    marginLeft: '3px',
-                    marginRight: '3px',
+                  <div style={{
+                    marginLeft: '8px',
+                    marginRight: '8px',
                     flexGrow: 1,
                     minWidth: 0,
                     overflow: 'hidden',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    maxWidth: '50px'
+                    maxWidth: '90px'
                   }}>
                     <div style={{
-                      fontSize: '5px',
+                      fontSize: '8px',
                       fontWeight: 600,
                       color: 'white',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       letterSpacing: '0.01em',
-                      textAlign: 'center'
-                    }}>Nothing But Net</div>
+                      textAlign: 'left'
+                    }}>FOMDJ</div>
                     <div style={{
-                      fontSize: '4px',
+                      fontSize: '7px',
                       color: '#cccccc',
                       fontWeight: 400,
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       letterSpacing: '0.01em',
-                      textAlign: 'center'
-                    }}>Travis Scott — Nothing But Net</div>
+                      textAlign: 'left'
+                    }}>Playboi Carti — MUSIC - SO...</div>
                   </div>
-                  {/* Controls */}
-                  <div className="flex items-center" style={{ gap: '2px' }}>
+                  {/* Controls and Volume */}
+                  <div className="flex flex-row items-center" style={{ gap: '4px' }}>
                     {/* Play/Pause Button */}
-                    <div 
-                      onClick={togglePlay} 
+                    <div
+                      onClick={togglePlay}
                       style={{
                         cursor: 'pointer',
-                        height: '11px',
-                        width: '11px',
+                        height: '18px',
+                        width: '18px',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         color: 'white'
                       }}
                     >
-                      <Image 
+                      <Image
                         src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
                         alt={isPlaying ? "Pause" : "Play"}
-                        width={6}
-                        height={6}
-                        style={{ height: '6px', width: 'auto' }}
+                        width={10}
+                        height={10}
+                        style={{ height: '10px', width: 'auto' }}
                       />
                     </div>
                     {/* Next Button */}
                     <div style={{
                       cursor: 'pointer',
-                      height: '11px',
-                      width: '11px',
+                      height: '18px',
+                      width: '18px',
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
                       color: 'white'
                     }}>
-                      <Image 
-                        src="/assets/SKIP.png" 
-                        alt="Skip" 
-                        width={5} 
-                        height={5}
-                        style={{ height: '5px', width: 'auto' }}
+                      <Image
+                        src="/assets/SKIP.png"
+                        alt="Skip"
+                        width={8}
+                        height={8}
+                        style={{ height: '8px', width: 'auto' }}
                       />
                     </div>
                     {/* Volume Down Button */}
-                    <div 
+                    <div
                       onClick={volumeDown}
                       style={{
                         cursor: 'pointer',
-                        height: '11px',
-                        width: '11px',
+                        height: '18px',
+                        width: '18px',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         color: 'white'
                       }}
                     >
-                      <Image 
-                        src="/assets/V DOWN.png" 
-                        alt="Volume Down" 
-                        width={6} 
-                        height={6}
-                        style={{ height: '6px', width: 'auto' }}
+                      <Image
+                        src="/assets/V DOWN.png"
+                        alt="Volume Down"
+                        width={10}
+                        height={10}
+                        style={{ height: '10px', width: 'auto' }}
                       />
                     </div>
                     {/* Volume Slider */}
                     <div style={{
-                      height: '11px',
-                      width: '18px',
+                      height: '18px',
+                      width: '36px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'start'
@@ -514,7 +505,7 @@ export default function Home() {
                           WebkitAppearance: 'none',
                           appearance: 'none',
                           width: '100%',
-                          height: '1.5px',
+                          height: '2px',
                           background: `linear-gradient(to right, #fff ${isMuted ? 0 : volume}%, #444 ${isMuted ? 0 : volume}%)`,
                           borderRadius: '5px',
                           outline: 'none'
@@ -522,30 +513,30 @@ export default function Home() {
                       />
                     </div>
                     {/* Volume Up Button */}
-                    <div 
+                    <div
                       onClick={volumeUp}
                       style={{
                         cursor: 'pointer',
-                        height: '11px',
-                        width: '11px',
+                        height: '18px',
+                        width: '18px',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         color: 'white'
                       }}
                     >
-                      <Image 
-                        src="/assets/V UP.png" 
-                        alt="Volume Up" 
-                        width={6} 
-                        height={6}
-                        style={{ height: '6px', width: 'auto' }}
+                      <Image
+                        src="/assets/V UP.png"
+                        alt="Volume Up"
+                        width={10}
+                        height={10}
+                        style={{ height: '10px', width: 'auto' }}
                       />
                     </div>
                   </div>
                 </div>
-                
-                <a href="/contact" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white' }}>
+
+                <a href="/contact" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
                   contact
                 </a>
               </div>
