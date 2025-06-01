@@ -1,0 +1,50 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./app/page.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+/* For MacBook/laptop screens (1280px–1439px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .kdrama-logo {
+    left: 11.6% !important;
+    top: 42.6% !important;
+  }
+  .music-player-desktop {
+    left: 97% !important;
+    top: 51.3% !important;
+  }
+  .contact-link-desktop {
+    left: 72.5% !important;
+    top: 52.7% !important;
+  }
+}
+
+/* For standard desktop screens (1440px–1599px) */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .kdrama-logo {
+    left: 14% !important; /* tweak as needed */
+    top: 42.6% !important;
+  }
+  .music-player-desktop {
+    left: 93.5% !important; /* tweak as needed */
+    top: 50.8% !important;
+  }
+  .contact-link-desktop {
+    left: 73.2% !important; /* tweak as needed */
+    top: 51.8% !important;
+  }
+}
+
+/* Minimal fix for ultra-wide screens */
+@media (min-width: 1600px) {
+  .kdrama-logo {
+    left: 14% !important;
+    top: 42.6% !important;
+  }
+  .music-player-desktop {
+    left: 92.4% !important;
+    top: 50.7% !important;
+  }
+  .contact-link-desktop {
+    left: 73% !important;
+    top: 51.7% !important;
+  }
+} 

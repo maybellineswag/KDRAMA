@@ -1,0 +1,509 @@
+/* style.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;  
+    align-items: flex-start;
+    overflow-x: hidden;
+  }
+  a{
+    color: black;
+    text-decoration: none;
+  }
+  
+  .container {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .silhouette-image {
+    width: auto; /* Maintain aspect ratio */
+    height: 100%; /* Stretch to fit screen height */
+    
+  }
+  
+  .logo {
+    width: 100vw;
+    top: 35vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-image {
+    width: 105px; /* Adjust size of logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 550px;
+  }
+  
+  
+  .flag {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 100;
+  }
+  
+  /* General Navigation Styles */
+  .navigation {
+    position: absolute;
+    top: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .nav-item {
+    font-family: 'SF Pro', sans-serif;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  
+  
+  #nav-fashion {
+    top: calc(30%); /* Vertical position */
+    left: calc(20%); /* Horizontal alignment with silhouette edge */
+  }
+  
+  #nav-artworks {
+    top: calc(35%);
+    left: calc(55%);
+  }
+  
+  #nav-photography {
+    top: calc(40%);
+    left: calc(55%);
+  }
+  
+  #nav-music {
+    top: calc(45%);
+    left: calc(55%);
+  }
+  
+  #nav-contact {
+    top: calc(50%);
+    left: calc(55%);
+  }
+  
+  @font-face {
+    font-family: 'SF Pro';
+    src: url('assets/fonts/SF-Pro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: regular;
+  }
+  
+  /* Music Player Styles */
+.music-player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+}
+
+.album-cover {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.details {
+  margin-left: 10px;
+}
+
+.track-title {
+  font-size: 16px;
+  letter-spacing: 1em; /* Adjust kerning (spacing between letters) */
+  font-family: 'SF Pro', sans-serif; /* Make sure the correct font is applied */
+}
+
+.artist-name {
+  font-size: 12px;
+  letter-spacing: -0.2em; /* Adjust kerning (spacing between letters) */
+  font-family: 'SF Pro', sans-serif; /* Make sure the correct font is applied */
+}
+
+.controls {
+  display: flex;
+}
+
+.controls button {
+  background-color: transparent;
+  border: none;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+}
+
+.volume-icon {
+  width: 20px;
+}
+
+#volume-slider {
+  width: 100px;
+}
+
+#downimg, #upimg {
+  width: 17px !important;  /* Set the width */
+  height: auto !important; /* Maintain aspect ratio */
+  border: none !important; /* Remove the red border */
+}
+
+* {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+}
+
+@font-face {
+  font-family: 'SF Pro';
+  src: url('assets/fonts/SF-Pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: regular;
+
+
+}
+
+/* ::selection {
+  background-color: #9dc6ff;
+
+} */
+
+body {
+  font-family: 'SF Pro', sans-serif;
+  font-kerning: normal;
+  letter-spacing: -0.04em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100dvh;
+
+  font-family: 'SF Pro';
+  font-size: 22px;
+}
+
+#backgrounddiv {
+  z-index: 1;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#backgrounddiv img {
+  height: 100vh;
+  width: auto;
+  object-fit: contain;
+}
+
+#container {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#flags {
+  position: absolute;
+  left: 50%;
+  transform: translateX(calc(-50% - 72px)); /* Half the distance from center */
+  top: 41vh;
+  display: flex;
+  gap: 6px;
+  z-index: 100;
+}
+
+#kdramadiv {
+  position: absolute;
+  left: 45.5%;
+  transform: translateX(calc(-50% - 240px)); /* Adjust this value to match your design */
+  top: 40vh;
+}
+
+#kdrama-logo {
+  width: 105px;
+  height: auto;
+}
+
+/* SVG path styling - hover effects handled with JS */
+#kdrama-logo path {
+  cursor: pointer;
+}
+
+/* Remove old logo styles */
+.kdrama-text, .logo-letter {
+  display: none;
+}
+
+#items {
+  position: absolute;
+  top: 40vh;
+  width: 100%;
+  max-width: 1200px;
+}
+
+#items p {
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+}
+
+#fashion {
+  left: calc(41.7% + 15vw);
+  top: 0;
+}
+
+#artworks {
+  left: calc(41.7% + 15vw);
+  top: 4vh;
+}
+
+#photography {
+  left: calc(50% + 20vw);
+  top: 8vh;
+}
+
+#music {
+  left: calc(50% + 21vw);
+  top: 12vh;
+}
+
+#contact {
+  left: calc(50% + 20vw);
+  top: 20vh;
+}
+
+/* Add media queries for different screen sizes */
+@media (min-width: 1440px) {
+  #fashion { left: calc(40% + 220px); }
+  #artworks { left: calc(70% + 220px); }
+  #photography { left: calc(50% + 290px); }
+  #music { left: calc(50% + 300px); }
+  #contact { left: calc(50% + 290px); }
+}
+
+@media (max-width: 1024px) {
+  #fashion { left: calc(50% + 12vw); }
+  #artworks { left: calc(50% + 12vw); }
+  #photography { left: calc(50% + 16vw); }
+  #music { left: calc(50% + 17vw); }
+  #contact { left: calc(50% + 16vw); }
+}
+
+/* Music player positioning */
+#musicdiv {
+  position: absolute;
+  left: calc(50% + 18vw);
+  top: calc(40vh + 16vh); /* Positioning between music and contact */
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+#cover {
+  width: 28px;
+  height: 28px;
+  background-color: rgb(0, 186, 124);
+}
+
+#cover img {
+  width: 28px;
+  height: 28px;
+
+}
+
+#songnamediv {
+  letter-spacing: -0.3px;
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 120px;
+  height: 18px;
+  color: black;
+  font-size: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; /* Ensure content doesn't spill over */
+}
+
+#top,
+#bottom {
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#top {}
+
+#bottom {
+  color: gray;
+
+}
+
+#playerdiv {
+  width: 170px;
+  height: 28px;
+  display: flex;
+  flex-direction: row;
+}
+
+.playerbutton {
+  cursor: pointer;
+  height: 28px;
+  width: 28px;
+  /* background-color: aquamarine; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+#skipimg {
+  height: 12px;
+  width: auto;
+}
+
+#playimg {
+  height: 15px;
+  width: auto;
+}
+
+#volumediv {
+
+  height: 28px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+#volume {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Adjust font size for CJK languages */
+html[lang="ko"] #items p {
+  font-size: 20px;
+  -webkit-text-stroke: 0.45px black;
+}
+
+html[lang="zh"] #items p {
+  font-size: 19px;
+  letter-spacing: -0.8px;
+  word-spacing: -2px;
+  -webkit-text-stroke: 0.45px black;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.artwork-showcase {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.full-width {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.artwork-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artwork-grid img {
+  width: 100vw;
+  height: auto;
+  display: block;
+  margin-bottom: 0;
+}
+
+.logo-and-flags {
+  background-color: transparent; /* Remove background color */
+  padding: 0; /* Remove padding */
+}

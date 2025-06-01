@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/HelveticaNeue-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/assets/fonts/SF-Pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+body {
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  right: -2px;
+  bottom: 0;
+  background-color: rgba(207, 224, 240, 0); /* #CFE0F0 with 0 opacity */
+  border-radius: 0px;
+  z-index: -1;
+  transition: background-color 0.3s ease;
+}
+
+.nav-item:hover::before {
+  background-color: rgba(207, 224, 240, 1); /* #CFE0F0 with 100% opacity */
+}
+
+/* Scale up content ONLY on wide screens (1440px and above) */
+@media screen and (min-width: 1440px) {
+  main .relative.w-\[65vw\] {
+    max-width: 1000px !important; /* Increase max-width on wide screens */
+    transform: scale(1.15);
+    transform-origin: center center;
+  }
+   
+  /* Fix KDRAMA logo position on wide screens */
+  .kdrama-logo {
+    left: 11% !important; /* Adjust position to keep it next to silhouette edge */
+  }
+  
+  /* Ensure other elements maintain their positions as well */
+  main .relative.w-\[65vw\] .absolute {
+    /* Preserve original positioning for all absolute elements */
+    transform-origin: left top;
+  }
+}
+
+/* Mobile styles - using !important to ensure they're applied */
+@media screen and (max-width: 767px) {
+  .mobile-view .mobile-element {
+    display: flex !important;
+  }
+  
+  .mobile-view .nav-item {
+    color: white !important;
+  }
+  
+  /* Force mobile layout for very small screens */
+  .mobile-view .desktop-layout {
+    display: none !important;
+  }
+  
+  .desktop-view .mobile-layout {
+    display: none !important;
+  }
+}
+
+/* Force mobile layout for very small screens regardless of JS detection */
+@media screen and (max-width: 480px) {
+  .desktop-layout {
+    display: none !important;
+  }
+  
+  .mobile-layout {
+    display: flex !important;
+  }
+  
+  .mobile-layout .nav-item {
+    color: white !important;
+    margin-bottom: 0.25rem !important;
+    line-height: 1 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .mobile-layout .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse))) !important;
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse)) !important;
+  }
+  
+  .mobile-layout .nav-item::before {
+    background-color: rgba(207, 224, 240, 0) !important;
+    border-radius: 0px !important;
+  }
+  
+  .mobile-layout .nav-item:hover::before {
+    background-color: rgba(207, 224, 240, 1) !important;
+  }
+}
+
+/* Extra small screens (iPhone 5/SE size) */
+@media screen and (max-width: 375px) {
+  .mobile-logo {
+    transform: scale(0.9) !important;
+  }
+  
+  .mobile-flags {
+    transform: scale(0.9) !important;
+  }
+  
+  .mobile-nav .nav-item {
+    font-size: 14px !important;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 320px) {
+  .mobile-logo {
+    transform: scale(0.8) !important;
+  }
+  
+  .mobile-flags {
+    transform: scale(0.8) !important;
+    gap: 1px !important;
+  }
+  
+  .mobile-nav .nav-item {
+    font-size: 12px !important;
+  }
+  
+  .mobile-layout {
+    transform: translateY(0%) !important;
+  }
+} 

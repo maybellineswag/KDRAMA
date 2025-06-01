@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDRAMA</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #backgrounddiv {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #backgrounddiv img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="backgrounddiv">
+        <img draggable="false" src="assets/silhouette.png" alt="">
+    </div>
+    <div id="container">
+
+        <div id="kdramadiv">
+            <svg id="kdrama-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1242.29 314.28">
+                <path id="letter-k" fill="black" d="M0,7.71H55.43V165.11L126.58,83.72h70.15l-77.34,80.38,80.33,134.39h-68.66l-52.28-92.18-23.37,24.29v67.9H0V7.71Z"/>
+                <path id="letter-d" fill="black" d="M294.55,84.73c10.54,5,19.34,12.34,26.38,22.02l-7.35-102.67L370.64,0l20.81,290.63-54.69,3.92-2.13-29.81c-7.12,13.34-15.6,23.28-25.45,29.8-9.85,6.53-22.41,10.34-37.68,11.43-25.14,1.8-47.03-6.85-65.66-25.96-18.63-19.11-29.09-44.58-31.37-76.44-2.63-36.72,3.76-66.22,19.17-88.49,15.4-22.27,37.26-34.42,65.56-36.45,13.03-.93,24.82,1.1,35.36,6.1Zm24.8,152.32c7.44-12.44,10.49-28.07,9.14-46.89-1.88-26.32-9.88-44.67-23.98-55.04-8.65-6.26-18.38-9-29.17-8.23-16.46,1.18-28.09,8.26-34.89,21.25-6.81,12.99-9.55,28.7-8.24,47.13,1.42,19.88,6.48,35.49,15.16,46.84,8.68,11.35,20.99,16.46,36.92,15.32,15.92-1.14,27.61-7.93,35.06-20.37Z"/>
+                <path id="letter-r" fill="black" d="M522.27,77.69c.72,.07,2.34,.17,4.85,.3v57.8c-3.56-.4-6.73-.66-9.5-.79-2.77-.13-5.02-.2-6.73-.2-22.7,0-37.94,7.39-45.73,22.17-4.36,8.31-6.53,21.12-6.53,38.4v103.13h-56.81V82.74h53.84v37.61c8.71-14.38,16.3-24.21,22.76-29.49,10.56-8.84,24.28-13.26,41.17-13.26,1.05,0,1.95,.03,2.67,.1Z"/>
+                <path id="letter-a1" fill="black" d="M688.97,99.43c-18.55-9.12-39.68-13.53-63.4-13.21-36.45,.49-62.03,10.33-76.75,29.53-9.25,12.27-14.34,27.84-15.28,46.73l54.43-.73c1.23-8.33,3.81-14.96,7.76-19.9,5.53-6.67,15.05-10.1,28.56-10.28,12.04-.16,21.19,1.4,27.45,4.68,6.26,3.28,9.46,9.34,9.57,18.18,.1,7.26-3.89,12.66-11.95,16.19-4.49,2.04-11.98,3.79-22.46,5.25l-19.31,2.63c-21.9,3.06-38.45,7.91-49.67,14.52-20.44,12.15-30.49,31.49-30.14,58.01,.27,20.45,6.89,36.17,19.84,47.15,12.96,10.98,29.25,16.34,48.9,16.08,15.4-.21,29.15-3.89,41.27-11.04,10.14-6.07,19.07-13.39,26.79-21.94l.34,25.33,5.15-.07,9.61-.13,39.67-.53-.73-54.83-.16-12.26-1.16-86.71c-.35-25.99-9.79-43.55-28.34-52.68Zm-26.94,123.3c-.15,18.88-5.37,31.94-15.66,39.21-10.29,7.26-21.6,10.98-33.92,11.14-7.77,.1-14.4-1.95-19.88-6.17-5.48-4.21-8.29-11.14-8.42-20.77-.14-10.82,4.19-18.86,13.01-24.13,5.21-3.1,13.82-5.79,25.83-8.07l12.81-2.55c6.4-1.27,11.43-2.63,15.1-4.06,3.66-1.43,7.28-3.3,10.86-5.59l.28,20.98Z"/>
+                <path id="letter-m" fill="black" d="M1000.34,83.34c9.24,3.7,17.62,10.16,25.14,19.4,6.07,7.52,10.16,16.76,12.27,27.71,1.32,7.26,1.98,17.88,1.98,31.87l-.4,135.99h-57.8V160.93c0-8.18-1.32-14.91-3.96-20.19-5.02-10.03-14.25-15.04-27.71-15.04-15.57,0-26.33,6.47-32.27,19.4-3.04,6.86-4.55,15.11-4.55,24.74v128.47h-56.81V169.84c0-12.8-1.32-22.1-3.96-27.91-4.75-10.42-14.05-15.64-27.91-15.64-16.1,0-26.92,5.21-32.46,15.64-3.04,5.94-4.55,14.78-4.55,26.52v129.85h-57.21V82.94h54.83v31.47c6.99-11.21,13.59-19.2,19.79-23.95,10.95-8.44,25.14-12.67,42.56-12.67,16.49,0,29.82,3.63,39.99,10.89,8.18,6.73,14.38,15.37,18.61,25.93,7.39-12.67,16.56-21.97,27.51-27.91,11.61-5.94,24.55-8.91,38.8-8.91,9.5,0,18.87,1.85,28.11,5.54Z"/>
+                <path id="letter-a2" fill="black" d="M1211.13,86.95c-18.58-9.05-39.73-13.38-63.45-12.97-36.44,.62-61.99,10.56-76.64,29.82-9.2,12.3-14.24,27.89-15.11,46.78l54.43-.93c1.19-8.34,3.76-14.98,7.69-19.93,5.5-6.69,15.01-10.15,28.52-10.39,12.04-.21,21.19,1.32,27.47,4.58,6.28,3.26,9.49,9.31,9.64,18.15,.12,7.26-3.84,12.67-11.89,16.24-4.49,2.06-11.97,3.84-22.44,5.33l-19.3,2.7c-21.88,3.14-38.42,8.05-49.61,14.7-20.4,12.23-30.37,31.6-29.92,58.12,.35,20.45,7.02,36.14,20.02,47.07,13,10.93,29.31,16.23,48.96,15.89,15.39-.26,29.14-4,41.23-11.2,10.12-6.11,19.02-13.46,26.71-22.03l.43,25.33,5.15-.09,9.61-.16,39.67-.68-.94-54.82-.21-12.26-1.48-86.7c-.44-25.99-9.95-43.51-28.53-52.57Zm-26.49,123.39c-.08,18.88-5.25,31.96-15.51,39.27-10.26,7.3-21.55,11.06-33.88,11.27-7.77,.13-14.41-1.9-19.9-6.09-5.5-4.19-8.33-11.11-8.5-20.74-.18-10.82,4.12-18.88,12.92-24.18,5.2-3.12,13.8-5.84,25.8-8.16l12.8-2.59c6.4-1.3,11.42-2.67,15.08-4.12,3.65-1.45,7.27-3.32,10.84-5.63l.36,20.98Z"/>
+            </svg>
+        </div>
+
+        <div id="flags">
+            <img class="flag" src="assets/us-flag.png" alt="English" onclick="changeLanguage('en')">
+            <img class="flag" src="assets/russia-flag.png" alt="Russian" onclick="changeLanguage('ru')">
+            <img class="flag" src="assets/france-flag.png" alt="French" onclick="changeLanguage('fr')">
+            <img class="flag" src="assets/korea-flag.png" alt="Korean" onclick="changeLanguage('ko')">
+            <img class="flag" src="assets/china-flag.png" alt="Chinese" onclick="changeLanguage('zh')">
+        </div>
+
+        <div id="items">
+            <p id="fashion">fashion brand architecture, design & strategies</p>
+            <p id="artworks"><a href="artworks.html">artworks</a></p>
+            <p id="photography"><a href="photography.html">photography</a></p>
+            <p id="music"><a href="music.html">music</a></p>
+            <p id="contact"><a href="contact.html">contact</a></p>
+        </div>
+        <div id="musicdiv">
+            <div id="cover">
+                <img src="" alt="">
+            </div>
+            <div id="songnamediv">
+                <div id="top"></div>
+                <div id="bottom"></div>
+            </div>
+
+            <div id="playerdiv">
+                <div class="playerbutton" onclick="togglePlayPause()">
+                    <img id="playimg" src="assets/PLAY.png" alt="">
+                </div>
+                <div class="playerbutton" onclick="nextSong()">
+                    <img id="skipimg" src="assets/SKIP.png" alt="">
+                </div>
+                <div class="playerbutton">
+                    <img id="downimg" src="assets/V DOWN.png" onclick="mute()" alt="">
+                </div>
+                <div id="volumediv">
+                    <input oninput="changeVolume(this.value)" type="range" id="volume" min="0" max="1" step="0.05" value="1">
+                </div>
+                <div class="playerbutton">
+                    <img id="upimg" src="assets/V UP.png" onclick="volumeup()" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <audio id="audioPlayer"></audio>
+
+</body>
+<script>
+// Language translations
+const translations = {
+    en: {
+        fashion: "fashion brand architecture, design & strategies",
+        artworks: "artworks",
+        photography: "photography",
+        music: "music",
+        contact: "contact"
+    },
+    ru: {
+        fashion: "архитектура, дизайн и стратегии модного бренда",
+        artworks: "произведения искусства",
+        photography: "фотография",
+        music: "музыка",
+        contact: "контакт"
+    },
+    fr: {
+        fashion: "architecture, design et stratégies de marque de mode",
+        artworks: "œuvres d'art",
+        photography: "photographie",
+        music: "musique",
+        contact: "contact"
+    },
+    ko: {
+        fashion: "패션 브랜드 아키텍처, 디자인 및 전략",
+        artworks: "예술 작품",
+        photography: "사진",
+        music: "음악",
+        contact: "연락처"
+    },
+    zh: {
+        fashion: "时尚品牌建筑",
+        artworks: "艺术作品",
+        photography: "摄影",
+        music: "音乐",
+        contact: "联系方式"
+    }
+};
+
+// Get DOM elements
+const audio = document.getElementById("audioPlayer");
+const playButton = document.getElementById("playimg");
+const skipButton = document.querySelector(".playerbutton img#skipimg");
+const toptext = document.getElementById("top");
+const bottomtext = document.getElementById("bottom");
+const coverimg = document.querySelector("#cover img");
+
+const tracks = [
+    {
+        title: "FOMDJ",
+        artist: "Playboi Carti",
+        album: "MUSIC - SO...",
+        src: "FOMDJ.mp3",
+        cover: "assets/images/MUSIC.jpg"
+    },
+    {
+        title: "Rushes To",
+        artist: "Frank Ocean",
+        album: "Endless",
+        src: "Rushes To.m4a",
+        cover: "assets/images/endless.jpg"
+    },
+    {
+        title: "Play This",
+        artist: "Playboi Carti",
+        album: "Play This",
+        src: "PLAY THIS.wav",
+        cover: "assets/images/PLAY THIS.png"
+    },
+    {
+        title: "Nothing But Net (feat. Young Thug & PARTYNEXTDOOR)",
+        artist: "Travis Scott",
+        album: "Nothing But Net",
+        src: "Nothing But Net.mp3",
+        cover: "assets/images/nothing but net.jpg"
+    },
+    {
+        title: "Faith",
+        artist: "Lil Uzi Vert",
+        album: "Faith",
+        src: "Faith.mp3",
+        cover: "assets/images/X.png"
+    },
+    {
+        title: "PORSCHE POET",
+        artist: "Lancey Foux",
+        album: "PORSCHE POET",
+        src: "PORSCHE POET.mp3",
+        cover: "assets/images/PORSCHE POET.jpg"
+    },
+    {
+        title: "ICY GRL",
+        artist: "Saweetie",
+        album: "ICY GRL",
+        src: "ICY GRL.mp3",
+        cover: "assets/images/ICY GRL.jpg"
+    },
+    {
+        title: "Stuck",
+        artist: "Miss A",
+        album: "Colors",
+        src: "STUCK.mp3",
+        cover: "assets/images/STUCK.jpg"
+    },
+    {
+        title: "Best Friend",
+        artist: "Nettspend",
+        album: "Best Friend",
+        src: "BEST FRIEND.mp3",
+        cover: "assets/images/BEST FRIEND.jpg"
+    },
+    {
+        title: "MMS",
+        artist: "Полка",
+        album: "MMS",
+        src: "MMS.mp3",
+        cover: "assets/images/MMS.jpg"
+    },
+    {
+        title: "Like This",
+        artist: "박혜진 Park Hye Jin",
+        album: "How can I",
+        src: "LIKE THIS.mp3",
+        cover: "assets/images/LIKE THIS.jpg"
+    },
+    {
+        title: "XOXO",
+        artist: "NMIXX",
+        album: "Fe304: BREAK",
+        src: "XOXO.mp3",
+        cover: "assets/images/XOXO.jpg"
+    },
+    {
+        title: "Safe",
+        artist: "Young Thug",
+        album: "Safe",
+        src: "SAFE.mp3",
+        cover: "assets/images/SAFE.jpg"
+    },
+    {
+        title: "russian opps",
+        artist: "Osamason",
+        album: "russian opps",
+        src: "RUSSIAN OPPS.mp3",
+        cover: "assets/images/RUSSIAN OPPS.jpg"
+    },
+    {
+        title: "Avril 14th",
+        artist: "Aphex Twin",
+        album: "Drukqs",
+        src: "AVRIL 14TH.mp3",
+        cover: "assets/images/AVRIL 14TH.jpg"
+    },
+    {
+        title: "Feeling's Gone",
+        artist: "Frank Ocean",
+        album: "Feeling's Gone",
+        src: "FEELINGS GONE.mp3",
+        cover: "assets/images/X.png"
+    },
+    {
+        title: "These Days",
+        artist: "Frank Ocean",
+        album: "These Days",
+        src: "THESE DAYS.wav",
+        cover: "assets/images/X.png"
+    },
+    {
+        title: "Like I'm Lying",
+        artist: "Lancey Foux",
+        album: "Like I'm Lying",
+        src: "LIKE IM LYING.mp3",
+        cover: "assets/images/LIKE IM LYING.jpg"
+    },
+    {
+        title: "Can't Be Us (Efan, Clou, JFEL Bootleg)",
+        artist: "Headie One",
+        album: "Can't Be Us",
+        src: "CANT BE US.mp3",
+        cover: "assets/images/CANT BE US.jpg"
+    },
+    {
+        title: "Moonlight",
+        artist: "Juice WRLD",
+        album: "Moonlight",
+        src: "MOONLIGHT.mp3",
+        cover: "assets/images/MOONLIGHT.jpg"
+    },
+    {
+        title: "Messenger",
+        artist: "YT",
+        album: "Messenger",
+        src: "MESSENGER.mp3",
+        cover: "assets/images/MESSENGER.jpg"
+    },
+    {
+        title: "BIG SCIENTIST",
+        artist: "Lil Yachty",
+        album: "Big Scientist",
+        src: "BIG SCIENTIST.mp3",
+        cover: "assets/images/BIG SCIENTIST.jpg"
+    },
+    {
+        title: "2sick",
+        artist: "kwes e",
+        album: "2sick",
+        src: "2sick.mp3",
+        cover: "assets/images/2SICK.jpg"
+    },
+    {
+        title: "In Here Somewhere",
+        artist: "Frank Ocean",
+        album: "ENDLESS",
+        src: "IN HERE SOMEWHERE.m4a",
+        cover: "assets/images/endless.jpg"
+    },
+    {
+        title: "Comme Des Garçons",
+        artist: "Frank Ocean",
+        album: "ENDLESS",
+        src: "COMME DES GARÇONS.m4a",
+        cover: "assets/images/endless.jpg"
+    },
+    {
+        title: "Impietas + Deathwish (ASR)",
+        artist: "Frank Ocean",
+        album: "ENDLESS",
+        src: "IMPIETAS + DEATHWISH.m4a",
+        cover: "assets/images/endless.jpg"
+    },
+    {
+        title: "Sideways",
+        artist: "Frank Ocean",
+        album: "ENDLESS",
+        src: "SIDEWAYS.m4a",
+        cover: "assets/images/endless.jpg"
+    },
+    {
+        title: "CASH COW",
+        artist: "Kanye West & Skepta",
+        album: "CASH COW",
+        src: "CASH COW.mp3",
+        cover: "assets/images/X.png"
+    },
+    {
+        title: "Just Because",
+        artist: "Future & Young Thug",
+        album: "Just Because",
+        src: "JUST BECAUSE.mp3",
+        cover: "assets/images/JUST BECAUSE.jpg"
+    },
+    {
+        title: "YUNG NIGGAZ",
+        artist: "Kodak Black",
+        album: "YUNG NIGGAZ",
+        src: "YUNG NIGGAZ.mp3",
+        cover: "assets/images/YUNG NIGGAZ.jpg"
+    },
+    {
+        title: "Teamwork",
+        artist: "Young Thug & Gunna",
+        album: "Teamwork",
+        src: "TEAMWORK.mp3",
+        cover: "assets/images/TEAMWORK.jpg"
+    },
+    {
+        title: "Digital Plane",
+        artist: "Young Thug & NAV",
+        album: "Digital Plane",
+        src: "DIGITAL PLANE.mp3",
+        cover: "assets/images/DIGITAL PLANE.jpg"
+    },
+    {
+        title: "Vivienne Me",
+        artist: "The Act",
+        album: "Vivienne Me",
+        src: "VIVIENNE ME.mp3",
+        cover: "assets/images/VIVIENNE ME.jpg"
+    },
+    {
+        title: "Life Of Sins",
+        artist: "Young Thug",
+        album: "Life Of Sins",
+        src: "LIFE OF SINS.mp3",
+        cover: "assets/images/LIFE OF SINS.jpg"
+    },
+    {
+        title: "At The Gates",
+        artist: "Drake & Lil Uzi Vert",
+        album: "At The Gates",
+        src: "AT THE GATES.mp3",
+        cover: "assets/images/AT THE GATES.jpg"
+    },
+    {
+        title: "Sky City",
+        artist: "Kanye West",
+        album: "Yandhi",
+        src: "SKY CITY.mp3",
+        cover: "assets/images/YANDHI.jpg"
+    },
+    {
+        title: "knotz",
+        artist: "xhujung",
+        album: "knotz",
+        src: "KNOTZ.mp3",
+        cover: "assets/images/KNOTZ.jpg"
+    },
+    {
+        title: "Hoodway",
+        artist: "454",
+        album: "Hoodway",
+        src: "HOODWAY.mp3",
+        cover: "assets/images/HOODWAY.jpg"
+    },
+    {
+        title: "This Is God's Test",
+        artist: "Kanye West",
+        album: "Yandhi",
+        src: "THIS IS GODS TEST.mp3",
+        cover: "assets/images/YANDHI2.jpg"
+    },
+    {
+        title: "keep me in the loop",
+        artist: "YT",
+        album: "keep me in the loop",
+        src: "KEEP ME IN THE LOOP.mp3",
+        cover: "assets/images/KEEP ME IN THE LOOP.jpg"
+    },
+    {
+        title: "Elle veut link",
+        artist: "Serane & MissingKasper",
+        album: "Elle veut link",
+        src: "ELLE VEUT LINK.mp3",
+        cover: "assets/images/ELLE VEUT LINK.jpg"
+    },
+    {
+        title: "nobody 2saveus",
+        artist: "Ak4yla",
+        album: "nobody 2saveus",
+        src: "NOBODY2SAVEUS.mp3",
+        cover: "assets/images/NOBODY 2SAVEUS.jpg"
+    },
+    {
+        title: "Money Make Her",
+        artist: "Lancey Foux",
+        album: "Money Make Her",
+        src: "MONEY MAKE HER.mp3",
+        cover: "assets/images/MONEY MAKE HER.jpg"
+    },
+    {
+        title: "VISA",
+        artist: "Lancey Foux",
+        album: "VISA",
+        src: "VISA.mp3",
+        cover: "assets/images/VISA.jpg"
+    },
+    {
+        title: "24HRS",
+        artist: "Babyxsosa & PPGCASPER",
+        album: "24HRS",
+        src: "24HRS.mp3",
+        cover: "assets/images/24HRS.jpg"
+    },
+    {
+        title: "Odds",
+        artist: "Drugbwoy",
+        album: "Odds",
+        src: "ODDS.mp3",
+        cover: "assets/images/ODDS.jpg"
+    },
+    {
+        title: "EVERYDAY",
+        artist: "POLO PERKS",
+        album: "EVERYDAY",
+        src: "EVERYDAY.mp3",
+        cover: "assets/images/EVERYDAY.jpg"
+    },
+    {
+        title: "uh uh",
+        artist: "Babyxsosa",
+        album: "uh uh",
+        src: "UH UH.mp3",
+        cover: "assets/images/UH UH.jpg"
+    },
+    {
+        title: "Come on World, You Can't Go!",
+        artist: "Frank Ocean",
+        album: "Come on World, You Can't Go!",
+        src: "COME ON WORLD.mp3",
+        cover: "assets/images/COMEONWORLD.jpg"
+    },
+    {
+        title: "gatlin gun",
+        artist: "Dave & AJ Tracey",
+        album: "gatlin gun",
+        src: "GATLIN GUN.mp3",
+        cover: "assets/images/GATLIN GUN.jpg"
+    },
+    {
+        title: "Her Loss Interlude",
+        artist: "Drake & 21 Savage",
+        album: "Her Loss",
+        src: "HER LOSS INTERLUDE.mp3",
+        cover: "assets/images/INTERLUDE.jpg"
+    },
+    {
+        title: "FAKE RUNTZ",
+        artist: "Caal Vo",
+        album: "FAKE RUNTZ",
+        src: "FAKE RUNTZ.mp3",
+        cover: "assets/images/FAKE RUNTZ.jpg"
+    },
+    {
+        title: "FERRIS WHEEL",
+        artist: "454",
+        album: "FERRIS WHEEL",
+        src: "FERRIS WHEEL.mp3",
+        cover: "assets/images/FERRIS WHEEL.jpg"
+    },
+    {
+        title: "J.O.B.",
+        artist: "Frank Ocean",
+        album: "The Lonny Breaux Collection",
+        src: "J.O.B..mp3",
+        cover: "assets/images/LONNY BREAUX.jpg"
+    },
+    {
+        title: "It's On You",
+        artist: "Chris Travis",
+        album: "Waterszn 2",
+        src: "ITS ON YOU.mp3",
+        cover: "assets/images/ITS ON YOU.jpg"
+    },
+    {
+        title: "K-POP",
+        artist: "Lancey Foux",
+        album: "K-POP",
+        src: "K-POP.mp3",
+        cover: "assets/images/K-POP.jpg"
+    },
+    {
+        title: "from me 2 you",
+        artist: "454",
+        album: "from me 2 you",
+        src: "FROM ME 2 YOU.mp3",
+        cover: "assets/images/FROM ME 2 YOU.jpg"
+    },
+    {
+        title: "best for you",
+        artist: "Bakar",
+        album: "best for you",
+        src: "BEST FOR YOU.mp3",
+        cover: "assets/images/BEST FOR YOU.jpg"
+    },
+    {
+        title: "I Hate This",
+        artist: "evilgiane",
+        album: "I Hate This",
+        src: "I HATE THIS.mp3",
+        cover: "assets/images/I HATE THIS.jpg"
+    },
+    {
+        title: "Whip Appeal",
+        artist: "Frank Ocean",
+        album: "UNRELEASED;misc",
+        src: "WHIP APPEAL.mp3",
+        cover: "assets/images/UNRELEASED MISC.jpg"
+    },
+    {
+        title: "4 True ''Thug Angel''",
+        artist: "Sickboyrari",
+        album: "4 True ''Thug Angel''",
+        src: "4 TRUE.mp3",
+        cover: "assets/images/4 TRUE.jpg"
+    },
+    {
+        title: "CAMPAIGN FREESTYLE",
+        artist: "Teezo Touchdown",
+        album: "CAMPAIGN FREESTYLE",
+        src: "CAMPAIGN FREESTYLE.mp3",
+        cover: "assets/images/CAMPAIGN FREESTYLE.jpg"
+    },
+    {
+        title: "Eric Koston",
+        artist: "Kay9ine",
+        album: "Eric Koston",
+        src: "ERIC KOSTON.mp3",
+        cover: "assets/images/ERIC KOSTON.jpg"
+    },
+    {
+        title: "GHOSTS IN MY ROOM",
+        artist: "evilgiane & harrison",
+        album: "GHOSTS IN MY ROOM",
+        src: "GHOSTS IN MY ROOM.mp3",
+        cover: "assets/images/GHOSTS IN MY ROOM.jpg"
+    },
+    {
+        title: "Truth",
+        artist: "evilgiane",
+        album: "bottle in the ocean",
+        src: "TRUTH.mp3",
+        cover: "assets/images/BOTTLE.jpg"
+    },
+    {
+        title: "GOLDEN AGE",
+        artist: "Yves Tumor",
+        album: "GOLDEN AGE",
+        src: "GOLDEN AGE.mp3",
+        cover: "assets/images/GOLDEN AGE.jpg"
+    },
+    {
+        title: "samsung love",
+        artist: "yung bruh",
+        album: "samsung love",
+        src: "SAMSUNG LOVE.mp3",
+        cover: "assets/images/SAMSUNG LOVE.jpg"
+    },
+    {
+        title: "Wither",
+        artist: "Frank Ocean",
+        album: "ENDLESS",
+        src: "WITHER.mp3",
+        cover: "assets/images/ENDLESS.jpg"
+    },
+    {
+        title: "yao ming",
+        artist: "Destroy Lonely",
+        album: "yao ming",
+        src: "YAO MING.mp3",
+        cover: "assets/images/YAO MING.jpg"
+    },
+    {
+        title: "pack a punch",
+        artist: "Destroy Lonely",
+        album: "pack a punch",
+        src: "PACK A PUNCH.mp3",
+        cover: "assets/images/PACK A PUNCH.jpg"
+    },
+    {
+        title: "Plenty",
+        artist: "PARTYNEXTDOOR",
+        album: "Plenty",
+        src: "PLENTY.mp3",
+        cover: "assets/images/PLENTY.jpg"
+    },
+    {
+        title: "Some Of Your Love",
+        artist: "PARTYNEXTDOOR",
+        album: "Some Of Your Love",
+        src: "SOME OF YOUR LOVE.mp3",
+        cover: "assets/images/SOME OF YOUR LOVE.jpg"
+    },
+    {
+        title: "RaRa",
+        artist: "Travis Scott & Lil Uzi Vert",
+        album: "RaRa",
+        src: "RARA.mp3",
+        cover: "assets/images/RARA.jpg"
+    },
+    {
+        title: "Whatever You Say",
+        artist: "PARTYNEXTDOOR",
+        album: "Whatever You Say",
+        src: "WHATEVER YOU SAY.mp3",
+        cover: "assets/images/WHATEVER YOU SAY.jpg"
+    },
+    {
+        title: "Part Time",
+        artist: "Travis Scott",
+        album: "Part Time",
+        src: "PART TIME.mp3",
+        cover: "assets/images/PART TIME.jpg"
+    },
+    {
+        title: "Fit ID",
+        artist: "Sainté",
+        album: "Fit ID",
+        src: "FIT ID.mp3",
+        cover: "assets/images/FIT ID.jpg"
+    },
+    {
+        title: "Flatline",
+        artist: "Journals",
+        album: "Flatline",
+        src: "FLATLINE.mp3",
+        cover: "assets/images/JOURNALS.jpg"
+    },
+    {
+        title: "Frontline",
+        artist: "Pa Salieu",
+        album: "Frontline",
+        src: "FRONTLINE.mp3",
+        cover: "assets/images/FRONTLINE.jpg"
+    },
+    {
+        title: "Broke Boi",
+        artist: "Playboi Carti",
+        album: "Broke Boi",
+        src: "BROKE BOI.mp3",
+        cover: "assets/images/BROKE BOI.jpg"
+    },
+    {
+        title: "FINE SHIT",
+        artist: "Playboi Carti",
+        album: "MUSIC",
+        src: "FINE SHIT.mp3",
+        cover: "assets/images/MUSIC.jpg"
+    },
+    {
+        title: "FYBR (First Year Being Rich)",
+        artist: "A$AP Mob",
+        album: "Cozy Tapes Vol. 2: Too Cozy",
+        src: "FYBR.mp3",
+        cover: "assets/images/COZY TAPES 2.jpg"
+    },
+    {
+        title: "In Vein (feat. The Weeknd)",
+        artist: "Rick Ross ",
+        album: "Mastermind",
+        src: "IN VEIN.mp3",
+        cover: "assets/images/MASTERMIND.jpg"
+    },
+    {
+        title: "Losing You",
+        artist: "Solange",
+        album: "Losing You",
+        src: "LOSING YOU.mp3",
+        cover: "assets/images/LOSING YOU.jpg"
+    },
+    {
+        title: "Love In The Sky",
+        artist: "The Weeknd",
+        album: "Kiss Land",
+        src: "LOVE IN THE SKY.mp3",
+        cover: "assets/images/KISS LAND.jpg"
+    },
+    {
+        title: "No Sense (feat. Travis Scott)",
+        artist: "Justin Bieber",
+        album: "Purpose (Deluxe)",
+        src: "NO SENSE.mp3",
+        cover: "assets/images/PURPOSE.jpg"
+    },
+    {
+        title: "Right My Wrongs",
+        artist: "Bryson Tiller",
+        album: "T R A P S O U L",
+        src: "RIGHT MY WRONGS.mp3",
+        cover: "assets/images/TRAPSOUL.jpg"
+    },
+    {
+        title: "Solo",
+        artist: "FUTURE",
+        album: "HNDRXX",
+        src: "SOLO.mp3",
+        cover: "assets/images/HNDRXX.jpg"
+    },
+    {
+        title: "Green & Purple",
+        artist: "Travis Scott & Playboi Carti",
+        album: "Green & Purple",
+        src: "GREEN & PURPLE.mp3",
+        cover: "assets/images/GREEN & PURPLE.jpg"
+    },
+    {
+        title: "NASA",
+        artist: "Future",
+        album: "NASA",
+        src: "NASA.mp3",
+        cover: "assets/images/NASA.jpg"
+    },
+    {
+        title: "Turn Your Phone Off",
+        artist: "PinkPantheress & Destroy Lonely",
+        album: "Turn Your Phone Off",
+        src: "TURN YOUR PHONE OFF.mp3",
+        cover: "assets/images/TURN YOUR PHONE OFF.jpg"
+    },
+    {
+        title: "What You Doin",
+        artist: "Gucci Mane & Migos",
+        album: "Green Album",
+        src: "WHAT YOU DOIN.mp3",
+        cover: "assets/images/GREEN ALBUM.jpg"
+    },
+    {
+        title: "Yeah, I Said It",
+        artist: "Rihanna",
+        album: "ANTI(Deluxe)",
+        src: "YEAH, I SAID IT.mp3",
+        cover: "assets/images/ANTI.jpg"
+    },
+    {
+        title: "ПОМНЮ",
+        artist: "unki",
+        album: "ПОМНЮ",
+        src: "ПОМНЮ.mp3",
+        cover: "assets/images/ПОМНЮ.jpg"
+    },
+    {
+        title: "Таллин",
+        artist: "JUGHEAD & Kinderlil",
+        album: "Less Is More",
+        src: "ТАЛЛИН.mp3",
+        cover: "assets/images/LESS IS MORE.jpg"
+    },
+    {
+        title: "Behave",
+        artist: "Fimiguerrero & Len",
+        album: "New World Order",
+        src: "BEHAVE.mp3",
+        cover: "assets/images/NEW WORLD ORDER.jpg"
+    },
+    {
+        title: "Better By Yourself",
+        artist: "Babyxsosa",
+        album: "Better By Yourself",
+        src: "BETTER BY YOURSELF.mp3",
+        cover: "assets/images/BETTER BY YOURSELF.jpg"
+    },
+    {
+        title: "Chanel",
+        artist: "Babyxsosa",
+        album: "Chanel",
+        src: "CHANEL.mp3",
+        cover: "assets/images/CHANEL.jpg"
+    },
+    {
+        title: "Get Up",
+        artist: "New Jeans",
+        album: "Get Up",
+        src: "GET UP.mp3",
+        cover: "assets/images/GET UP.jpg"
+    },
+    {
+        title: "Designer Boi",
+        artist: "A$AP NAST & D33J",
+        album: "Designer Boi",
+        src: "DESIGNER BOI.mp3",
+        cover: "assets/images/DESIGNER BOI.jpg"
+    },
+    {
+        title: "FACETIME / TEXTING",
+        artist: "Babyxsosa",
+        album: "FACETIME / TEXTING",
+        src: "FACETIME.mp3",
+        cover: "assets/images/FACETIME.jpg"
+    },
+    {
+        title: "Kin",
+        artist: "Kevin Abstract",
+        album: "American Boyfriend",
+        src: "KIN.mp3",
+        cover: "assets/images/AMERICAN BOYFRIEND.jpg"
+    },
+    {
+        title: "Les Fleurs",
+        artist: "Minnie Riperton",
+        album: "Les Fleurs",
+        src: "LES FLEURS.mp3",
+        cover: "assets/images/LES FLEURS.jpg"
+    },
+    {
+        title: "Losalamitoslatinfunklovesong",
+        artist: "Gene Harris",
+        album: "Astral Signals",
+        src: "FUNKLOVESONG.mp3",
+        cover: "assets/images/ASTRAL SIGNALS.jpg"
+    },
+    {
+        title: "So In Love",
+        artist: "Curtis Mayfield",
+        album: "There's No Place Like America Today",
+        src: "SO IN LOVE.mp3",
+        cover: "assets/images/NO PLACE LIKE AMERICA.jpg"
+    },
+    {
+        title: "Tension",
+        artist: "Central Cee",
+        album: "Wild West",
+        src: "TENSION.mp3",
+        cover: "assets/images/WILD WEST.jpg"
+    },
+    {
+        title: "Three Cheers For My Baby",
+        artist: "Amnesty",
+        album: "Free Your Mind",
+        src: "THREE CHEERS FOR MY BABY.mp3",
+        cover: "assets/images/FREE YOUR MIND.jpg"
+    },
+    {
+        title: "Warriors",
+        artist: "1017 ALYX 9SM & Lil Yachty",
+        album: "COMPILATION V1",
+        src: "WARRIORS.mp3",
+        cover: "assets/images/COMPILATION V1.jpg"
+    },
+    {
+        title: "Wolves",
+        artist: "Kanye West",
+        album: "The Life of Pablo",
+        src: "WOLVES.mp3",
+        cover: "assets/images/THE LIFE OF PABLO.jpg"
+    },
+    {
+        title: "Work Ya Wrist",
+        artist: "Gucci Mane & Yo Gotti",
+        album: "Chicken Talk",
+        src: "WORK YA WRIST.mp3",
+        cover: "assets/images/CHICKEN TALK.jpg"
+    },
+    {
+        title: "Automatic",
+        artist: "Red Velvet",
+        album: "Ice Cream Cake",
+        src: "AUTOMATIC.mp3",
+        cover: "assets/images/ICE CREAM CAKE.jpg"
+    },
+    {
+        title: "All That Matters",
+        artist: "Justin Bieber",
+        album: "Journals",
+        src: "ALL THAT MATTERS.mp3",
+        cover: "assets/images/JOURNALS.jpg"
+    },
+    {
+        title: "Cool With You",
+        artist: "New Jeans",
+        album: "Get Up",
+        src: "COOL WITH YOU.mp3",
+        cover: "assets/images/GET UP.jpg"
+    }
+];
+// Music player state
+let trackOrder = [];
+let currentPosition = -1;
+let isPlaying = false;
+let skipInProgress = false;
+
+// Function to create new shuffled order
+function createNewOrder() {
+    let indices = Array.from({ length: tracks.length }, (_, i) => i);
+    
+    // Fisher-Yates shuffle
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    
+    trackOrder = indices;
+    localStorage.setItem('trackOrder', JSON.stringify(trackOrder));
+}
+
+function loadTrack(trackIndex) {
+    const track = tracks[trackIndex];
+    if (!track) {
+        console.error("Invalid track index:", trackIndex);
+        return;
+    }
+    
+    console.log(`Playing track ${currentPosition + 1}/${tracks.length}: ${track.title}`);
+    
+    audio.src = `assets/music/${track.src}`;
+    
+    // Update track info
+    updateTrackDisplay(track);
+    
+    coverimg.src = track.cover || "assets/default-cover.jpg";
+}
+
+// Function to update track display
+function updateTrackDisplay(track) {
+    if (!track) return;
+    toptext.textContent = track.title;
+    bottomtext.textContent = `${track.artist} - ${track.album}`;
+    coverimg.src = track.cover || "assets/default-cover.jpg";
+}
+
+// Check if text is overflowing its container - removed functionality
+function isTextOverflowing(element) {
+    return false; // Always return false to disable overflow detection
+}
+
+// Start scrolling text animation - removed functionality
+function startScrollingAnimation() {
+    // Function disabled
+}
+
+function nextSong() {
+    if (skipInProgress) return;
+    skipInProgress = true;
+    
+    currentPosition++;
+    if (currentPosition >= trackOrder.length) {
+        // Create new shuffle order when reaching the end
+        createNewOrder();
+        currentPosition = 0;
+    }
+    
+    const trackIndex = trackOrder[currentPosition];
+    if (trackIndex === undefined || trackIndex < 0 || trackIndex >= tracks.length) {
+        console.error("Invalid track index:", trackIndex);
+        // Reset track order and try again
+        createNewOrder();
+        currentPosition = 0;
+    }
+    
+    const track = tracks[trackOrder[currentPosition]];
+    if (!track) {
+        console.error("Track not found at index:", trackOrder[currentPosition]);
+        skipInProgress = false;
+        return;
+    }
+    
+    // Set source directly with proper path
+    audio.src = `assets/music/${track.src}`;
+    
+    // Update display
+    updateTrackDisplay(track);
+    
+    // Reset playback position
+    audio.currentTime = 0;
+    
+    // Play if it was playing before
+    if (isPlaying) {
+        audio.play().catch(error => {
+            console.error("Playback failed:", error);
+            isPlaying = false;
+            playButton.src = "assets/PLAY.png";
+        });
+    }
+    
+    // Update localStorage immediately
+    localStorage.setItem('currentPosition', currentPosition.toString());
+    localStorage.setItem('trackOrder', JSON.stringify(trackOrder));
+    localStorage.setItem('currentTime', '0');
+    
+    skipInProgress = false;
+}
+
+function togglePlayPause() {
+    if (isPlaying) {
+        audio.pause();
+        playButton.src = "assets/PLAY.png";
+        localStorage.setItem('isPlaying', 'false');
+    } else {
+        audio.play();
+        playButton.src = "assets/PAUSE.png";
+        localStorage.setItem('isPlaying', 'true');
+    }
+    isPlaying = !isPlaying;
+}
+
+function changeVolume(volume) {
+    volume = Math.min(Math.max(volume, 0), 1);
+    audio.volume = volume;
+    // Update volume slider to match
+    document.getElementById('volume').value = volume;
+    localStorage.setItem('volume', volume.toString());
+}
+
+// Add mute functionality
+function mute() {
+    if (audio.volume > 0) {
+        // Store the current volume level before muting
+        audio.dataset.previousVolume = audio.volume;
+        changeVolume(0);
+    } else {
+        // Restore previous volume or default to 0.5
+        const previousVolume = parseFloat(audio.dataset.previousVolume || 0.5);
+        changeVolume(previousVolume);
+    }
+}
+
+// Add volume up functionality
+function volumeup() {
+    // Always set to maximum volume (100%)
+    changeVolume(1.0);
+}
+
+// Initialize player when page loads
+window.addEventListener('load', function() {
+    // Get stored music state
+    const musicActive = localStorage.getItem('musicActive') === 'true';
+    const storedTrackOrder = JSON.parse(localStorage.getItem('trackOrder'));
+    const storedPosition = parseInt(localStorage.getItem('currentPosition') || '0');
+    const storedTime = parseFloat(localStorage.getItem('currentTime') || '0');
+    const storedIsPlaying = localStorage.getItem('isPlaying') === 'true';
+    const storedVolume = parseFloat(localStorage.getItem('volume') || '1');
+    const storedTrack = localStorage.getItem('currentTrack');
+    
+    // Set initial volume
+    audio.volume = storedVolume;
+    
+    if (musicActive && storedTrackOrder && storedTrackOrder.length > 0) {
+        // Restore the previous track order and position
+        trackOrder = storedTrackOrder;
+        currentPosition = storedPosition;
+        
+        // Load the previous track
+        const trackIndex = trackOrder[currentPosition];
+        if (trackIndex >= 0 && trackIndex < tracks.length) {
+            const track = tracks[trackIndex];
+            
+            // Ensure we're loading the correct track
+            if (storedTrack && storedTrack !== track.src) {
+                // Find the correct track that matches storedTrack
+                const correctTrackIndex = tracks.findIndex(t => t.src === storedTrack);
+                if (correctTrackIndex !== -1) {
+                    currentPosition = trackOrder.indexOf(correctTrackIndex);
+                    const correctTrack = tracks[correctTrackIndex];
+                    audio.src = `assets/music/${correctTrack.src}`;
+                    updateTrackDisplay(correctTrack);
+                } else {
+                    audio.src = `assets/music/${track.src}`;
+                    updateTrackDisplay(track);
+                }
+            } else {
+                audio.src = `assets/music/${track.src}`;
+                updateTrackDisplay(track);
+            }
+            
+            // Set the time position
+            audio.currentTime = storedTime;
+            
+            // Resume playback if it was playing
+            if (storedIsPlaying) {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        playButton.src = "assets/PAUSE.png";
+                        isPlaying = true;
+                    }).catch(error => {
+                        console.error("Auto-play was prevented:", error);
+                        playButton.src = "assets/PLAY.png";
+                        isPlaying = false;
+                    });
+                }
+            } else {
+                playButton.src = "assets/PLAY.png";
+                isPlaying = false;
+            }
+        }
+    } else {
+        // Create new shuffle order for fresh start
+        createNewOrder();
+        currentPosition = 0;
+        const trackIndex = trackOrder[currentPosition];
+        
+        if (trackIndex >= 0 && trackIndex < tracks.length) {
+            const track = tracks[trackIndex];
+            audio.src = `assets/music/${track.src}`;
+            updateTrackDisplay(track);
+            playButton.src = "assets/PLAY.png";
+            isPlaying = false;
+        }
+    }
+    
+    // When a song ends, play the next one
+    audio.addEventListener("ended", nextSong);
+    
+    // Update music state continuously
+    setInterval(() => {
+        if (audio) {
+            localStorage.setItem('currentTime', audio.currentTime.toString());
+            localStorage.setItem('isPlaying', (!audio.paused).toString());
+            localStorage.setItem('currentPosition', currentPosition.toString());
+            localStorage.setItem('volume', audio.volume.toString());
+            localStorage.setItem('trackOrder', JSON.stringify(trackOrder));
+            localStorage.setItem('musicActive', 'true');
+            if (audio.src) {
+                const src = audio.src.split('/').pop();
+                localStorage.setItem('currentTrack', src);
+            }
+        }
+    }, 100); // Update more frequently for smoother transitions
+});
+
+// Function to change language
+function changeLanguage(lang) {
+    console.log('Changing language to:', lang);
+    const items = document.getElementById('items');
+    const elements = items.getElementsByTagName('p');
+    
+    // Set the HTML lang attribute
+    document.documentElement.setAttribute('lang', lang);
+    
+    // Save language preference to localStorage
+    localStorage.setItem('kdramaLanguage', lang);
+    
+    // Reset animations and update text
+    Array.from(elements).forEach(element => {
+        const id = element.id;
+        console.log('Updating element:', id);
+        console.log('Current text:', element.textContent);
+        
+        // Reset animation
+        element.style.animation = 'none';
+        element.offsetHeight; // Trigger reflow
+        element.style.animation = 'fadeIn 0.7s ease-out';
+        
+        // Update text content but preserve links
+        if (translations[lang] && translations[lang][id]) {
+            console.log('New text:', translations[lang][id]);
+            
+            // Special handling for elements with links
+            if (id === 'artworks' || id === 'photography' || id === 'music' || id === 'contact') {
+                const link = element.querySelector('a') || document.createElement('a');
+                link.href = id + '.html';
+                link.textContent = translations[lang][id];
+                
+                // Clear the element and add the link
+                element.textContent = '';
+                element.appendChild(link);
+            } else {
+                element.textContent = translations[lang][id];
+            }
+        } else {
+            console.warn('No translation found for:', id, 'in language:', lang);
+        }
+    });
+}
+
+// Update CSS styles
+const styleElement = document.createElement('style');
+styleElement.textContent = `
+    /* Reset all text styles */
+    #songnamediv, #top, #bottom {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #songnamediv {
+        letter-spacing: -0.3px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 180px;
+        height: 18px;
+        color: black;
+        font-size: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    #cover {
+        width: 24px !important;
+        height: 24px !important;
+        flex-shrink: 0 !important;
+        border-radius: 2px !important;
+        overflow: hidden !important;
+        background-color: transparent !important;
+    }
+    
+    #cover img {
+        width: 24px !important;
+        height: 24px !important;
+        object-fit: cover !important;
+        border-radius: 2px !important;
+    }
+`;
+document.head.appendChild(styleElement);
+
+// Check for saved language preference when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const savedLanguage = localStorage.getItem('kdramaLanguage');
+    if (savedLanguage) {
+        changeLanguage(savedLanguage);
+    }
+});
+
+// Add this to the end of your existing <script> section
+document.addEventListener('DOMContentLoaded', function() {
+    // Get references to all the logo paths
+    const logoPaths = document.querySelectorAll('#kdrama-logo path');
+    
+    // Add event listeners for each path
+    logoPaths.forEach(path => {
+        path.addEventListener('mouseenter', function() {
+            this.setAttribute('original-fill', this.getAttribute('fill'));
+            this.setAttribute('fill', '#cfe0ef');
+            this.style.transform = 'scale(1.05)';
+            this.style.transformOrigin = 'center';
+            this.style.transition = 'all 0.2s ease';
+        });
+        
+        path.addEventListener('mouseleave', function() {
+            this.setAttribute('fill', this.getAttribute('original-fill') || 'black');
+            this.style.transform = 'scale(1)';
+        });
+    });
+});
+
+// Make sure to keep music playing when navigating between pages
+window.addEventListener('beforeunload', function(e) {
+    if (audio) {
+        // Store current state before leaving the page
+        if (!audio.paused) {
+            localStorage.setItem('musicActive', 'true');
+        }
+        localStorage.setItem('currentTime', audio.currentTime.toString());
+        localStorage.setItem('isPlaying', (!audio.paused).toString());
+        localStorage.setItem('currentPosition', currentPosition.toString());
+        localStorage.setItem('volume', audio.volume.toString());
+        
+        // Store the exact audio source
+        if (audio.src) {
+            const src = audio.src.split('/').pop();
+            localStorage.setItem('currentTrack', src);
+        }
+        
+        // Store track order
+        localStorage.setItem('trackOrder', JSON.stringify(trackOrder));
+    }
+});
+
+// Setup page navigation handlers
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // Don't interfere with external links or new tab clicks
+        if (e.ctrlKey || e.metaKey || link.target === '_blank' || !link.href.includes(window.location.hostname)) {
+            return;
+        }
+        
+        // Prevent default navigation
+        e.preventDefault();
+        
+        // Store the exact current state
+        if (audio) {
+            const currentSrc = audio.src.split('/').pop();
+            const currentTime = audio.currentTime;
+            const wasPlaying = !audio.paused;
+            
+            // Store precise state
+            localStorage.setItem('musicActive', 'true');
+            localStorage.setItem('currentTrack', currentSrc);
+            localStorage.setItem('currentTime', currentTime.toString());
+            localStorage.setItem('isPlaying', wasPlaying.toString());
+            localStorage.setItem('currentPosition', currentPosition.toString());
+            localStorage.setItem('volume', audio.volume.toString());
+            localStorage.setItem('trackOrder', JSON.stringify(trackOrder));
+            
+            // Navigate after ensuring state is saved
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 50);
+        } else {
+            window.location.href = link.href;
+        }
+    });
+});
+
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+
+<style>
+    .flag {
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .flag:hover {
+        transform: scale(1.1);
+    }
+
+    /* Apple Music style button hover effects - only for play and skip buttons */
+    .playerbutton {
+        position: relative;
+        transition: background-color 0.2s ease;
+        border-radius: 4px;
+    }
+    
+    /* Apply hover background only to play and skip buttons */
+    .playerbutton:nth-child(1):hover,
+    .playerbutton:nth-child(2):hover {
+        background-color: rgba(150, 150, 150, 0.15);
+    }
+
+    /* Mute and unmute buttons darken the icons on hover */
+    #downimg, #upimg {
+        transition: filter 0.2s ease;
+    }
+    
+    .playerbutton:hover #downimg,
+    .playerbutton:hover #upimg {
+        filter: brightness(0.85);
+    }
+    
+    /* Volume slider styles */
+    #volume {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 4px;
+        background: #bbb;
+        border-radius: 2px;
+        outline: none;
+    }
+    
+    #volume::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+    
+    #volume::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.2s ease;
+    }
+    
+    /* Subtle darkening effect when active/being dragged */
+    #volume:active::-webkit-slider-thumb {
+        background-color: #dddddd;
+    }
+    
+    #volume:active::-moz-range-thumb {
+        background-color: #dddddd;
+    }
+
+    /* Simple text truncation */
+    #top, #bottom {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    /* Basic player styles */
+    #songnamediv {
+        letter-spacing: -0.3px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 180px;
+        height: 18px;
+        color: black;
+        font-size: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    #cover {
+        width: 24px !important;
+        height: 24px !important;
+        flex-shrink: 0 !important;
+        border-radius: 2px !important;
+        overflow: hidden !important;
+        background-color: transparent !important;
+    }
+
+    #cover img {
+        width: 24px !important;
+        height: 24px !important;
+        object-fit: cover !important;
+        border-radius: 2px !important;
+    }
+</style>
+
+</html>
