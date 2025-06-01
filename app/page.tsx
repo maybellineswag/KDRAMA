@@ -353,7 +353,7 @@ export default function Home() {
               style={{
                 transform: 'translateY(5%)',
                 display: 'none',
-                paddingLeft: '7vw',
+                paddingLeft: '8vw',
                 paddingRight: '7vw'
               }}
             >
