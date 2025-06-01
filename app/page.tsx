@@ -353,8 +353,7 @@ export default function Home() {
               style={{
                 transform: 'translateY(5%)',
                 display: 'none',
-                paddingLeft: '9vw',
-                paddingRight: '3vw'
+                marginLeft: '14vw'
               }}
             >
               {/* KDRAMA Logo */}
