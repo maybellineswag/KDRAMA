@@ -351,9 +351,9 @@ export default function Home() {
             <div
               className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1"
               style={{
-                transform: 'translateY(5%)',
+                transform: 'translateY(0%) scale(0.85)',
                 display: 'none',
-                marginLeft: '14vw'
+                marginLeft: '7vw'
               }}
             >
               {/* KDRAMA Logo */}
