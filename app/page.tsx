@@ -348,6 +348,36 @@ export default function Home() {
             </div>
 
             {/* Mobile Layout - Will be shown via CSS on small screens */}
+            <style>{`
+              @media (max-width: 767px) {
+                .mobile-volume-slider input[type=range]::-webkit-slider-thumb {
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                  background: #fff;
+                  border: 1px solid #888;
+                  box-shadow: 0 0 2px #0002;
+                  -webkit-appearance: none;
+                  appearance: none;
+                }
+                .mobile-volume-slider input[type=range]::-moz-range-thumb {
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                  background: #fff;
+                  border: 1px solid #888;
+                  box-shadow: 0 0 2px #0002;
+                }
+                .mobile-volume-slider input[type=range]::-ms-thumb {
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                  background: #fff;
+                  border: 1px solid #888;
+                  box-shadow: 0 0 2px #0002;
+                }
+              }
+            `}</style>
             <div
               className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1"
               style={{
@@ -495,7 +525,7 @@ export default function Home() {
                       />
                     </div>
                     {/* Volume Slider */}
-                    <div style={{
+                    <div className="mobile-volume-slider" style={{
                       height: '18px',
                       width: '36px',
                       display: 'flex',
@@ -548,6 +578,34 @@ export default function Home() {
                 </a>
               </div>
             </div>
+
+            {/* Manual adjustment for very small screens (iPhone 4/5) */}
+            <style>{`
+              @media (max-width: 330px) {
+                /* Shrink the whole block */
+                .mobile-layout {
+                  transform: translateY(0%) scale(0.75) translateX(-8%) !important;
+                }
+                .mobile-layout .nav-item {
+                  font-size: 13px !important;
+                }
+                .mobile-volume-slider {
+                  width: 24px !important;
+                }
+                .mobile-volume-slider input[type=range]::-webkit-slider-thumb {
+                  width: 8px;
+                  height: 8px;
+                }
+                .mobile-volume-slider input[type=range]::-moz-range-thumb {
+                  width: 8px;
+                  height: 8px;
+                }
+                .mobile-volume-slider input[type=range]::-ms-thumb {
+                  width: 8px;
+                  height: 8px;
+                }
+              }
+            `}</style>
           </div>
         </div>
       </div>

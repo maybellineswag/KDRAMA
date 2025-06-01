@@ -592,6 +592,9 @@ video {
 .mt-1 {
   margin-top: 0.25rem;
 }
+.block {
+  display: block;
+}
 .flex {
   display: flex;
 }
@@ -675,6 +678,9 @@ video {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.border {
+  border-width: 1px;
 }
 .bg-white {
   --tw-bg-opacity: 1;
