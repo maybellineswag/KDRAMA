@@ -348,7 +348,15 @@ export default function Home() {
             </div>
 
             {/* Mobile Layout - Will be shown via CSS on small screens */}
-            <div className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1" style={{ transform: 'translateY(5%)', display: 'none', paddingLeft: '7vw', paddingRight: '7vw' }}>
+            <div
+              className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1"
+              style={{
+                transform: 'translateY(5%)',
+                display: 'none',
+                paddingLeft: '7vw',
+                paddingRight: '7vw'
+              }}
+            >
               {/* KDRAMA Logo */}
               <div className="mb-0.5">
                 <Image
