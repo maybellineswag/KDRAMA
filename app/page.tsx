@@ -1,7 +1,35 @@
 'use client';
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import './page.css';
+
+// Define track type
+interface Track {
+  title: string;
+  artist: string;
+  album: string;
+  src: string;
+  cover: string;
+}
+
+// Define tracks array
+const tracks: Track[] = [
+  {
+    title: "FOMDJ",
+    artist: "Playboi Carti",
+    album: "MUSIC - SO...",
+    src: "https://res.cloudinary.com/your-cloud-name/video/upload/v1/FOMDJ.mp3",
+    cover: "https://res.cloudinary.com/your-cloud-name/image/upload/v1/MUSIC.png"
+  },
+  {
+    title: "Nothing But Net",
+    artist: "Travis Scott",
+    album: "Nothing But Net",
+    src: "https://res.cloudinary.com/your-cloud-name/video/upload/v1/Nothing_But_Net.mp3",
+    cover: "https://res.cloudinary.com/your-cloud-name/image/upload/v1/nothing_but_net.jpg"
+  }
+  // Add more tracks here
+];
 
 export default function Home() {
   // Default to desktop layout
@@ -12,10 +40,68 @@ export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [isMuted, setIsMuted] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [trackOrder, setTrackOrder] = useState<number[]>([]);
+  const [currentPosition, setCurrentPosition] = useState(-1);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Function to create new shuffled order
+  const createNewOrder = () => {
+    let indices = Array.from({ length: tracks.length }, (_, i) => i);
+    // Fisher-Yates shuffle
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    setTrackOrder(indices);
+    return indices;
+  };
+
+  // Function to load a track
+  const loadTrack = (trackIndex: number) => {
+    const track = tracks[trackIndex];
+    if (!track) return;
+    
+    setCurrentTrack(track);
+    if (audioRef.current) {
+      audioRef.current.src = track.src;
+      if (isPlaying) {
+        audioRef.current.play().catch(console.error);
+      }
+    }
+  };
+
+  // Function to play next track
+  const nextTrack = () => {
+    let nextPos = currentPosition + 1;
+    if (nextPos >= trackOrder.length) {
+      const newOrder = createNewOrder();
+      nextPos = 0;
+    }
+    setCurrentPosition(nextPos);
+    loadTrack(trackOrder[nextPos]);
+  };
 
   useEffect(() => {
     // Mark component as mounted
     setHasMounted(true);
+    
+    // Initialize audio element
+    audioRef.current = new Audio();
+    audioRef.current.volume = volume / 100;
+    
+    // Create initial track order
+    const initialOrder = createNewOrder();
+    setCurrentPosition(0);
+    loadTrack(initialOrder[0]);
+    
+    // Start playing
+    setIsPlaying(true);
+    audioRef.current.play().catch(console.error);
+    
+    // Add event listeners
+    const audio = audioRef.current;
+    audio.addEventListener('ended', nextTrack);
     
     // Check if we're on client-side
     const checkMobile = () => {
@@ -32,23 +118,47 @@ export default function Home() {
     window.addEventListener('resize', checkMobile);
     
     // Cleanup
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      if (audio) {
+        audio.removeEventListener('ended', nextTrack);
+        audio.pause();
+      }
+    };
   }, []);
 
   // Toggle play/pause
   const togglePlay = () => {
+    if (!audioRef.current) return;
+    
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch(console.error);
+    }
     setIsPlaying(!isPlaying);
   };
 
   // Toggle mute
   const toggleMute = () => {
+    if (!audioRef.current) return;
+    
+    if (isMuted) {
+      audioRef.current.volume = volume / 100;
+    } else {
+      audioRef.current.volume = 0;
+    }
     setIsMuted(!isMuted);
   };
 
   // Handle volume change
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVolume(parseInt(e.target.value));
-    if (parseInt(e.target.value) === 0) {
+    const newVolume = parseInt(e.target.value);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume / 100;
+    }
+    if (newVolume === 0) {
       setIsMuted(true);
     } else if (isMuted) {
       setIsMuted(false);
@@ -57,18 +167,26 @@ export default function Home() {
   
   // Volume down function
   const volumeDown = () => {
-    if (volume === 0) {
+    const newVolume = Math.max(0, volume - 10);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume / 100;
+    }
+    if (newVolume === 0) {
       setIsMuted(true);
-    } else {
+    } else if (isMuted) {
       setIsMuted(false);
-      setVolume(Math.max(0, volume - 10));
     }
   };
   
   // Volume up function
   const volumeUp = () => {
+    const newVolume = Math.min(100, volume + 10);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume / 100;
+    }
     setIsMuted(false);
-    setVolume(Math.min(100, volume + 10));
   };
 
   // Prevent hydration mismatch by not rendering anything specific until mounted
@@ -178,7 +296,10 @@ export default function Home() {
                 <div style={{ 
                   width: '28px', 
                   height: '28px', 
-                  backgroundColor: '#ADD8E6'
+                  backgroundColor: '#ADD8E6',
+                  backgroundImage: currentTrack?.cover ? `url(${currentTrack.cover})` : 'none',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
                 }}></div>
                 
                 {/* Song Info */}
@@ -187,7 +308,7 @@ export default function Home() {
                   marginRight: '30px',
                   width: '120px',
                   height: '18px',
-                  color: 'black',
+                  color: isMobile ? 'white' : 'black',
                   fontSize: '7px',
                   display: 'flex',
                   flexDirection: 'column',
@@ -207,7 +328,7 @@ export default function Home() {
                     justifyContent: 'center',
                     fontWeight: 500,
                     letterSpacing: '0.01em'
-                  }}>Nothing But Net</div>
+                  }}>{currentTrack?.title || 'Loading...'}</div>
                   <div style={{
                     width: '100%',
                     height: '50%',
@@ -218,10 +339,10 @@ export default function Home() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'gray',
+                    color: isMobile ? '#cccccc' : 'gray',
                     fontWeight: 400,
                     letterSpacing: '0.01em'
-                  }}>Travis Scott — Nothing But Net</div>
+                  }}>{currentTrack ? `${currentTrack.artist} — ${currentTrack.album}` : 'Loading...'}</div>
                 </div>
                 
                 {/* Player Controls */}
@@ -253,14 +374,16 @@ export default function Home() {
                   </div>
                   
                   {/* Next Button */}
-                  <div style={{
-                    cursor: 'pointer',
-                    height: '28px',
-                    width: '28px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}>
+                  <div 
+                    onClick={nextTrack}
+                    style={{
+                      cursor: 'pointer',
+                      height: '28px',
+                      width: '28px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center'
+                    }}>
                     <Image 
                       src="/assets/SKIP.png" 
                       alt="Skip" 
@@ -310,7 +433,7 @@ export default function Home() {
                         appearance: 'none',
                         width: '100%',
                         height: '3px',
-                        background: `linear-gradient(to right, #000 ${isMuted ? 0 : volume}%, #ddd ${isMuted ? 0 : volume}%)`,
+                        background: `linear-gradient(to right, ${isMobile ? '#fff' : '#000'} ${isMuted ? 0 : volume}%, ${isMobile ? '#444' : '#ddd'} ${isMuted ? 0 : volume}%)`,
                         borderRadius: '5px',
                         outline: 'none'
                       }}
@@ -427,6 +550,9 @@ export default function Home() {
                     width: '22px',
                     height: '22px',
                     backgroundColor: '#ADD8E6',
+                    backgroundImage: currentTrack?.cover ? `url(${currentTrack.cover})` : 'none',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                     flexShrink: 0
                   }}></div>
                   {/* Song Info */}
@@ -450,7 +576,7 @@ export default function Home() {
                       textOverflow: 'ellipsis',
                       letterSpacing: '0.01em',
                       textAlign: 'left'
-                    }}>FOMDJ</div>
+                    }}>{currentTrack?.title || 'Loading...'}</div>
                     <div style={{
                       fontSize: '7px',
                       color: '#cccccc',
@@ -460,7 +586,7 @@ export default function Home() {
                       textOverflow: 'ellipsis',
                       letterSpacing: '0.01em',
                       textAlign: 'left'
-                    }}>Playboi Carti — MUSIC - SO...</div>
+                    }}>{currentTrack ? `${currentTrack.artist} — ${currentTrack.album}` : 'Loading...'}</div>
                   </div>
                   {/* Controls and Volume */}
                   <div className="flex flex-row items-center" style={{ gap: '4px' }}>
@@ -486,15 +612,17 @@ export default function Home() {
                       />
                     </div>
                     {/* Next Button */}
-                    <div style={{
-                      cursor: 'pointer',
-                      height: '18px',
-                      width: '18px',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      color: 'white'
-                    }}>
+                    <div 
+                      onClick={nextTrack}
+                      style={{
+                        cursor: 'pointer',
+                        height: '18px',
+                        width: '18px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        color: 'white'
+                      }}>
                       <Image
                         src="/assets/SKIP.png"
                         alt="Skip"
