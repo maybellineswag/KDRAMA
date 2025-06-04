@@ -19,7 +19,7 @@ const tracks: Track[] = [
     artist: "Playboi Carti",
     album: "MUSIC - SO...",
     src: "https://res.cloudinary.com/your-cloud-name/video/upload/v1/FOMDJ.mp3",
-    cover: "https://res.cloudinary.com/your-cloud-name/image/upload/v1/MUSIC.png"
+    cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748822528/MUSIC_kyv7kl.jpg"
   },
   {
     title: "Nothing But Net",
@@ -27,7 +27,1028 @@ const tracks: Track[] = [
     album: "Nothing But Net",
     src: "https://res.cloudinary.com/your-cloud-name/video/upload/v1/Nothing_But_Net.mp3",
     cover: "https://res.cloudinary.com/your-cloud-name/image/upload/v1/nothing_but_net.jpg"
-  }
+  },
+  {
+    title: "Nothing But Net (feat. Young Thug & PARTYNEXTDOOR)",
+    artist: "Travis Scott",
+    album: "Nothing But Net",
+    src: "Nothing But Net.mp3",
+    cover: "assets/images/nothing but net.jpg"
+},
+{
+    title: "Faith",
+    artist: "Lil Uzi Vert",
+    album: "Faith",
+    src: "Faith.mp3",
+    cover: "assets/images/X.png"
+},
+{
+    title: "PORSCHE POET",
+    artist: "Lancey Foux",
+    album: "PORSCHE POET",
+    src: "PORSCHE POET.mp3",
+    cover: "assets/images/PORSCHE POET.jpg"
+},
+{
+    title: "ICY GRL",
+    artist: "Saweetie",
+    album: "ICY GRL",
+    src: "ICY GRL.mp3",
+    cover: "assets/images/ICY GRL.jpg"
+},
+{
+    title: "Stuck",
+    artist: "Miss A",
+    album: "Colors",
+    src: "STUCK.mp3",
+    cover: "assets/images/STUCK.jpg"
+},
+{
+    title: "Best Friend",
+    artist: "Nettspend",
+    album: "Best Friend",
+    src: "BEST FRIEND.mp3",
+    cover: "assets/images/BEST FRIEND.jpg"
+},
+{
+    title: "MMS",
+    artist: "Полка",
+    album: "MMS",
+    src: "MMS.mp3",
+    cover: "assets/images/MMS.jpg"
+},
+{
+    title: "Like This",
+    artist: "박혜진 Park Hye Jin",
+    album: "How can I",
+    src: "LIKE THIS.mp3",
+    cover: "assets/images/LIKE THIS.jpg"
+},
+{
+    title: "XOXO",
+    artist: "NMIXX",
+    album: "Fe304: BREAK",
+    src: "XOXO.mp3",
+    cover: "assets/images/XOXO.jpg"
+},
+{
+    title: "Safe",
+    artist: "Young Thug",
+    album: "Safe",
+    src: "SAFE.mp3",
+    cover: "assets/images/SAFE.jpg"
+},
+{
+    title: "russian opps",
+    artist: "Osamason",
+    album: "russian opps",
+    src: "RUSSIAN OPPS.mp3",
+    cover: "assets/images/RUSSIAN OPPS.jpg"
+},
+{
+    title: "Avril 14th",
+    artist: "Aphex Twin",
+    album: "Drukqs",
+    src: "AVRIL 14TH.mp3",
+    cover: "assets/images/AVRIL 14TH.jpg"
+},
+{
+    title: "Feeling's Gone",
+    artist: "Frank Ocean",
+    album: "Feeling's Gone",
+    src: "FEELINGS GONE.mp3",
+    cover: "assets/images/X.png"
+},
+{
+    title: "These Days",
+    artist: "Frank Ocean",
+    album: "These Days",
+    src: "THESE DAYS.wav",
+    cover: "assets/images/X.png"
+},
+{
+    title: "Like I'm Lying",
+    artist: "Lancey Foux",
+    album: "Like I'm Lying",
+    src: "LIKE IM LYING.mp3",
+    cover: "assets/images/LIKE IM LYING.jpg"
+},
+{
+    title: "Can't Be Us (Efan, Clou, JFEL Bootleg)",
+    artist: "Headie One",
+    album: "Can't Be Us",
+    src: "CANT BE US.mp3",
+    cover: "assets/images/CANT BE US.jpg"
+},
+{
+    title: "Moonlight",
+    artist: "Juice WRLD",
+    album: "Moonlight",
+    src: "MOONLIGHT.mp3",
+    cover: "assets/images/MOONLIGHT.jpg"
+},
+{
+    title: "Messenger",
+    artist: "YT",
+    album: "Messenger",
+    src: "MESSENGER.mp3",
+    cover: "assets/images/MESSENGER.jpg"
+},
+{
+    title: "BIG SCIENTIST",
+    artist: "Lil Yachty",
+    album: "Big Scientist",
+    src: "BIG SCIENTIST.mp3",
+    cover: "assets/images/BIG SCIENTIST.jpg"
+},
+{
+    title: "2sick",
+    artist: "kwes e",
+    album: "2sick",
+    src: "2sick.mp3",
+    cover: "assets/images/2SICK.jpg"
+},
+{
+    title: "In Here Somewhere",
+    artist: "Frank Ocean",
+    album: "ENDLESS",
+    src: "IN HERE SOMEWHERE.m4a",
+    cover: "assets/images/endless.jpg"
+},
+{
+    title: "Comme Des Garçons",
+    artist: "Frank Ocean",
+    album: "ENDLESS",
+    src: "COMME DES GARÇONS.m4a",
+    cover: "assets/images/endless.jpg"
+},
+{
+    title: "Impietas + Deathwish (ASR)",
+    artist: "Frank Ocean",
+    album: "ENDLESS",
+    src: "IMPIETAS + DEATHWISH.m4a",
+    cover: "assets/images/endless.jpg"
+},
+{
+    title: "Sideways",
+    artist: "Frank Ocean",
+    album: "ENDLESS",
+    src: "SIDEWAYS.m4a",
+    cover: "assets/images/endless.jpg"
+},
+{
+    title: "CASH COW",
+    artist: "Kanye West & Skepta",
+    album: "CASH COW",
+    src: "CASH COW.mp3",
+    cover: "assets/images/X.png"
+},
+{
+    title: "Just Because",
+    artist: "Future & Young Thug",
+    album: "Just Because",
+    src: "JUST BECAUSE.mp3",
+    cover: "assets/images/JUST BECAUSE.jpg"
+},
+{
+    title: "YUNG NIGGAZ",
+    artist: "Kodak Black",
+    album: "YUNG NIGGAZ",
+    src: "YUNG NIGGAZ.mp3",
+    cover: "assets/images/YUNG NIGGAZ.jpg"
+},
+{
+    title: "Teamwork",
+    artist: "Young Thug & Gunna",
+    album: "Teamwork",
+    src: "TEAMWORK.mp3",
+    cover: "assets/images/TEAMWORK.jpg"
+},
+{
+    title: "Digital Plane",
+    artist: "Young Thug & NAV",
+    album: "Digital Plane",
+    src: "DIGITAL PLANE.mp3",
+    cover: "assets/images/DIGITAL PLANE.jpg"
+},
+{
+    title: "Vivienne Me",
+    artist: "The Act",
+    album: "Vivienne Me",
+    src: "VIVIENNE ME.mp3",
+    cover: "assets/images/VIVIENNE ME.jpg"
+},
+{
+    title: "Life Of Sins",
+    artist: "Young Thug",
+    album: "Life Of Sins",
+    src: "LIFE OF SINS.mp3",
+    cover: "assets/images/LIFE OF SINS.jpg"
+},
+{
+    title: "At The Gates",
+    artist: "Drake & Lil Uzi Vert",
+    album: "At The Gates",
+    src: "AT THE GATES.mp3",
+    cover: "assets/images/AT THE GATES.jpg"
+},
+{
+    title: "Sky City",
+    artist: "Kanye West",
+    album: "Yandhi",
+    src: "SKY CITY.mp3",
+    cover: "assets/images/YANDHI.jpg"
+},
+{
+    title: "knotz",
+    artist: "xhujung",
+    album: "knotz",
+    src: "KNOTZ.mp3",
+    cover: "assets/images/KNOTZ.jpg"
+},
+{
+    title: "Hoodway",
+    artist: "454",
+    album: "Hoodway",
+    src: "HOODWAY.mp3",
+    cover: "assets/images/HOODWAY.jpg"
+},
+{
+    title: "This Is God's Test",
+    artist: "Kanye West",
+    album: "Yandhi",
+    src: "THIS IS GODS TEST.mp3",
+    cover: "assets/images/YANDHI2.jpg"
+},
+{
+    title: "keep me in the loop",
+    artist: "YT",
+    album: "keep me in the loop",
+    src: "KEEP ME IN THE LOOP.mp3",
+    cover: "assets/images/KEEP ME IN THE LOOP.jpg"
+},
+{
+    title: "Elle veut link",
+    artist: "Serane & MissingKasper",
+    album: "Elle veut link",
+    src: "ELLE VEUT LINK.mp3",
+    cover: "assets/images/ELLE VEUT LINK.jpg"
+},
+{
+    title: "nobody 2saveus",
+    artist: "Ak4yla",
+    album: "nobody 2saveus",
+    src: "NOBODY2SAVEUS.mp3",
+    cover: "assets/images/NOBODY 2SAVEUS.jpg"
+},
+{
+    title: "Money Make Her",
+    artist: "Lancey Foux",
+    album: "Money Make Her",
+    src: "MONEY MAKE HER.mp3",
+    cover: "assets/images/MONEY MAKE HER.jpg"
+},
+{
+    title: "VISA",
+    artist: "Lancey Foux",
+    album: "VISA",
+    src: "VISA.mp3",
+    cover: "assets/images/VISA.jpg"
+},
+{
+    title: "24HRS",
+    artist: "Babyxsosa & PPGCASPER",
+    album: "24HRS",
+    src: "24HRS.mp3",
+    cover: "assets/images/24HRS.jpg"
+},
+{
+    title: "Odds",
+    artist: "Drugbwoy",
+    album: "Odds",
+    src: "ODDS.mp3",
+    cover: "assets/images/ODDS.jpg"
+},
+{
+    title: "EVERYDAY",
+    artist: "POLO PERKS",
+    album: "EVERYDAY",
+    src: "EVERYDAY.mp3",
+    cover: "assets/images/EVERYDAY.jpg"
+},
+{
+    title: "uh uh",
+    artist: "Babyxsosa",
+    album: "uh uh",
+    src: "UH UH.mp3",
+    cover: "assets/images/UH UH.jpg"
+},
+{
+    title: "Come on World, You Can't Go!",
+    artist: "Frank Ocean",
+    album: "Come on World, You Can't Go!",
+    src: "COME ON WORLD.mp3",
+    cover: "assets/images/COMEONWORLD.jpg"
+},
+{
+    title: "gatlin gun",
+    artist: "Dave & AJ Tracey",
+    album: "gatlin gun",
+    src: "GATLIN GUN.mp3",
+    cover: "assets/images/GATLIN GUN.jpg"
+},
+{
+    title: "Her Loss Interlude",
+    artist: "Drake & 21 Savage",
+    album: "Her Loss",
+    src: "HER LOSS INTERLUDE.mp3",
+    cover: "assets/images/INTERLUDE.jpg"
+},
+{
+    title: "FAKE RUNTZ",
+    artist: "Caal Vo",
+    album: "FAKE RUNTZ",
+    src: "FAKE RUNTZ.mp3",
+    cover: "assets/images/FAKE RUNTZ.jpg"
+},
+{
+    title: "FERRIS WHEEL",
+    artist: "454",
+    album: "FERRIS WHEEL",
+    src: "FERRIS WHEEL.mp3",
+    cover: "assets/images/FERRIS WHEEL.jpg"
+},
+{
+    title: "J.O.B.",
+    artist: "Frank Ocean",
+    album: "The Lonny Breaux Collection",
+    src: "J.O.B..mp3",
+    cover: "assets/images/LONNY BREAUX.jpg"
+},
+{
+    title: "It's On You",
+    artist: "Chris Travis",
+    album: "Waterszn 2",
+    src: "ITS ON YOU.mp3",
+    cover: "assets/images/ITS ON YOU.jpg"
+},
+{
+    title: "K-POP",
+    artist: "Lancey Foux",
+    album: "K-POP",
+    src: "K-POP.mp3",
+    cover: "assets/images/K-POP.jpg"
+},
+{
+    title: "from me 2 you",
+    artist: "454",
+    album: "from me 2 you",
+    src: "FROM ME 2 YOU.mp3",
+    cover: "assets/images/FROM ME 2 YOU.jpg"
+},
+{
+    title: "best for you",
+    artist: "Bakar",
+    album: "best for you",
+    src: "BEST FOR YOU.mp3",
+    cover: "assets/images/BEST FOR YOU.jpg"
+},
+{
+    title: "I Hate This",
+    artist: "evilgiane",
+    album: "I Hate This",
+    src: "I HATE THIS.mp3",
+    cover: "assets/images/I HATE THIS.jpg"
+},
+{
+    title: "Whip Appeal",
+    artist: "Frank Ocean",
+    album: "UNRELEASED;misc",
+    src: "WHIP APPEAL.mp3",
+    cover: "assets/images/UNRELEASED MISC.jpg"
+},
+{
+    title: "4 True ''Thug Angel''",
+    artist: "Sickboyrari",
+    album: "4 True ''Thug Angel''",
+    src: "4 TRUE.mp3",
+    cover: "assets/images/4 TRUE.jpg"
+},
+{
+    title: "CAMPAIGN FREESTYLE",
+    artist: "Teezo Touchdown",
+    album: "CAMPAIGN FREESTYLE",
+    src: "CAMPAIGN FREESTYLE.mp3",
+    cover: "assets/images/CAMPAIGN FREESTYLE.jpg"
+},
+{
+    title: "Eric Koston",
+    artist: "Kay9ine",
+    album: "Eric Koston",
+    src: "ERIC KOSTON.mp3",
+    cover: "assets/images/ERIC KOSTON.jpg"
+},
+{
+    title: "GHOSTS IN MY ROOM",
+    artist: "evilgiane & harrison",
+    album: "GHOSTS IN MY ROOM",
+    src: "GHOSTS IN MY ROOM.mp3",
+    cover: "assets/images/GHOSTS IN MY ROOM.jpg"
+},
+{
+    title: "Truth",
+    artist: "evilgiane",
+    album: "bottle in the ocean",
+    src: "TRUTH.mp3",
+    cover: "assets/images/BOTTLE.jpg"
+},
+{
+    title: "GOLDEN AGE",
+    artist: "Yves Tumor",
+    album: "GOLDEN AGE",
+    src: "GOLDEN AGE.mp3",
+    cover: "assets/images/GOLDEN AGE.jpg"
+},
+{
+    title: "samsung love",
+    artist: "yung bruh",
+    album: "samsung love",
+    src: "SAMSUNG LOVE.mp3",
+    cover: "assets/images/SAMSUNG LOVE.jpg"
+},
+{
+    title: "Wither",
+    artist: "Frank Ocean",
+    album: "ENDLESS",
+    src: "WITHER.mp3",
+    cover: "assets/images/ENDLESS.jpg"
+},
+{
+    title: "yao ming",
+    artist: "Destroy Lonely",
+    album: "yao ming",
+    src: "YAO MING.mp3",
+    cover: "assets/images/YAO MING.jpg"
+},
+{
+    title: "pack a punch",
+    artist: "Destroy Lonely",
+    album: "pack a punch",
+    src: "PACK A PUNCH.mp3",
+    cover: "assets/images/PACK A PUNCH.jpg"
+},
+{
+    title: "Plenty",
+    artist: "PARTYNEXTDOOR",
+    album: "Plenty",
+    src: "PLENTY.mp3",
+    cover: "assets/images/PLENTY.jpg"
+},
+{
+    title: "Some Of Your Love",
+    artist: "PARTYNEXTDOOR",
+    album: "Some Of Your Love",
+    src: "SOME OF YOUR LOVE.mp3",
+    cover: "assets/images/SOME OF YOUR LOVE.jpg"
+},
+{
+    title: "RaRa",
+    artist: "Travis Scott & Lil Uzi Vert",
+    album: "RaRa",
+    src: "RARA.mp3",
+    cover: "assets/images/RARA.jpg"
+},
+{
+    title: "Whatever You Say",
+    artist: "PARTYNEXTDOOR",
+    album: "Whatever You Say",
+    src: "WHATEVER YOU SAY.mp3",
+    cover: "assets/images/WHATEVER YOU SAY.jpg"
+},
+{
+    title: "Part Time",
+    artist: "Travis Scott",
+    album: "Part Time",
+    src: "PART TIME.mp3",
+    cover: "assets/images/PART TIME.jpg"
+},
+{
+    title: "Fit ID",
+    artist: "Sainté",
+    album: "Fit ID",
+    src: "FIT ID.mp3",
+    cover: "assets/images/FIT ID.jpg"
+},
+{
+    title: "Flatline",
+    artist: "Journals",
+    album: "Flatline",
+    src: "FLATLINE.mp3",
+    cover: "assets/images/JOURNALS.jpg"
+},
+{
+    title: "Frontline",
+    artist: "Pa Salieu",
+    album: "Frontline",
+    src: "FRONTLINE.mp3",
+    cover: "assets/images/FRONTLINE.jpg"
+},
+{
+    title: "Broke Boi",
+    artist: "Playboi Carti",
+    album: "Broke Boi",
+    src: "BROKE BOI.mp3",
+    cover: "assets/images/BROKE BOI.jpg"
+},
+{
+    title: "FINE SHIT",
+    artist: "Playboi Carti",
+    album: "MUSIC",
+    src: "FINE SHIT.mp3",
+    cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748822528/MUSIC_kyv7kl.jpg"
+},
+{
+    title: "FYBR (First Year Being Rich)",
+    artist: "A$AP Mob",
+    album: "Cozy Tapes Vol. 2: Too Cozy",
+    src: "FYBR.mp3",
+    cover: "assets/images/COZY TAPES 2.jpg"
+},
+{
+    title: "In Vein (feat. The Weeknd)",
+    artist: "Rick Ross ",
+    album: "Mastermind",
+    src: "IN VEIN.mp3",
+    cover: "assets/images/MASTERMIND.jpg"
+},
+{
+    title: "Losing You",
+    artist: "Solange",
+    album: "Losing You",
+    src: "LOSING YOU.mp3",
+    cover: "assets/images/LOSING YOU.jpg"
+},
+{
+    title: "Love In The Sky",
+    artist: "The Weeknd",
+    album: "Kiss Land",
+    src: "LOVE IN THE SKY.mp3",
+    cover: "assets/images/KISS LAND.jpg"
+},
+{
+    title: "No Sense (feat. Travis Scott)",
+    artist: "Justin Bieber",
+    album: "Purpose (Deluxe)",
+    src: "NO SENSE.mp3",
+    cover: "assets/images/PURPOSE.jpg"
+},
+{
+    title: "Right My Wrongs",
+    artist: "Bryson Tiller",
+    album: "T R A P S O U L",
+    src: "RIGHT MY WRONGS.mp3",
+    cover: "assets/images/TRAPSOUL.jpg"
+},
+{
+    title: "Solo",
+    artist: "FUTURE",
+    album: "HNDRXX",
+    src: "SOLO.mp3",
+    cover: "assets/images/HNDRXX.jpg"
+},
+{
+    title: "Green & Purple",
+    artist: "Travis Scott & Playboi Carti",
+    album: "Green & Purple",
+    src: "GREEN & PURPLE.mp3",
+    cover: "assets/images/GREEN & PURPLE.jpg"
+},
+{
+    title: "NASA",
+    artist: "Future",
+    album: "NASA",
+    src: "NASA.mp3",
+    cover: "assets/images/NASA.jpg"
+},
+{
+    title: "Turn Your Phone Off",
+    artist: "PinkPantheress & Destroy Lonely",
+    album: "Turn Your Phone Off",
+    src: "TURN YOUR PHONE OFF.mp3",
+    cover: "assets/images/TURN YOUR PHONE OFF.jpg"
+},
+{
+    title: "What You Doin",
+    artist: "Gucci Mane & Migos",
+    album: "Green Album",
+    src: "WHAT YOU DOIN.mp3",
+    cover: "assets/images/GREEN ALBUM.jpg"
+},
+{
+    title: "Yeah, I Said It",
+    artist: "Rihanna",
+    album: "ANTI(Deluxe)",
+    src: "YEAH, I SAID IT.mp3",
+    cover: "assets/images/ANTI.jpg"
+},
+{
+    title: "ПОМНЮ",
+    artist: "unki",
+    album: "ПОМНЮ",
+    src: "ПОМНЮ.mp3",
+    cover: "assets/images/ПОМНЮ.jpg"
+},
+{
+    title: "Таллин",
+    artist: "JUGHEAD & Kinderlil",
+    album: "Less Is More",
+    src: "ТАЛЛИН.mp3",
+    cover: "assets/images/LESS IS MORE.jpg"
+},
+{
+    title: "Behave",
+    artist: "Fimiguerrero & Len",
+    album: "New World Order",
+    src: "BEHAVE.mp3",
+    cover: "assets/images/NEW WORLD ORDER.jpg"
+},
+{
+    title: "Better By Yourself",
+    artist: "Babyxsosa",
+    album: "Better By Yourself",
+    src: "BETTER BY YOURSELF.mp3",
+    cover: "assets/images/BETTER BY YOURSELF.jpg"
+},
+{
+    title: "Chanel",
+    artist: "Babyxsosa",
+    album: "Chanel",
+    src: "CHANEL.mp3",
+    cover: "assets/images/CHANEL.jpg"
+},
+{
+    title: "Get Up",
+    artist: "New Jeans",
+    album: "Get Up",
+    src: "GET UP.mp3",
+    cover: "assets/images/GET UP.jpg"
+},
+{
+    title: "Designer Boi",
+    artist: "A$AP NAST & D33J",
+    album: "Designer Boi",
+    src: "DESIGNER BOI.mp3",
+    cover: "assets/images/DESIGNER BOI.jpg"
+},
+{
+    title: "FACETIME / TEXTING",
+    artist: "Babyxsosa",
+    album: "FACETIME / TEXTING",
+    src: "FACETIME.mp3",
+    cover: "assets/images/FACETIME.jpg"
+},
+{
+    title: "Kin",
+    artist: "Kevin Abstract",
+    album: "American Boyfriend",
+    src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903811/SpotiDownloader.com_-_Kin_-_Kevin_Abstract_homaag.mp3",
+    cover: "assets/images/AMERICAN BOYFRIEND.jpg"
+},
+{
+    title: "Les Fleurs",
+    artist: "Minnie Riperton",
+    album: "Les Fleurs",
+    src: "LES FLEURS.mp3",
+    cover: "assets/images/LES FLEURS.jpg"
+},
+{
+    title: "Losalamitoslatinfunklovesong",
+    artist: "Gene Harris",
+    album: "Astral Signals",
+    src: "FUNKLOVESONG.mp3",
+    cover: "assets/images/ASTRAL SIGNALS.jpg"
+},
+{
+    title: "So In Love",
+    artist: "Curtis Mayfield",
+    album: "There's No Place Like America Today",
+    src: "SO IN LOVE.mp3",
+    cover: "assets/images/NO PLACE LIKE AMERICA.jpg"
+},
+{
+    title: "Tension",
+    artist: "Central Cee",
+    album: "Wild West",
+    src: "TENSION.mp3",
+    cover: "assets/images/WILD WEST.jpg"
+},
+{
+    title: "Three Cheers For My Baby",
+    artist: "Amnesty",
+    album: "Free Your Mind",
+    src: "THREE CHEERS FOR MY BABY.mp3",
+    cover: "assets/images/FREE YOUR MIND.jpg"
+},
+{
+    title: "Warriors",
+    artist: "1017 ALYX 9SM & Lil Yachty",
+    album: "COMPILATION V1",
+    src: "WARRIORS.mp3",
+    cover: "assets/images/COMPILATION V1.jpg"
+},
+{
+    title: "Wolves",
+    artist: "Kanye West",
+    album: "The Life of Pablo",
+    src: "WOLVES.mp3",
+    cover: "assets/images/THE LIFE OF PABLO.jpg"
+},
+{
+    title: "Work Ya Wrist",
+    artist: "Gucci Mane & Yo Gotti",
+    album: "Chicken Talk",
+    src: "WORK YA WRIST.mp3",
+    cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903644/Cover_of_Under_Arm_Kush_by_Gucci_Mane_sn01ul.jpg"
+},
+{
+    title: "Automatic",
+    artist: "Red Velvet",
+    album: "Ice Cream Cake",
+    src: "AUTOMATIC.mp3",
+    cover: "assets/images/ICE CREAM CAKE.jpg"
+},
+{
+    title: "All That Matters",
+    artist: "Justin Bieber",
+    album: "Journals",
+    src: "ALL THAT MATTERS.mp3",
+    cover: "assets/images/JOURNALS.jpg"
+},
+{
+    title: "Cool With You",
+    artist: "New Jeans",
+    album: "Get Up",
+    src: "COOL WITH YOU.mp3",
+    cover: "assets/images/GET UP.jpg"
+},{
+  title: "峠の恋人",
+  artist: "REGI & 陈彦希",
+  album: "峠の恋人",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903845/SpotiDownloader.com_-_%E5%B3%A0%E3%81%AE%E6%81%8B%E4%BA%BA_-_REGI%E9%99%88%E5%BD%A6%E5%B8%8C_wli0rk.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903652/Cover_of_%E5%B3%A0%E3%81%AE%E6%81%8B%E4%BA%BA_by_REGI%E9%99%88%E5%BD%A6%E5%B8%8C_%E7%8E%8B%E5%97%A3%E5%B0%A7TURBO_z0fd7n.jpg"
+},{
+  title: "Мысли - Читаю о драгах",
+  artist: "ROCKET",
+  album: "SWAG SEASON 2",
+  src: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903650/Cover_of_%D0%9C%D1%8B%D1%81%D0%BB%D0%B8_-_%D0%A7%D0%B8%D1%82%D0%B0%D1%8E_%D0%BE_%D0%B4%D1%80%D0%B0%D0%B3%D0%B0%D1%85_by_ROCKET_f3ibki.jpg",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903650/Cover_of_%D0%9C%D1%8B%D1%81%D0%BB%D0%B8_-_%D0%A7%D0%B8%D1%82%D0%B0%D1%8E_%D0%BE_%D0%B4%D1%80%D0%B0%D0%B3%D0%B0%D1%85_by_ROCKET_f3ibki.jpg"
+},{
+  title: "Дежавю",
+  artist: "JUGHEAD",
+  album: "Hurt+Unlocked",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903841/SpotiDownloader.com_-_%D0%94%D0%B5%D0%B6%D0%B0%D0%B2%D1%8E_-_JUGHEAD_fvseeq.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903648/Cover_of_%D0%94%D0%B5%D0%B6%D0%B0%D0%B2%D1%8E_by_JUGHEAD_cwqw2a.jpg"
+},{
+  title: "Знаю",
+  artist: "Полка",
+  album: "Знаю",
+  src: "Chttps://res.cloudinary.com/dynqvvscs/video/upload/v1748903842/SpotiDownloader.com_-_%D0%97%D0%BD%D0%B0%D1%8E_-_%D0%9F%D0%BE%D0%BB%D0%BA%D0%B0_lbu9dk.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903648/Cover_of_%D0%97%D0%BD%D0%B0%D1%8E_by_%D0%9F%D0%BE%D0%BB%D0%BA%D0%B0_icozqj.jpg"
+},{
+  title: "When I Was Broke",
+  artist: "Future",
+  album: "FUTURE",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903841/SpotiDownloader.com_-_When_I_Was_Broke_-_Future_dncai3.mp3",
+  cover: "assets/images/GET UP.jpg"
+},{
+  title: "Unfair",
+  artist: "ARTMS",
+  album: "<DALL>",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903839/SpotiDownloader.com_-_Unf_Air_-_ARTMS_l7yyi9.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903645/Cover_of_Unf_Air_by_ARTMS_igthkr.jpg"
+},{
+  title: "Summers Over Interlude",
+  artist: "Drake",
+  album: "Views",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903836/SpotiDownloader.com_-_Summers_Over_Interlude_-_Drake_arpo8h.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903642/Cover_of_Summers_Over_Interlude_by_Drake_Majid_Jordan_snpwl4.jpg"
+},{
+  title: "WE NEED ALL DA VIBES",
+  artist: "Playboi Carti",
+  album: "MUSIC",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903840/SpotiDownloader.com_-_WE_NEED_ALL_DA_VIBES_with_Young_Thug_Ty_Dolla_ign_-_Playboi_Carti_cwor2k.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748822528/MUSIC_kyv7kl.jpg"
+},{
+  title: "Two Thousand Nineteen",
+  artist: "FRIENDLY THUG 52 NGG",
+  album: "Cruiser Auror",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903836/SpotiDownloader.com_-_Two_Thousand_Nineteen_-_FRIENDLY_THUG_52_NGG_llkb6b.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903642/Cover_of_Two_Thousand_Nineteen_by_FRIENDLY_THUG_52_NGG_gitd6e.jpg"
+},{
+  title: "TWIN TRIM",
+  artist: "Playboi Carti",
+  album: "MUSIC",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903837/SpotiDownloader.com_-_TWIN_TRIM_-_Playboi_Carti_y00000.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748822528/MUSIC_kyv7kl.jpg.jpg"
+},{
+  title: "SO FREE",
+  artist: "Lancey Foux",
+  album: "FRIEND OR FOUX",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903835/SpotiDownloader.com_-_SO_FREE_-_Lancey_Foux_bzkawc.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903639/Cover_of_SO_FREE_by_Lancey_Foux_vyumyc.jpg"
+},{
+  title: "skate depot",
+  artist: "Channel Tres",
+  album: "i can't go outside",
+  src: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903638/Cover_of_skate_depot_by_Channel_Tres_uzbgfn.jpg",
+  cover: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903832/SpotiDownloader.com_-_skate_depot_-_Channel_Tres_kajqvj.mp3"
+},{
+  title: "Sparkle",
+  artist: "ARTMS",
+  album: "<DALL>",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903837/SpotiDownloader.com_-_Sparkle_-_ARTMS_hrm6zj.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903645/Cover_of_Unf_Air_by_ARTMS_igthkr.jpg"
+},{
+  title: "RiRi",
+  artist: "Young Thug",
+  album: "JEFFERY",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903832/SpotiDownloader.com_-_RiRi_-_Young_Thug_ovsb6p.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903633/Cover_of_RiRi_by_Young_Thug_pnqcmd.jpg"
+},{
+  title: "Scellé part.2",
+  artist: "Freeze corleone & ASHE 22",
+  album: "LMF",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903831/SpotiDownloader.com_-_Scell%C3%A9_part.2_-_Freeze_corleone_qmtg1v.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903637/Cover_of_Scell%C3%A9_part.2_by_Freeze_corleone_ASHE_22_xrqjdn.jpg"
+},{
+  title: "Silhouette",
+  artist: "Len & Fimiguerrero",
+  album: "CONGLOMERATE",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903831/SpotiDownloader.com_-_Silhouette_-_Len_emghex.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748903637/Cover_of_Silhouette_by_Len_Fimiguerrero_nd8awh.jpg"
+},{
+  title: "RATHER LIE",
+  artist: "Playboi Carti & The Weeknd",
+  album: "MUSIC",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903832/SpotiDownloader.com_-_RATHER_LIE_with_The_Weeknd_-_Playboi_Carti_c0sriw.mp3",
+  cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748822528/MUSIC_kyv7kl.jpg.jpg"
+},{
+  title: "Provider",
+  artist: "Frank Ocean",
+  album: "Provider",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903828/SpotiDownloader.com_-_Provider_-_Frank_Ocean_hwbkvs.mp3",
+  cover: "IMG"
+},{
+  title: "Please Tell Me",
+  artist: "Future",
+  album: "SAVE ME",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903826/SpotiDownloader.com_-_Please_Tell_Me_-_Future_un7sug.mp3",
+  cover: "IMG"
+},{
+  title: "OLIVINE",
+  artist: "Freeze corleone & ASHE 22",
+  album: "RIYAD SADIO",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903826/SpotiDownloader.com_-_OLIVINE_-_Freeze_corleone_ok5hyw.mp3",
+  cover: "IMG"
+},{
+  title: "paper chase",
+  artist: "kwes e",
+  album: "yup",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903825/SpotiDownloader.com_-_paper_chase_-_kwes_e_yhohip.mp3",
+  cover: "IMG"
+},{
+  title: "PROJECTS",
+  artist: "unki",
+  album: "PROJECTS",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903825/SpotiDownloader.com_-_PROJECTS_-_unki_ygdbln.mp3",
+  cover: "IMG"
+},{
+  title: "Loft Music",
+  artist: "The Weeknd",
+  album: "House Of Balloons (Original)",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903823/SpotiDownloader.com_-_Loft_Music_-_The_Weeknd_s3v3jv.mp3",
+  cover: "IMG"
+},{
+  title: "Palaces",
+  artist: "EsDeeKid & Rico Ace",
+  album: "Palaces",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903821/SpotiDownloader.com_-_Palaces_-_EsDeeKid_cpa6ku.mp3",
+  cover: "IMG"
+},{
+  title: "LUV",
+  artist: "ROCKET",
+  album: "Tsukuyomi Dream",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903820/SpotiDownloader.com_-_LUV_-_ROCKET_hew2dc.mp3",
+  cover: "IMG"
+},{
+  title: "LOUVRE",
+  artist: "Destroy Lonely",
+  album: "NS+(ULTRA)",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903819/SpotiDownloader.com_-_LOUVRE_-_Destroy_Lonely_ua3zkz.mp3",
+  cover: "IMG"
+},{
+  title: "Keep Your Faith To The Sky",
+  artist: "Willie Scott",
+  album: "Thank You Lord for One More Day",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903818/SpotiDownloader.com_-_Keep_Your_Faith_to_the_Sky_-_Willie_Scott_yd682k.mp3",
+  cover: "IMG"
+},{
+  title: "MOSQUITO P2",
+  artist: "SURF GANG",
+  album: "SGV1",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903818/SpotiDownloader.com_-_Mosquito_P2_-_SURF_GANG_y5eiln.mp3",
+  cover: "IMG"
+},{
+  title: "mileys riddim",
+  artist: "Jim Legxacy",
+  album: "homeless n*gga pop music",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903818/SpotiDownloader.com_-_mileys_riddim_-_Jim_Legxacy_gr4pne.mp3",
+  cover: "IMG"
+},{
+  title: "KONAMI (2bigos)",
+  artist: "COEURCO",
+  album: "UNLIMITED ONLINE EXHIBITION",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903814/SpotiDownloader.com_-_KONAMI_2bigos_-_COEURCO_oqze1n.mp3",
+  cover: "IMG"
+},{
+  title: "Jumbotron Shit Poppin",
+  artist: "Drake",
+  album: "Her Loss",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903813/SpotiDownloader.com_-_Jumbotron_Shit_Poppin_-_Drake_toclrz.mp3",
+  cover: "IMG"
+},{
+  title: "Fashion Show",
+  artist: "Kwengface & Lancey Foux",
+  album: "Fashion Show",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903813/SpotiDownloader.com_-_Fashion_Show_-_Kwengface_oxm6z3.mp3",
+  cover: "IMG"
+},{
+  title: "How Sweet",
+  artist: "New Jeans",
+  album: "How Sweet",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903813/SpotiDownloader.com_-_How_Sweet_-_NewJeans_b7cxtn.mp3",
+  cover: "IMG"
+},{
+  title: "I GOT U",
+  artist: "Toxi$",
+  album: "I GOT U",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903812/SpotiDownloader.com_-_I_GOT_U_-_Toxi_vb9593.mp3",
+  cover: "IMG"
+},{
+  title: "Dreams Money Can Buy",
+  artist: "Drake",
+  album: "Care Package",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903809/SpotiDownloader.com_-_Dreams_Money_Can_Buy_-_Drake_qsllaj.mp3",
+  cover: "IMG"
+},{
+  title: "Fakin'",
+  artist: "JUE",
+  album: "6 Shots",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903807/SpotiDownloader.com_-_Fakin_-_JUE_ilpful.mp3",
+  cover: "IMG"
+},{
+  title: "Dopamine - GISELLE Solo",
+  artist: "aespa",
+  album: "SYNK: PARALLEL LINE - Special Digital Single",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903806/SpotiDownloader.com_-_Dopamine_-_GISELLE_Solo_-_aespa_kqs4lp.mp3",
+  cover: "IMG"
+},{
+  title: "Did You See",
+  artist: "J Hus",
+  album: "Common Sense",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903806/SpotiDownloader.com_-_Did_You_See_-_J_Hus_uoqm30.mp3",
+  cover: "IMG"
+},{
+  title: "down",
+  artist: "Effie",
+  album: "E",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903805/SpotiDownloader.com_-_down_-_Effie_zzex5m.mp3",
+  cover: "IMG"
+},{
+  title: "Desirée",
+  artist: "Blood Orange",
+  album: "Freetown Sound",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903805/SpotiDownloader.com_-_Desir%C3%A9e_-_Blood_Orange_kid6ff.mp3",
+  cover: "IMG"
+},{
+  title: "Diamonds",
+  artist: "YT & Fimiguerrero",
+  album: "OI!",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903802/SpotiDownloader.com_-_Diamonds_-_YT_mg5hlh.mp3",
+  cover: "IMG"
+},{
+  title: "Dark Souls",
+  artist: "FENDIGLOCK",
+  album: "NO TUNE",
+  src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748903801/SpotiDownloader.com_-_Dark_Souls_-_FENDIGLOCK_irg9br.mp3",
+  cover: "IMG"
+},{
+  title: "Sparkle",
+  artist: "ARTMS",
+  album: "<DALL>",
+  src: "SRC",
+  cover: "IMG"
+},
   // Add more tracks here
 ];
 
