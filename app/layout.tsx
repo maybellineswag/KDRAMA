@@ -2,6 +2,7 @@ import React from 'react';
 import './globals.css';
 import type { Metadata } from 'next';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { MusicPlayerProvider } from './contexts/MusicPlayerContext';
 
 export const metadata: Metadata = {
   title: 'KDRAMA Portfolio',
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <MusicPlayerProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </MusicPlayerProvider>
       </body>
     </html>
   );

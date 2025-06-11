@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useMusicPlayer } from '../contexts/MusicPlayerContext';
 
 // MarqueeText component for scrolling overflow text
 function MarqueeText({ text, style, className = '', speed = 20, pause = 4000 }) {
@@ -111,27 +112,21 @@ function MarqueeText({ text, style, className = '', speed = 20, pause = 4000 }) 
   );
 }
 
-interface Track {
-  title: string;
-  artist: string;
-  album: string;
-  src: string;
-  cover: string;
-}
-
-const tracks: Track[] = [
-  // ... (copy the full tracks array from homepage here) ...
-];
-
 export default function ArtworksPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [viewMode, setViewMode] = useState<'full' | 'grid'>('full');
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [volume, setVolume] = useState(1);
-  const [shuffledTracks, setShuffledTracks] = useState<Track[]>([]);
-  const audioRef = useRef(null);
+  const {
+    isPlaying,
+    togglePlay,
+    nextTrack,
+    volume,
+    handleVolumeChange,
+    volumeDown,
+    volumeUp,
+    shuffledTracks,
+    currentTrackIndex,
+  } = useMusicPlayer();
 
   const { language, setLanguage, translations } = useLanguage();
 
@@ -145,77 +140,6 @@ export default function ArtworksPage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    setShuffledTracks(shuffleArray(tracks));
-  }, []);
-
-  const shuffleArray = (array: Track[]) => {
-    const newArray = [...array];
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-  };
-
-  const nextTrack = () => {
-    setCurrentTrackIndex((prev) => (prev + 1) % shuffledTracks.length);
-  };
-
-  useEffect(() => {
-    if (!audioRef.current || !shuffledTracks.length) return;
-    audioRef.current.src = shuffledTracks[currentTrackIndex].src;
-    if (isPlaying) {
-      audioRef.current.play();
-    }
-  }, [currentTrackIndex, shuffledTracks, isPlaying]);
-
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
-  const handleTrackEnd = () => {
-    nextTrack();
-  };
-
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-      if (newVolume > 0) {
-        audioRef.current.muted = false;
-      }
-    }
-  };
-
-  const volumeDown = () => {
-    const newVolume = Math.max(0, volume - 0.1);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
-    if (newVolume === 0) {
-      audioRef.current.muted = true;
-    } else if (audioRef.current.muted) {
-      audioRef.current.muted = false;
-    }
-  };
-
-  const volumeUp = () => {
-    if (!audioRef.current) return;
-    audioRef.current.volume = 1;
-    audioRef.current.muted = false;
-    setVolume(1);
-  };
-
   const navLinkStyle: CSSProperties = {
     fontFamily: 'SF Pro, sans-serif',
     fontSize: isMobile ? 'clamp(14px, 4.5vw, 18px)' : 'clamp(16px, 1.7vw, 24px)',
@@ -227,6 +151,25 @@ export default function ArtworksPage() {
     fontWeight: isMobile ? '500' : 'normal'
   };
 
+  // List of all artwork images in /assets/artworks, ordered by series
+  const artworkImages = [
+    // m series
+    'm1.webp', 'm2.webp', 'm3.webp', 'm4.webp', 'm5.webp', 'm6.webp', 'm7.webp', 'm8.webp',
+    // a series
+    'a1.webp', 'a2.webp', 'a3.webp', 'a4.webp', 'a5.webp', 'a6.webp',
+    // b series
+    'b1.webp', 'b2.webp', 'b3.webp', 'b4.webp', 'b5.webp', 'b6.webp',
+    // first and second
+    'first.webp', 'second.webp',
+    // w series
+    'w1.webp', 'w2.webp',
+    // x series
+    'x1.png', 'x2.png', 'x3.png',
+  ];
+
+  // Define series boundaries for spacers
+  const seriesBoundaries = [0, 8, 14, 20, 22, 24]; // m, a, b, first/second, w, x
+
   if (!hasMounted) {
     return null;
   }
@@ -234,86 +177,255 @@ export default function ArtworksPage() {
   return (
     <main className="min-h-screen">
       {/* Sticky Navbar overlays the images */}
-      <div className="desktop-layout fixed top-0 left-0 z-50" style={{ width: '100vw' }}>
-        <div className="flex items-center" style={{ paddingTop: '10px', paddingLeft: '300px' }}>
+      {/* Desktop Navbar - visible only on desktop */}
+      {!isMobile && (
+        <div className="desktop-layout fixed top-0 left-0 z-50" style={{ width: '100vw' }}>
+          <div className="flex items-center" style={{ paddingTop: '10px', paddingLeft: '300px' }}>
+              {/* KDRAMA Logo */}
+            <div className="kdrama-logo" style={{ marginRight: '24px' }}>
+              <Link href="/">
+                <Image
+                  src="/assets/kdrama-logo.svg"
+                  alt="KDRAMA Logo"
+                  width={100}
+                  height={34}
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                  className="object-contain"
+                />
+              </Link>
+              </div>
+
+              {/* Flags */}
+            <div className="flex items-center space-x-[4px] relative top-[2px]">
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
+                <Image src="/assets/us-flag.png" alt="US Flag" width={24} height={16} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
+                <Image src="/assets/france-flag.png" alt="France Flag" width={24} height={16} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ru')}>
+                <Image src="/assets/russia-flag.png" alt="Russia Flag" width={24} height={16} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ko')}>
+                <Image src="/assets/korea-flag.png" alt="Korea Flag" width={24} height={16} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('zh')}>
+                <Image src="/assets/china-flag.png" alt="China Flag" width={24} height={16} className="object-contain" />
+              </div>
+              </div>
+
+              {/* Navigation Links */}
+            <div className="flex items-center space-x-4 ml-6" style={{ marginLeft: '24px' }}>
+              <Link href="/artworks" className="nav-item" style={{ ...navLinkStyle, fontWeight: '500' }}>
+                {translations.artworks}
+              </Link>
+              <Link href="/photography" className="nav-item" style={navLinkStyle}>
+                {translations.photography}
+              </Link>
+              <Link href="/music" className="nav-item" style={navLinkStyle}>
+                {translations.music}
+              </Link>
+              <Link href="/contact" className="nav-item" style={navLinkStyle}>
+                {translations.contact}
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Layout - visible only on mobile */}
+      {isMobile && (
+        <div
+          className="mobile-layout flex flex-col items-start justify-center space-y-1"
+          style={{
+            paddingTop: '10px',
+            paddingLeft: '20px',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            zIndex: 50,
+            width: '100vw',
+            height: 'auto',
+            backgroundColor: 'transparent',
+          }}
+        >
           {/* KDRAMA Logo */}
-          <div className="kdrama-logo" style={{ marginRight: '24px' }}>
-            <Link href="/">
+          <div className="mb-0.5">
+            <Link href="/"> {/* Added Link for logo */}
               <Image
                 src="/assets/kdrama-logo.svg"
                 alt="KDRAMA Logo"
-                width={100}
-                height={34}
-                style={{ filter: 'brightness(0) invert(1)' }}
-                className="object-contain"
+                width={68}
+                height={24}
+                className="object-contain brightness-0 invert mobile-logo"
               />
             </Link>
           </div>
 
           {/* Flags */}
-          <div className="flex items-center space-x-[4px] relative top-[2px]">
-            <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
-              <Image src="/assets/us-flag.png" alt="US Flag" width={24} height={16} className="object-contain" />
-            </div>
-            <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
-              <Image src="/assets/france-flag.png" alt="France Flag" width={24} height={16} className="object-contain" />
-            </div>
-            <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ru')}>
-              <Image src="/assets/russia-flag.png" alt="Russia Flag" width={24} height={16} className="object-contain" />
-            </div>
-            <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ko')}>
-              <Image src="/assets/korea-flag.png" alt="Korea Flag" width={24} height={16} className="object-contain" />
-            </div>
-            <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('zh')}>
-              <Image src="/assets/china-flag.png" alt="China Flag" width={24} height={16} className="object-contain" />
+          <div className="mb-0.5">
+            <div className="flex items-center space-x-[2px] mobile-flags">
+              <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
+              <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
+              <Image src="/assets/russia-flag.png" alt="Russia Flag" width={20} height={13} className="object-contain" />
+              <Image src="/assets/korea-flag.png" alt="Korea Flag" width={20} height={13} className="object-contain" />
+              <Image src="/assets/china-flag.png" alt="China Flag" width={20} height={13} className="object-contain" />
             </div>
           </div>
 
           {/* Navigation Links */}
-          <div className="flex items-center space-x-4 ml-6" style={{ marginLeft: '24px' }}>
-            <Link href="/artworks" className="nav-item" style={navLinkStyle}>
+          <div className="flex flex-col items-start mobile-nav w-full">
+            <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', fontWeight: '500' }}> {/* Highlighted for artworks page */}
               {translations.artworks}
             </Link>
-            <Link href="/photography" className="nav-item" style={navLinkStyle}>
+            <Link href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
               {translations.photography}
             </Link>
-            <Link href="/music" className="nav-item" style={navLinkStyle}>
+            <Link href="/music" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
               {translations.music}
             </Link>
-            <Link href="/contact" className="nav-item" style={navLinkStyle}>
+            <Link href="/contact" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
               {translations.contact}
             </Link>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Artworks Images below the navbar */}
-      <div className={viewMode === 'grid' ? 'w-screen grid grid-cols-2 gap-2 p-2' : 'w-screen'}>
-        {['m1','m2','m3','m4','m5','m6','m7','m8'].map((img, idx) => (
-          <div
-            key={img}
-            style={
-              viewMode === 'full'
-                ? { width: '100vw', position: 'relative' }
-                : { width: '100%', position: 'relative' }
-            }
-          >
-            <Image
-              src={`/assets/artworks/${img}.webp`}
-              alt={`artwork ${idx + 1}`}
-              width={1920}
-              height={1080}
-              style={
-                viewMode === 'full'
-                  ? { width: '100vw', height: 'auto', display: 'block' }
-                  : { width: '100%', height: 'auto', display: 'block' }
-              }
-              sizes={viewMode === 'full' ? '100vw' : '50vw'}
-              priority={idx === 0}
-            />
+      {/* Conditional rendering for Grid View */}
+      {viewMode === 'grid' && (
+        <div className="w-screen px-12 pt-12 py-2"> {/* Main container for all grid content */}
+          {/* m, a, b series (2 columns) */}
+          <div className="grid grid-cols-2 gap-2">
+            {artworkImages.slice(0, 20).map((img, idx) => {
+              const absoluteIdx = idx;
+              const isRowSeriesStart = seriesBoundaries.includes(absoluteIdx) && absoluteIdx !== 0
+                || seriesBoundaries.includes(absoluteIdx - 1) && absoluteIdx - 1 !== 0 && absoluteIdx % 2 === 1;
+
+              return (
+                <div
+                  key={img}
+                  style={{
+                    width: '100%',
+                    position: 'relative',
+                    marginTop: isRowSeriesStart ? '3rem' : undefined,
+                  }}
+                >
+                  <Image
+                    src={`/assets/artworks/${img}`}
+                    alt={`artwork ${absoluteIdx + 1}`}
+                    width={1920}
+                    height={1080}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                    sizes={'50vw'}
+                    priority={idx === 0}
+                  />
+                </div>
+              );
+            })}
           </div>
-        ))}
-      </div>
+
+          {/* first.webp and second.webp (full width) */}
+          <div style={{ marginTop: '3rem' }}> {/* Increased gap before this section to 3rem for b series separation */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0rem' }}> {/* Flex container for these two images with no gap */}
+              {artworkImages.slice(20, 22).map((img, idx) => (
+                <div
+                  key={img}
+                  style={{
+                    width: '100%',
+                    position: 'relative',
+                    // Removed individual marginBottom as flex gap handles it
+                  }}
+                >
+                  <Image
+                    src={`/assets/artworks/${img}`}
+                    alt={`artwork ${20 + idx + 1}`}
+                    width={1920}
+                    height={1080}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block',
+                      margin: '0', // Ensure no default margins
+                    }}
+                    sizes={'100vw'}
+                    priority={true}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* w series (2 columns) */}
+          <div className="grid grid-cols-2 gap-2" style={{ marginTop: '0.25rem' }}> {/* Reduced gap after first/second.webp to 0.25rem */}
+            {artworkImages.slice(22, 24).map((img, idx) => {
+              const absoluteIdx = 22 + idx;
+              const isRowSeriesStart = seriesBoundaries.includes(absoluteIdx) && absoluteIdx !== 0
+                || seriesBoundaries.includes(absoluteIdx - 1) && absoluteIdx - 1 !== 0 && absoluteIdx % 2 === 1;
+
+              return (
+                <div
+                  key={img}
+                  style={{
+                    width: '100%',
+                    position: 'relative',
+                    marginTop: isRowSeriesStart ? '3rem' : undefined,
+                  }}
+                >
+                  <Image
+                    src={`/assets/artworks/${img}`}
+                    alt={`artwork ${absoluteIdx + 1}`}
+                    width={1920}
+                    height={1080}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                    sizes={'50vw'}
+                    priority={idx === 0}
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* x series (3 columns) */}
+          <div className="grid grid-cols-3 gap-2" style={{ marginTop: '0.5rem' }}> {/* Consistent series gap, reduced to 0.5rem */}
+            {artworkImages.slice(24).map((img, idx) => (
+              <div
+                key={img}
+                style={{ width: '100%', position: 'relative' }}
+              >
+                <Image
+                  src={`/assets/artworks/${img}`}
+                  alt={`artwork ${24 + idx + 1}`}
+                  width={1920}
+                  height={1080}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  sizes={'33vw'}
+                  priority={idx === 0}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Conditional rendering for Full View (remains a single column) */}
+      {viewMode === 'full' && (
+        <div className="w-screen">
+          {artworkImages.map((img, idx) => (
+            <div key={img} style={{ width: '100vw', position: 'relative' }}>
+              <Image
+                src={`/assets/artworks/${img}`}
+                alt={`artwork ${idx + 1}`}
+                width={1920}
+                height={1080}
+                style={{ width: '100vw', height: 'auto', display: 'block' }}
+                sizes={'100vw'}
+                priority={idx === 0}
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* View Switcher Sticky at Bottom */}
       <div className="bottom-bar flex flex-row items-center justify-center gap-8 w-full px-6 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
@@ -397,7 +509,7 @@ export default function ArtworksPage() {
                 fontWeight: 500,
                 letterSpacing: '0.01em',
                 fontSize: '7px',
-                color: 'white',
+                color: 'rgba(255, 255, 255, 0.8)',
               }}
               speed={20}
               pause={4000}
@@ -445,7 +557,7 @@ export default function ArtworksPage() {
                 alt={isPlaying ? "Pause" : "Play"}
                 width={15}
                 height={15}
-                style={{ height: '15px', width: 'auto' }}
+                style={{ height: '15px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
               />
             </div>
             {/* Next Button */}
@@ -465,7 +577,7 @@ export default function ArtworksPage() {
                 alt="Skip"
                 width={12}
                 height={12}
-                style={{ height: '12px', width: 'auto' }}
+                style={{ height: '12px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
               />
             </div>
             {/* Volume Down Button */}
@@ -485,7 +597,7 @@ export default function ArtworksPage() {
                 alt="Volume Down"
                 width={17}
                 height={17}
-                style={{ height: '17px', width: 'auto' }}
+                style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
               />
             </div>
             {/* Volume Slider */}
@@ -510,7 +622,7 @@ export default function ArtworksPage() {
                   appearance: 'none',
                   width: '100%',
                   height: '3px',
-                  background: `linear-gradient(to right, #fff ${volume * 100}%, #444 ${volume * 100}%)`,
+                  background: `linear-gradient(to right, rgba(255, 255, 255, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
                   borderRadius: '5px',
                   outline: 'none'
                 }}
@@ -533,84 +645,24 @@ export default function ArtworksPage() {
                 alt="Volume Up"
                 width={17}
                 height={17}
-                style={{ height: '17px', width: 'auto' }}
+                style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
               />
             </div>
-          </div>
-        </div>
-        {/* Audio element (hidden) */}
-        <audio
-          ref={audioRef}
-          src={shuffledTracks[currentTrackIndex]?.src}
-          onEnded={handleTrackEnd}
-          preload="auto"
-          autoPlay={isPlaying}
-          style={{ display: 'none' }}
-        />
-      </div>
-
-      {/* The rest of the page (mobile layout, etc.) */}
-      <div className="relative w-full h-full">
-        {/* Mobile Layout */}
-        <div
-          className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1"
-          style={{
-            transform: 'translateY(0%) scale(0.85)',
-            display: 'none',
-            marginLeft: '7vw'
-          }}
-        >
-          {/* KDRAMA Logo */}
-          <div className="mb-0.5">
-            <Image
-              src="/assets/kdrama-logo.svg"
-              alt="KDRAMA Logo"
-              width={68}
-              height={24}
-              className="object-contain brightness-0 invert mobile-logo"
-            />
-          </div>
-
-          {/* Flags */}
-          <div className="mb-0.5">
-            <div className="flex items-center space-x-[2px] mobile-flags">
-              <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/russia-flag.png" alt="Russia Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/korea-flag.png" alt="Korea Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/china-flag.png" alt="China Flag" width={20} height={13} className="object-contain" />
             </div>
           </div>
-
-          {/* Navigation Links */}
-          <div className="flex flex-col items-start mobile-nav w-full">
-            <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
-              {translations.artworks}
-            </Link>
-            <Link href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
-              {translations.photography}
-            </Link>
-            <Link href="/music" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
-              {translations.music}
-            </Link>
-            <Link href="/contact" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
-              {translations.contact}
-            </Link>
-          </div>
         </div>
 
-        {/* Manual adjustment for very small screens */}
-        <style>{`
-          @media (max-width: 330px) {
-            .mobile-layout {
-              transform: translateY(0%) scale(0.75) translateX(-8%) !important;
-            }
-            .mobile-layout .nav-item {
-              font-size: 13px !important;
-            }
+      {/* Manual adjustment for very small screens */}
+      <style>{`
+        @media (max-width: 330px) {
+          .mobile-layout {
+            transform: translateY(0%) scale(0.75) translateX(-8%) !important;
           }
-        `}</style>
-      </div>
+          .mobile-layout .nav-item {
+            font-size: 13px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 } 

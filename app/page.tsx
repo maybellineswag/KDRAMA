@@ -4,6 +4,7 @@ import Image from 'next/image';
 import './page.css';
 import { useLanguage } from './contexts/LanguageContext';
 import Link from 'next/link';
+import { useMusicPlayer } from './contexts/MusicPlayerContext';
 
 // Define track type
 interface Track {
@@ -1381,29 +1382,24 @@ function MarqueeText({ text, style, className = '', speed = 20, pause = 4000 }: 
 }
 
 export default function Home() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [volume, setVolume] = useState(1);
+  // Remove all local music player state, refs, shuffle logic, and <audio> element
   const [isMobile, setIsMobile] = useState(false);
-  const [shuffledTracks, setShuffledTracks] = useState<Track[]>([]);
   const [hasMounted, setHasMounted] = useState(false);
-  const audioRef = useRef(null);
   const { language, setLanguage, translations } = useLanguage();
+  const {
+    isPlaying,
+    togglePlay,
+    nextTrack,
+    volume,
+    handleVolumeChange,
+    volumeDown,
+    volumeUp,
+    shuffledTracks,
+    currentTrackIndex,
+  } = useMusicPlayer();
 
-  // Fisher-Yates shuffle algorithm
-  const shuffleArray = (array: Track[]) => {
-    const newArray = [...array];
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-  };
-
-  // Initialize shuffled tracks and check mobile on component mount
   useEffect(() => {
     setHasMounted(true);
-    setShuffledTracks(shuffleArray(tracks));
     const checkMobile = () => {
       const width = window.innerWidth;
       setIsMobile(width < 768);
@@ -1413,90 +1409,6 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Next track function: only update the index
-  const nextTrack = () => {
-    setCurrentTrackIndex((prev) => (prev + 1) % shuffledTracks.length);
-  };
-
-  // Play new track when currentTrackIndex or shuffledTracks changes
-  useEffect(() => {
-    if (!audioRef.current || !shuffledTracks.length) return;
-    audioRef.current.src = shuffledTracks[currentTrackIndex].src;
-    if (isPlaying) {
-      audioRef.current.play();
-    }
-  }, [currentTrackIndex, shuffledTracks, isPlaying]);
-
-  // Toggle play/pause
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
-  // Handle track end
-  const handleTrackEnd = () => {
-    nextTrack();
-  };
-
-  // Handle time update
-  const handleTimeUpdate = () => {
-    // You can add time tracking logic here if needed
-  };
-
-  // Handle loaded metadata
-  const handleLoadedMetadata = () => {
-    // You can add metadata handling logic here if needed
-  };
-
-  // Mute only (not toggle)
-  const toggleMute = () => {
-    if (!audioRef.current) return;
-    audioRef.current.muted = true;
-    console.log('Muted:', audioRef.current.muted, 'Volume:', audioRef.current.volume);
-  };
-
-  // Handle volume change
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-      if (newVolume > 0) {
-        audioRef.current.muted = false;
-      }
-      console.log('Slider:', newVolume, 'Muted:', audioRef.current.muted);
-    }
-  };
-
-  // Volume down function
-  const volumeDown = () => {
-    const newVolume = Math.max(0, volume - 0.1);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
-    if (newVolume === 0) {
-      audioRef.current.muted = true;
-    } else if (audioRef.current.muted) {
-      audioRef.current.muted = false;
-    }
-  };
-
-  // Volume up function (set to max and unmute)
-  const volumeUp = () => {
-    if (!audioRef.current) return;
-    audioRef.current.volume = 1;
-    audioRef.current.muted = false;
-    setVolume(1);
-  };
-
-  // Prevent hydration mismatch
   if (!hasMounted) {
     return null;
   }
@@ -1514,21 +1426,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Hard Mute Debug Button */}
-      <button onClick={() => {
-        if (audioRef.current) {
-          audioRef.current.muted = true;
-          console.log('Hard mute:', audioRef.current.muted, audioRef.current.volume);
-        }
-      }}>Hard Mute Debug</button>
-      {/* Persistent audio element at the top level */}
-      <audio
-        ref={audioRef}
-        src={shuffledTracks[currentTrackIndex]?.src}
-        onEnded={handleTrackEnd}
-        preload="auto"
-        autoPlay={isPlaying}
-      />
+    
       <main className={`h-screen w-screen overflow-hidden fixed inset-0 bg-white ${isMobile ? 'mobile-view' : 'desktop-view'}`}>
         <div className="h-full w-full flex items-center justify-center">
           {/* Main container with fixed aspect ratio */}
