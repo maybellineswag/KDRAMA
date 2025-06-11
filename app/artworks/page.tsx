@@ -236,9 +236,9 @@ export default function ArtworksPage() {
       {/* Mobile Layout - visible only on mobile */}
       {isMobile && (
         <div
-          className="mobile-layout flex flex-col items-start justify-center space-y-1"
+          className="mobile-layout flex flex-col items-start justify-center space-y-2"
           style={{
-            paddingTop: '10px',
+            paddingTop: '30px',
             paddingLeft: '20px',
             position: 'fixed',
             top: 0,
@@ -250,8 +250,8 @@ export default function ArtworksPage() {
           }}
         >
           {/* KDRAMA Logo */}
-          <div className="mb-0.5">
-            <Link href="/"> {/* Added Link for logo */}
+          <div className="">
+            <Link href="/">
               <Image
                 src="/assets/kdrama-logo.svg"
                 alt="KDRAMA Logo"
@@ -263,7 +263,7 @@ export default function ArtworksPage() {
           </div>
 
           {/* Flags */}
-          <div className="mb-0.5">
+          <div className="">
             <div className="flex items-center space-x-[2px] mobile-flags">
               <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
               <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
@@ -275,7 +275,7 @@ export default function ArtworksPage() {
 
           {/* Navigation Links */}
           <div className="flex flex-col items-start mobile-nav w-full">
-            <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', fontWeight: '500' }}> {/* Highlighted for artworks page */}
+            <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', fontWeight: '500' }}>
               {translations.artworks}
             </Link>
             <Link href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
@@ -428,229 +428,459 @@ export default function ArtworksPage() {
       )}
 
       {/* View Switcher Sticky at Bottom */}
-      <div className="bottom-bar flex flex-row items-center justify-center gap-8 w-full px-6 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
-        {/* View Switcher (existing) */}
-        <div className="view-switcher flex flex-row items-center gap-3">
-          {/* Full View Button */}
-          <button
-            onClick={() => setViewMode('full')}
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              display: 'flex',
-              alignItems: 'center',
-              cursor: 'pointer',
-              outline: 'none',
-            }}
-            aria-label="Full View"
-          >
-            {/* Square icon */}
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="4" width="20" height="20" fill="white" fillOpacity="0.8" />
-            </svg>
-          </button>
-          {/* Grid View Button */}
-          <button
-            onClick={() => setViewMode('grid')}
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              display: 'flex',
-              alignItems: 'center',
-              cursor: 'pointer',
-              outline: 'none',
-            }}
-            aria-label="Grid View"
-          >
-            {/* 4 squares icon */}
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="4" width="8" height="8" fill="white" fillOpacity="0.8" />
-              <rect x="16" y="4" width="8" height="8" fill="white" fillOpacity="0.8" />
-              <rect x="4" y="16" width="8" height="8" fill="white" fillOpacity="0.8" />
-              <rect x="16" y="16" width="8" height="8" fill="white" fillOpacity="0.8" />
-            </svg>
-          </button>
-        </div>
-        {/* Music Player (right-aligned, no background) */}
-        <div className="flex flex-row items-center gap-4" style={{ background: 'none', boxShadow: 'none' }}>
-          {/* Album Cover */}
-          <div style={{
-            width: '28px',
-            height: '28px',
-            backgroundColor: '#ADD8E6',
-            backgroundImage: shuffledTracks[currentTrackIndex]?.cover ? `url(${shuffledTracks[currentTrackIndex].cover})` : 'none',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            borderRadius: '2px',
-            flexShrink: 0
-          }}></div>
-          {/* Song Info */}
-          <div style={{
-            marginLeft: '18px',
-            marginRight: '18px',
-            width: '120px',
-            height: '18px',
-            color: 'white',
-            fontSize: '7px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            overflow: 'hidden',
-            letterSpacing: '0.01em'
-          }}>
-            <MarqueeText
-              text={shuffledTracks[currentTrackIndex]?.title || 'Loading...'}
+      {/* Desktop Bottom Bar - visible only on desktop */}
+      {!isMobile && (
+        <div className="bottom-bar flex flex-row items-center justify-center gap-8 w-full px-6 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
+          {/* View Switcher (existing) */}
+          <div className="view-switcher flex flex-row items-center gap-3">
+            {/* Full View Button */}
+            <button
+              onClick={() => setViewMode('full')}
               style={{
-                width: '100%',
-                height: '50%',
-                textAlign: 'center',
-                fontWeight: 500,
-                letterSpacing: '0.01em',
-                fontSize: '7px',
-                color: 'rgba(255, 255, 255, 0.8)',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                outline: 'none',
               }}
-              speed={20}
-              pause={4000}
-            />
-            <MarqueeText
-              text={shuffledTracks[currentTrackIndex] ? `${shuffledTracks[currentTrackIndex].artist} — ${shuffledTracks[currentTrackIndex].album}` : 'Loading...'}
+              aria-label="Full View"
+            >
+              {/* Square icon */}
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="20" height="20" fill="white" fillOpacity="0.8" />
+              </svg>
+            </button>
+            {/* Grid View Button */}
+            <button
+              onClick={() => setViewMode('grid')}
               style={{
-                width: '100%',
-                height: '50%',
-                textAlign: 'center',
-                color: '#cccccc',
-                fontWeight: 400,
-                letterSpacing: '0.01em',
-                fontSize: '7px',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                outline: 'none',
               }}
-              speed={20}
-              pause={4000}
-            />
+              aria-label="Grid View"
+            >
+              {/* 4 squares icon */}
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="8" height="8" fill="white" fillOpacity="0.8" />
+                <rect x="16" y="4" width="8" height="8" fill="white" fillOpacity="0.8" />
+                <rect x="4" y="16" width="8" height="8" fill="white" fillOpacity="0.8" />
+                <rect x="16" y="16" width="8" height="8" fill="white" fillOpacity="0.8" />
+              </svg>
+            </button>
           </div>
-          {/* Player Controls */}
-          <div style={{
-            width: '170px',
-            height: '28px',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: '0.5rem',
-            background: 'none',
-            boxShadow: 'none'
-          }}>
-            {/* Play/Pause Button */}
-            <div
-              onClick={togglePlay}
-              style={{
-                cursor: 'pointer',
-                height: '28px',
-                width: '28px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <Image
-                src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
-                alt={isPlaying ? "Pause" : "Play"}
-                width={15}
-                height={15}
-                style={{ height: '15px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
-              />
-            </div>
-            {/* Next Button */}
-            <div
-              onClick={nextTrack}
-              style={{
-                cursor: 'pointer',
-                height: '28px',
-                width: '28px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <Image
-                src="/assets/SKIP.png"
-                alt="Skip"
-                width={12}
-                height={12}
-                style={{ height: '12px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
-              />
-            </div>
-            {/* Volume Down Button */}
-            <div
-              onClick={volumeDown}
-              style={{
-                cursor: 'pointer',
-                height: '28px',
-                width: '28px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <Image
-                src="/assets/V DOWN.png"
-                alt="Volume Down"
-                width={17}
-                height={17}
-                style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
-              />
-            </div>
-            {/* Volume Slider */}
+          {/* Music Player (right-aligned, no background) */}
+          <div className="flex flex-row items-center gap-4" style={{ background: 'none', boxShadow: 'none' }}>
+            {/* Album Cover */}
             <div style={{
+              width: '28px',
               height: '28px',
-              width: '60px',
+              backgroundColor: '#ADD8E6',
+              backgroundImage: shuffledTracks[currentTrackIndex]?.cover ? `url(${shuffledTracks[currentTrackIndex].cover})` : 'none',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderRadius: '2px',
+              flexShrink: 0
+            }}></div>
+            {/* Song Info */}
+            <div style={{
+              marginLeft: '18px',
+              marginRight: '18px',
+              width: '120px',
+              height: '18px',
+              color: 'white',
+              fontSize: '7px',
               display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              letterSpacing: '0.01em'
+            }}>
+              <MarqueeText
+                text={shuffledTracks[currentTrackIndex]?.title || 'Loading...'}
+                style={{
+                  width: '100%',
+                  height: '50%',
+                  textAlign: 'center',
+                  fontWeight: 500,
+                  letterSpacing: '0.01em',
+                  fontSize: '7px',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                }}
+                speed={20}
+                pause={4000}
+              />
+              <MarqueeText
+                text={shuffledTracks[currentTrackIndex] ? `${shuffledTracks[currentTrackIndex].artist} — ${shuffledTracks[currentTrackIndex].album}` : 'Loading...'}
+                style={{
+                  width: '100%',
+                  height: '50%',
+                  textAlign: 'center',
+                  color: '#cccccc',
+                  fontWeight: 400,
+                  letterSpacing: '0.01em',
+                  fontSize: '7px',
+                }}
+                speed={20}
+                pause={4000}
+              />
+            </div>
+            {/* Player Controls */}
+            <div style={{
+              width: '170px',
+              height: '28px',
+              display: 'flex',
+              flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'start',
+              gap: '0.5rem',
               background: 'none',
               boxShadow: 'none'
             }}>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value={volume}
-                onChange={handleVolumeChange}
+              {/* Play/Pause Button */}
+              <div
+                onClick={togglePlay}
                 style={{
-                  WebkitAppearance: 'none',
-                  appearance: 'none',
-                  width: '100%',
-                  height: '3px',
-                  background: `linear-gradient(to right, rgba(255, 255, 255, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
-                  borderRadius: '5px',
-                  outline: 'none'
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
                 }}
-              />
-            </div>
-            {/* Volume Up Button */}
-            <div
-              onClick={volumeUp}
-              style={{
-                cursor: 'pointer',
+              >
+                <Image
+                  src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
+                  alt={isPlaying ? "Pause" : "Play"}
+                  width={15}
+                  height={15}
+                  style={{ height: '15px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              {/* Next Button */}
+              <div
+                onClick={nextTrack}
+                style={{
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src="/assets/SKIP.png"
+                  alt="Skip"
+                  width={12}
+                  height={12}
+                  style={{ height: '12px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              {/* Volume Down Button */}
+              <div
+                onClick={volumeDown}
+                style={{
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src="/assets/V DOWN.png"
+                  alt="Volume Down"
+                  width={17}
+                  height={17}
+                  style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              {/* Volume Slider */}
+              <div style={{
                 height: '28px',
-                width: '28px',
+                width: '60px',
                 display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <Image
-                src="/assets/V UP.png"
-                alt="Volume Up"
-                width={17}
-                height={17}
-                style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
-              />
-            </div>
+                alignItems: 'center',
+                justifyContent: 'start',
+                background: 'none',
+                boxShadow: 'none'
+              }}>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={volume}
+                  onChange={handleVolumeChange}
+                  style={{
+                    WebkitAppearance: 'none',
+                    appearance: 'none',
+                    width: '100%',
+                    height: '3px',
+                    background: `linear-gradient(to right, rgba(255, 255, 255, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
+                    borderRadius: '5px',
+                    outline: 'none'
+                  }}
+                />
+              </div>
+              {/* Volume Up Button */}
+              <div
+                onClick={volumeUp}
+                style={{
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src="/assets/V UP.png"
+                  alt="Volume Up"
+                  width={17}
+                  height={17}
+                  style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
+      {/* Mobile Bottom Bar - visible only on mobile */}
+      {isMobile && (
+        <div className="bottom-bar flex flex-col items-start gap-2 w-full px-6 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
+          {/* View Switcher */}
+          <div className="view-switcher flex flex-row items-center gap-3">
+            {/* Full View Button */}
+            <button
+              onClick={() => setViewMode('full')}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                outline: 'none',
+              }}
+              aria-label="Full View"
+            >
+              {/* Square icon */}
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="20" height="20" fill="white" fillOpacity="0.8" />
+              </svg>
+            </button>
+            {/* Grid View Button */}
+            <button
+              onClick={() => setViewMode('grid')}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                outline: 'none',
+              }}
+              aria-label="Grid View"
+            >
+              {/* 4 squares icon */}
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="8" height="8" fill="white" fillOpacity="0.8" />
+                <rect x="16" y="4" width="8" height="8" fill="white" fillOpacity="0.8" />
+                <rect x="4" y="16" width="8" height="8" fill="white" fillOpacity="0.8" />
+                <rect x="16" y="16" width="8" height="8" fill="white" fillOpacity="0.8" />
+              </svg>
+            </button>
+          </div>
+          {/* Music Player */}
+          <div className="flex flex-row items-center gap-2" style={{ background: 'none', boxShadow: 'none' }}> {/* Reduced gap */}
+            {/* Album Cover */}
+            <div style={{
+              width: '24px',
+              height: '24px',
+              backgroundColor: '#ADD8E6',
+              backgroundImage: shuffledTracks[currentTrackIndex]?.cover ? `url(${shuffledTracks[currentTrackIndex].cover})` : 'none',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderRadius: '2px',
+              flexShrink: 0
+            }}></div>
+            {/* Song Info */}
+            <div style={{
+              marginLeft: '10px',
+              marginRight: '10px',
+              width: '100px', // Reduced width
+              height: '18px',
+              color: 'white',
+              fontSize: '7px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              letterSpacing: '0.01em'
+            }}>
+              <MarqueeText
+                text={shuffledTracks[currentTrackIndex]?.title || 'Loading...'}
+                style={{
+                  width: '100%',
+                  height: '50%',
+                  textAlign: 'center',
+                  fontWeight: 500,
+                  letterSpacing: '0.01em',
+                  fontSize: '7px',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                }}
+                speed={20}
+                pause={4000}
+              />
+              <MarqueeText
+                text={shuffledTracks[currentTrackIndex] ? `${shuffledTracks[currentTrackIndex].artist} — ${shuffledTracks[currentTrackIndex].album}` : 'Loading...'}
+                style={{
+                  width: '100%',
+                  height: '50%',
+                  textAlign: 'center',
+                  color: '#cccccc',
+                  fontWeight: 400,
+                  letterSpacing: '0.01em',
+                  fontSize: '7px',
+                }}
+                speed={20}
+                pause={4000}
+              />
+            </div>
+            {/* Player Controls */}
+            <div style={{
+              width: '150px', // Reduced width
+              height: '28px',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '0.25rem', // Reduced gap
+              background: 'none',
+              boxShadow: 'none'
+            }}>
+              {/* Play/Pause Button */}
+              <div
+                onClick={togglePlay}
+                style={{
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
+                  alt={isPlaying ? "Pause" : "Play"}
+                  width={15}
+                  height={15}
+                  style={{ height: '15px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              {/* Next Button */}
+              <div
+                onClick={nextTrack}
+                style={{
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src="/assets/SKIP.png"
+                  alt="Skip"
+                  width={12}
+                  height={12}
+                  style={{ height: '12px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              {/* Volume Down Button */}
+              <div
+                onClick={volumeDown}
+                style={{
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src="/assets/V DOWN.png"
+                  alt="Volume Down"
+                  width={17}
+                  height={17}
+                  style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              {/* Volume Slider */}
+              <div style={{
+                height: '28px',
+                width: '60px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'start',
+                background: 'none',
+                boxShadow: 'none'
+              }}>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={volume}
+                  onChange={handleVolumeChange}
+                  style={{
+                    WebkitAppearance: 'none',
+                    appearance: 'none',
+                    width: '100%',
+                    height: '3px',
+                    background: `linear-gradient(to right, rgba(255, 255, 255, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
+                    borderRadius: '5px',
+                    outline: 'none'
+                  }}
+                />
+              </div>
+              {/* Volume Up Button */}
+              <div
+                onClick={volumeUp}
+                style={{
+                  cursor: 'pointer',
+                  height: '28px',
+                  width: '28px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src="/assets/V UP.png"
+                  alt="Volume Up"
+                  width={17}
+                  height={17}
+                  style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                />
+              </div>
+              </div>
+            </div>
+          </div>
+        )}
 
       {/* Manual adjustment for very small screens */}
       <style>{`
