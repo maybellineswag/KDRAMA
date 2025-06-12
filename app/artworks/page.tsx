@@ -621,7 +621,7 @@ export default function ArtworksPage() {
                 {/* Volume Slider */}
                 <div style={{
                   height: '28px',
-                  width: '60px',
+                  width: '40px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'start',
@@ -675,53 +675,7 @@ export default function ArtworksPage() {
       {/* Mobile Bottom Bar - visible only on mobile */}
       {isMobile && (
         <div className="bottom-bar flex flex-col items-start gap-2 w-full px-3 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
-          {/* View Switcher (separate from cover art) */}
-          <div className="view-switcher flex flex-row items-center gap-[10px]"> {/* Adjust gap-[12px] as needed for perfect alignment */}
-            {/* Full View Button */}
-            <button
-              onClick={() => setViewMode('full')}
-              style={{
-                background: 'none',
-                border: 'none',
-                padding: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                outline: 'none',
-                width: '24px',
-                height: '24px',
-                borderRadius: '2px',
-                overflow: 'hidden',
-                opacity: 0.6,
-              }}
-              aria-label="Full View"
-            >
-              <Image src="/assets/FULLSCREEN.svg" alt="Full View" width={24} height={24} style={{ width: '24px', height: '24px', borderRadius: '2px', opacity: 1 }} />
-            </button>
-            {/* Grid View Button */}
-            <button
-              onClick={() => setViewMode('grid')}
-              style={{
-                background: 'none',
-                border: 'none',
-                padding: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                outline: 'none',
-                width: '24px',
-                height: '24px',
-                borderRadius: '2px',
-                overflow: 'hidden',
-                opacity: 0.6,
-              }}
-              aria-label="Grid View"
-            >
-              <Image src="/assets/GRID.svg" alt="Grid View" width={24} height={24} style={{ width: '24px', height: '24px', borderRadius: '2px', opacity: 1 }} />
-            </button>
-          </div>
+          {/* View Switcher hidden on mobile */}
           {/* Music Player */}
           <div className="flex flex-row items-center gap-2" style={{ background: 'none', boxShadow: 'none' }}> {/* Reduced gap */}
             {/* Album Cover */}
@@ -852,7 +806,7 @@ export default function ArtworksPage() {
               {/* Volume Slider */}
               <div style={{
                 height: '28px',
-                width: '60px',
+                width: '40px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'start',
