@@ -247,6 +247,8 @@ export default function ArtworksPage() {
             width: '100vw',
             height: 'auto',
             backgroundColor: 'transparent',
+            transform: 'scale(1.18)',
+            transformOrigin: 'top left',
           }}
         >
           {/* KDRAMA Logo */}
