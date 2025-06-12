@@ -238,7 +238,7 @@ export default function ArtworksPage() {
         <div
           className="mobile-layout flex flex-col items-start justify-center space-y-2"
           style={{
-            paddingTop: '30px',
+            paddingTop: '12px',
             paddingLeft: '20px',
             position: 'fixed',
             top: 0,
@@ -293,7 +293,7 @@ export default function ArtworksPage() {
 
       {/* Conditional rendering for Grid View */}
       {viewMode === 'grid' && (
-        <div className="w-screen px-12 pt-12 py-2"> {/* Main container for all grid content */}
+        <div className="w-screen px-4 sm:px-12 pt-4 sm:pt-12 py-2"> {/* Main container for all grid content, responsive padding */}
           {/* m, a, b series (2 columns) */}
           <div className="grid grid-cols-2 gap-2">
             {artworkImages.slice(0, 20).map((img, idx) => {
@@ -663,8 +663,8 @@ export default function ArtworksPage() {
       {/* Mobile Bottom Bar - visible only on mobile */}
       {isMobile && (
         <div className="bottom-bar flex flex-col items-start gap-2 w-full px-6 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
-          {/* View Switcher */}
-          <div className="view-switcher flex flex-row items-center gap-4">
+          {/* View Switcher (separate from cover art) */}
+          <div className="view-switcher flex flex-row items-center gap-[10px]"> {/* Adjust gap-[12px] as needed for perfect alignment */}
             {/* Full View Button */}
             <button
               onClick={() => setViewMode('full')}

@@ -705,6 +705,15 @@ video {
 .gap-8 {
   gap: 2rem;
 }
+.gap-6 {
+  gap: 1.5rem;
+}
+.gap-\[12px\] {
+  gap: 12px;
+}
+.gap-\[10px\] {
+  gap: 10px;
+}
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -781,8 +790,15 @@ video {
   padding-left: 0px;
   padding-right: 0px;
 }
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .pt-12 {
   padding-top: 3rem;
+}
+.pt-4 {
+  padding-top: 1rem;
 }
 .lowercase {
   text-transform: lowercase;
@@ -968,4 +984,15 @@ body {
 }
 .hover\:opacity-80:hover {
   opacity: 0.8;
+}
+@media (min-width: 640px) {
+
+  .sm\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .sm\:pt-12 {
+    padding-top: 3rem;
+  }
 } 
