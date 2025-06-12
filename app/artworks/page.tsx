@@ -239,7 +239,7 @@ export default function ArtworksPage() {
           className="mobile-layout flex flex-col items-start justify-center space-y-2"
           style={{
             paddingTop: '12px',
-            paddingLeft: '20px',
+            paddingLeft: '12px',
             position: 'fixed',
             top: 0,
             left: 0,
@@ -277,16 +277,16 @@ export default function ArtworksPage() {
 
           {/* Navigation Links */}
           <div className="flex flex-col items-start mobile-nav w-full">
-            <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', fontWeight: '500' }}>
+            <Link href="/artworks" className="nav-item" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', fontWeight: '500', marginBottom: 0, padding: '0.1rem 0' }}>
               {translations.artworks}
             </Link>
-            <Link href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
+            <Link href="/photography" className="nav-item" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', marginBottom: 0, padding: '0.1rem 0' }}>
               {translations.photography}
             </Link>
-            <Link href="/music" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
+            <Link href="/music" className="nav-item" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', marginBottom: 0, padding: '0.1rem 0' }}>
               {translations.music}
             </Link>
-            <Link href="/contact" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
+            <Link href="/contact" className="nav-item" style={{ ...navLinkStyle, color: 'white', textAlign: 'left', marginBottom: 0, padding: '0.1rem 0' }}>
               {translations.contact}
             </Link>
           </div>
@@ -664,7 +664,7 @@ export default function ArtworksPage() {
 
       {/* Mobile Bottom Bar - visible only on mobile */}
       {isMobile && (
-        <div className="bottom-bar flex flex-col items-start gap-2 w-full px-6 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
+        <div className="bottom-bar flex flex-col items-start gap-2 w-full px-3 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
           {/* View Switcher (separate from cover art) */}
           <div className="view-switcher flex flex-row items-center gap-[10px]"> {/* Adjust gap-[12px] as needed for perfect alignment */}
             {/* Full View Button */}
