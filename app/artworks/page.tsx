@@ -267,11 +267,21 @@ export default function ArtworksPage() {
           {/* Flags */}
           <div className="">
             <div className="flex items-center space-x-[2px] mobile-flags">
-              <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/russia-flag.png" alt="Russia Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/korea-flag.png" alt="Korea Flag" width={20} height={13} className="object-contain" />
-              <Image src="/assets/china-flag.png" alt="China Flag" width={20} height={13} className="object-contain" />
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
+                <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
+                <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ru')}>
+                <Image src="/assets/russia-flag.png" alt="Russia Flag" width={20} height={13} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ko')}>
+                <Image src="/assets/korea-flag.png" alt="Korea Flag" width={20} height={13} className="object-contain" />
+              </div>
+              <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('zh')}>
+                <Image src="/assets/china-flag.png" alt="China Flag" width={20} height={13} className="object-contain" />
+              </div>
             </div>
           </div>
 
