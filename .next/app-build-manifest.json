@@ -22,6 +22,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/photography/page.js"
     ],
+    "/music/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/music/page.js"
+    ],
     "/not-found": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
