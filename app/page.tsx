@@ -1435,7 +1435,7 @@ export default function Home() {
             <div 
               className="relative w-full h-full"
               style={{
-                top: isMobile ? '3%' : '0%',
+                top: isMobile ? '-1%' : '0%',
                 right: isMobile ? '-5%' : '0%',
                 // Removed transform for mobile from here
               }}
