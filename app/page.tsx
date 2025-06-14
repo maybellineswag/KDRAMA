@@ -1436,7 +1436,7 @@ export default function Home() {
               className="relative w-full h-full"
               style={{
                 right: isMobile ? '-5%' : '0%',
-                top: isMobile ? '0%' : '0%',
+                top: isMobile ? '-5%' : '0%',
                 // Removed transform for mobile from here
               }}
             >
