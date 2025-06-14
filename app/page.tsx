@@ -1471,7 +1471,8 @@ export default function Home() {
                     alt="KDRAMA Logo"
                     width={100}
                     height={35}
-                    className="object-contain brightness-0"
+                    className="object-contain text-black"
+                    priority
                   />
                 </div>
 
@@ -1765,7 +1766,7 @@ export default function Home() {
               <div
                 className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1"
                 style={{
-                  transform: 'translateY(3%) scale(1.3) translateX(2vw)',
+                  transform: 'translateY(8%) scale(1.3) translateX(2vw)',
                   display: 'none',
                   marginLeft: '7vw'
                 }}
@@ -1777,7 +1778,9 @@ export default function Home() {
                     alt="KDRAMA Logo"
                     width={90}
                     height={32}
-                    className="object-contain brightness-0 invert mobile-logo"
+                    className="object-contain"
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                    priority
                   />
                 </div>
 
@@ -2030,9 +2033,9 @@ export default function Home() {
 
                 {/* Manual adjustment for very small screens */}
                 <style>{`
-                  @media (max-width: 330px) {
+                  @media (max-width: 768px) {
                     .mobile-layout {
-                      transform: translateY(0%) scale(0.75) translateX(-8%) !important;
+                      /* Removing conflicting transform here */
                     }
                     .mobile-layout .nav-item {
                       font-size: 13px !important;
@@ -2040,17 +2043,35 @@ export default function Home() {
                     .mobile-volume-slider {
                       width: 24px !important;
                     }
+                    .mobile-volume-slider input[type=range] {
+                      /* Removed height and padding from here */
+                    }
                     .mobile-volume-slider input[type=range]::-webkit-slider-thumb {
                       width: 8px;
                       height: 8px;
+                      background: white; /* Ensure it's white */
+                      border-radius: 50%; /* Make it a circle */
+                      border: none; /* Remove any default borders */
+                      cursor: pointer;
+                      margin-top: -3px; /* Vertically center the thumb on the track */
                     }
                     .mobile-volume-slider input[type=range]::-moz-range-thumb {
                       width: 8px;
                       height: 8px;
+                      background: white;
+                      border-radius: 50%;
+                      border: none;
+                      cursor: pointer;
+                      margin-top: -3px; /* Vertically center the thumb on the track */
                     }
                     .mobile-volume-slider input[type=range]::-ms-thumb {
                       width: 8px;
                       height: 8px;
+                      background: white;
+                      border-radius: 50%;
+                      border: none;
+                      cursor: pointer;
+                      margin-top: -3px; /* Vertically center the thumb on the track */
                     }
                   }
                 `}</style>

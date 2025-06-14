@@ -187,10 +187,12 @@ export default function ArtworksPage() {
                 <Image
                   src="/assets/kdrama-logo.svg"
                   alt="KDRAMA Logo"
-                  width={100}
+                  width={124}
                   height={34}
-                  style={{ filter: 'brightness(0) invert(1)' }}
                   className="object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                  priority
+                  quality={100}
                 />
               </Link>
               </div>
@@ -257,9 +259,12 @@ export default function ArtworksPage() {
               <Image
                 src="/assets/kdrama-logo.svg"
                 alt="KDRAMA Logo"
-                width={68}
+                width={84}
                 height={24}
-                className="object-contain brightness-0 invert mobile-logo"
+                className="object-contain"
+                style={{ filter: 'brightness(0) invert(1)' }}
+                priority
+                quality={100}
               />
             </Link>
           </div>

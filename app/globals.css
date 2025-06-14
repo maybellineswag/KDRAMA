@@ -46,6 +46,11 @@ body {
   background-color: rgba(207, 224, 240, 1); /* #CFE0F0 with 100% opacity */
 }
 
+/* Mobile logo color override */
+.mobile-layout img[alt="KDRAMA Logo"] {
+  color: white !important;
+}
+
 /* Scale up content ONLY on wide screens (1440px and above) */
 @media screen and (min-width: 1440px) {
   main .relative.w-\[65vw\] {

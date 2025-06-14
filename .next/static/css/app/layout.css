@@ -655,15 +655,6 @@ video {
 .w-screen {
   width: 100vw;
 }
-.w-\[100vw\] {
-  width: 100vw;
-}
-.w-\[95vw\] {
-  width: 95vw;
-}
-.w-\[70vw\] {
-  width: 70vw;
-}
 .max-w-\[800px\] {
   max-width: 800px;
 }
@@ -755,10 +746,6 @@ video {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
@@ -796,12 +783,16 @@ video {
 .lowercase {
   text-transform: lowercase;
 }
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
 .outline {
   outline-style: solid;
-}
-.brightness-0 {
-  --tw-brightness: brightness(0);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .invert {
   --tw-invert: invert(100%);
@@ -865,6 +856,11 @@ body {
 
 .nav-item:hover::before {
   background-color: rgba(207, 224, 240, 1); /* #CFE0F0 with 100% opacity */
+}
+
+/* Mobile logo color override */
+.mobile-layout img[alt="KDRAMA Logo"] {
+  color: white !important;
 }
 
 /* Scale up content ONLY on wide screens (1440px and above) */
