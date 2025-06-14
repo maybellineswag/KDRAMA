@@ -1435,14 +1435,14 @@ export default function Home() {
             <div 
               className="relative w-full h-full"
               style={{
-                top: isMobile ? '-1%' : '0%',
                 right: isMobile ? '-5%' : '0%',
+                top: isMobile ? '-5%' : '0%',
                 // Removed transform for mobile from here
               }}
             >
               <div
                 style={{
-                  transform: isMobile ? 'scale(1.55)' : 'none', // Apply mobile scale here
+                  transform: isMobile ? 'scale(1.55) translateY(5%)' : 'none', // Apply mobile scale and vertical translation here
                   transformOrigin: 'center center',
                   width: '100%',
                   height: '100%',
