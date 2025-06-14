@@ -598,30 +598,6 @@ video {
 .top-\[52\.7\%\] {
   top: 52.7%;
 }
-.left-\[73\%\] {
-  left: 73%;
-}
-.top-\[53\.4\%\] {
-  top: 53.4%;
-}
-.top-\[55\.4\%\] {
-  top: 55.4%;
-}
-.top-\[55\%\] {
-  top: 55%;
-}
-.left-\[72\%\] {
-  left: 72%;
-}
-.left-\[71\.8\%\] {
-  left: 71.8%;
-}
-.left-\[71\.7\%\] {
-  left: 71.7%;
-}
-.left-\[71\.6\%\] {
-  left: 71.6%;
-}
 .z-50 {
   z-index: 50;
 }
@@ -679,6 +655,15 @@ video {
 .w-screen {
   width: 100vw;
 }
+.w-\[100vw\] {
+  width: 100vw;
+}
+.w-\[95vw\] {
+  width: 95vw;
+}
+.w-\[70vw\] {
+  width: 70vw;
+}
 .max-w-\[800px\] {
   max-width: 800px;
 }
@@ -723,14 +708,8 @@ video {
 .gap-2 {
   gap: 0.5rem;
 }
-.gap-3 {
-  gap: 0.75rem;
-}
 .gap-4 {
   gap: 1rem;
-}
-.gap-8 {
-  gap: 2rem;
 }
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -776,6 +755,10 @@ video {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
@@ -787,10 +770,6 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 .py-0\.5 {
   padding-top: 0.125rem;
@@ -808,18 +787,11 @@ video {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
 .pt-12 {
   padding-top: 3rem;
 }
 .pt-4 {
   padding-top: 1rem;
-}
-.pt-24 {
-  padding-top: 6rem;
 }
 .lowercase {
   text-transform: lowercase;
@@ -1013,16 +985,7 @@ body {
     padding-right: 3rem;
   }
 
-  .sm\:px-32 {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-
   .sm\:pt-12 {
     padding-top: 3rem;
-  }
-
-  .sm\:pt-32 {
-    padding-top: 8rem;
   }
 } 

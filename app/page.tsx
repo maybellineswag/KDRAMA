@@ -1432,18 +1432,35 @@ export default function Home() {
           {/* Main container with fixed aspect ratio */}
           <div className={`relative ${isMobile ? 'w-[90vw]' : 'w-[65vw]'} max-w-[800px]`} style={{ aspectRatio: '3/4' }}>
             {/* Silhouette container */}
-            <div className="relative w-full h-full">
-              <Image
-                src="/assets/KDRAMA SILHOUETTE.svg"
-                alt="KDRAMA Silhouette"
-                fill
-                priority
-                className="object-contain"
-                style={{ 
-                  objectPosition: '45% 50%',
-                  transform: isMobile ? 'scale(1.0)' : 'scale(0.6)'
+            <div 
+              className="relative w-full h-full"
+              style={{
+                top: isMobile ? '3%' : '0%',
+                right: isMobile ? '-5%' : '0%',
+                // Removed transform for mobile from here
+              }}
+            >
+              <div
+                style={{
+                  transform: isMobile ? 'scale(1.55)' : 'none', // Apply mobile scale here
+                  transformOrigin: 'center center',
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
                 }}
-              />
+              >
+                <Image
+                  src="/assets/KDRAMA SILHOUETTE.svg"
+                  alt="KDRAMA Silhouette"
+                  fill
+                  priority
+                  className="object-contain"
+                  style={{
+                    objectPosition: '45% 50%',
+                    transform: isMobile ? 'none' : 'scale(0.6)' // Only desktop scale here
+                  }}
+                />
+              </div>
               
               {/* Desktop Layout */}
               <div className="desktop-layout">
@@ -1748,7 +1765,7 @@ export default function Home() {
               <div
                 className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1"
                 style={{
-                  transform: 'translateY(0%) scale(0.85)',
+                  transform: 'translateY(0%) scale(1.3) translateX(2vw)',
                   display: 'none',
                   marginLeft: '7vw'
                 }}
