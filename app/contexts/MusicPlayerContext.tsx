@@ -27,8 +27,8 @@ const tracks: Track[] = [
     cover: "https://res.cloudinary.com/your-cloud-name/image/upload/v1/nothing_but_net.jpg"
   },
   {
-    title: "Nothing But Net (feat. Young Thug & PARTYNEXTDOOR)",
-    artist: "Travis Scott",
+    title: "Nothing But Net",
+    artist: "Travis Scott, Young Thug & PARTYNEXTDOOR",
     album: "Nothing But Net",
     src: "Nothing But Net.mp3",
     cover: "assets/images/nothing but net.jpg"
@@ -573,8 +573,8 @@ const tracks: Track[] = [
     cover: "assets/images/COZY TAPES 2.jpg"
 },
 {
-    title: "In Vein (feat. The Weeknd)",
-    artist: "Rick Ross ",
+    title: "In Vein",
+    artist: "Rick Ross & The Weeknd",
     album: "Mastermind",
     src: "https://res.cloudinary.com/dynqvvscs/video/upload/v1748823896/IN_VEIN_lcrwbj.mp3",
     cover: "https://res.cloudinary.com/dynqvvscs/image/upload/v1748822528/MASTERMIND_ghvjh6.jpg"

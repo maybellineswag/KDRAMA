@@ -101,6 +101,12 @@ body {
   .mobile-layout .nav-item {
     font-family: 'SF Pro Medium', 'SF Pro', sans-serif !important;
   }
+
+  /* Adjust Chinese text for mobile */
+  html[lang="zh"] .mobile-layout .nav-item {
+    -webkit-text-stroke: 0.35px white !important;
+    letter-spacing: -0.02em !important;
+  }
 }
 
 /* Force mobile layout for very small screens regardless of JS detection */

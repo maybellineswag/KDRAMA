@@ -1613,7 +1613,7 @@ export default function Home() {
                         height: '50%',
                         textAlign: 'center',
                         fontWeight: 500,
-                        letterSpacing: '0.01em',
+                        letterSpacing: '-0.04em',
                         fontSize: '7px',
                         color: isMobile ? 'white' : 'black',
                       }}
@@ -1628,7 +1628,7 @@ export default function Home() {
                         textAlign: 'center',
                         color: isMobile ? '#cccccc' : 'gray',
                         fontWeight: 400,
-                        letterSpacing: '0.01em',
+                        letterSpacing: '-0.04em',
                         fontSize: '7px',
                       }}
                       speed={20}
@@ -1658,7 +1658,7 @@ export default function Home() {
                       <img
                         src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                         alt={isPlaying ? "Pause" : "Play"}
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
+                        style={{ width: '15px', height: '15px', opacity: 1 }}
                       />
                     </div>
                     
@@ -1677,7 +1677,7 @@ export default function Home() {
                       <img 
                         src="/assets/icons/SKIP.svg"
                         alt="Skip"
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.6)' }}
+                        style={{ width: '12px', height: '12px', opacity: 1 }}
                       />
                     </div>
                     
@@ -1696,7 +1696,7 @@ export default function Home() {
                       <img 
                         src="/assets/icons/V DOWN.svg"
                         alt="Volume Down"
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                     
@@ -1744,7 +1744,7 @@ export default function Home() {
                       <img 
                         src="/assets/icons/V UP.svg"
                         alt="Volume Up"
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                   </div>
@@ -1930,7 +1930,7 @@ export default function Home() {
                       <img
                         src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                         alt={isPlaying ? "Pause" : "Play"}
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
+                        style={{ width: '15px', height: '15px', opacity: 1 }}
                       />
                     </div>
                     {/* Next Button */}
@@ -1948,7 +1948,7 @@ export default function Home() {
                       <img
                         src="/assets/icons/SKIP.svg"
                         alt="Skip"
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.6)' }}
+                        style={{ width: '12px', height: '12px', opacity: 1 }}
                       />
                     </div>
                     {/* Volume Down Button */}
@@ -1967,7 +1967,7 @@ export default function Home() {
                       <img
                         src="/assets/icons/V DOWN.svg"
                         alt="Volume Down"
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                     {/* Volume Slider */}
@@ -2012,7 +2012,7 @@ export default function Home() {
                       <img
                         src="/assets/icons/V UP.svg"
                         alt="Volume Up"
-                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                   </div>
