@@ -1889,9 +1889,9 @@ export default function Home() {
                       text={shuffledTracks[currentTrackIndex]?.title || 'Loading...'}
                       style={{
                         fontSize: '8px',
-                        fontWeight: 600,
+                        fontFamily: 'SF Pro Medium, SF Pro, sans-serif',
                         color: 'white',
-                        letterSpacing: '0.01em',
+                        letterSpacing: '-0.02em',
                         textAlign: 'left',
                         maxWidth: '90px',
                       }}
