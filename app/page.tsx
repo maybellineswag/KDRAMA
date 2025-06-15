@@ -1421,7 +1421,7 @@ export default function Home() {
     color: isMobile ? 'white' : 'black',
     textDecoration: 'none',
     cursor: 'pointer',
-    fontWeight: isMobile ? '600' : 'normal'
+    fontWeight: 'normal'
   };
 
   return (

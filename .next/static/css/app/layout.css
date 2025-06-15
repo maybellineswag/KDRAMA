@@ -838,6 +838,14 @@ video {
   font-display: block;
 }
 
+@font-face {
+  font-family: 'SF Pro Medium';
+  src: url('/assets/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-weight: 300;
@@ -908,6 +916,10 @@ body {
   
   .desktop-view .mobile-layout {
     display: none !important;
+  }
+  
+  .mobile-layout .nav-item {
+    font-family: 'SF Pro Medium', 'SF Pro', sans-serif !important;
   }
 }
 
