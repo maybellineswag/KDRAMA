@@ -1442,7 +1442,7 @@ export default function Home() {
             >
               <div
                 style={{
-                  transform: isMobile ? 'scale(1.55) translateY(-15%)' : 'none', // Apply mobile scale and vertical translation here
+                  transform: isMobile ? 'scale(1.55) translateY(-5%)' : 'none', // Apply mobile scale and vertical translation here
                   transformOrigin: 'center center',
                   width: '100%',
                   height: '100%',
