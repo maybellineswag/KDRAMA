@@ -1761,7 +1761,7 @@ export default function Home() {
               <div
                 className="mobile-layout absolute inset-0 flex flex-col items-start justify-center space-y-1"
                 style={{
-                  transform: 'translateY(0%) scale(1.6) translateX(9vw)',
+                  transform: 'translateY(0%) scale(1.4) translateX(5vw)',
                   display: 'none',
                   marginLeft: '7vw'
                 }}
