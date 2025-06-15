@@ -1428,7 +1428,7 @@ export default function Home() {
     <>
     
       <main className={`h-screen w-screen overflow-hidden fixed inset-0 bg-white ${isMobile ? 'mobile-view' : 'desktop-view'}`}>
-        <div className="h-full w-full flex items-center justify-center">
+        <div className="h-full w-full flex items-center justify-center" data-fix-issue="true">
           {/* Main container with fixed aspect ratio */}
           <div className={`relative ${isMobile ? 'w-[90vw]' : 'w-[65vw]'} max-w-[800px]`} style={{ aspectRatio: '3/4' }}>
             {/* Silhouette container */}
@@ -1474,6 +1474,72 @@ export default function Home() {
                     className="object-contain text-black"
                     priority
                   />
+                </div>
+
+                {/* Flags */}
+                <div className="absolute left-[43%] top-[43.4%] transform -translate-x-1/2">
+                  <div className="flex items-center space-x-[4px]">
+                    <div 
+                      onClick={() => setLanguage('en')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/us-flag.svg" 
+                        alt="US Flag" 
+                        width={24} 
+                        height={16} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('fr')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/france-flag.svg" 
+                        alt="France Flag" 
+                        width={24} 
+                        height={16} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('ru')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/russia-flag.svg" 
+                        alt="Russia Flag" 
+                        width={24} 
+                        height={16} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('ko')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/korea-flag.svg" 
+                        alt="Korea Flag" 
+                        width={24} 
+                        height={16} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('zh')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/china-flag.svg" 
+                        alt="China Flag" 
+                        width={24} 
+                        height={16} 
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Navigation Links */}
@@ -1589,12 +1655,10 @@ export default function Home() {
                         alignItems: 'center'
                       }}
                     >
-                      <Image 
-                        src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
+                      <img
+                        src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                         alt={isPlaying ? "Pause" : "Play"}
-                        width={15}
-                        height={15}
-                        style={{ height: '15px', width: 'auto' }}
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                       />
                     </div>
                     
@@ -1608,13 +1672,12 @@ export default function Home() {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center'
-                      }}>
-                      <Image 
-                        src="/assets/SKIP.png" 
-                        alt="Skip" 
-                        width={12} 
-                        height={12}
-                        style={{ height: '12px', width: 'auto' }}
+                      }}
+                    >
+                      <img 
+                        src="/assets/icons/SKIP.svg"
+                        alt="Skip"
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.6)' }}
                       />
                     </div>
                     
@@ -1630,22 +1693,22 @@ export default function Home() {
                         alignItems: 'center'
                       }}
                     >
-                      <Image 
-                        src="/assets/V DOWN.png" 
-                        alt="Volume Down" 
-                        width={17} 
-                        height={17}
-                        style={{ height: '17px', width: 'auto' }}
+                      <img 
+                        src="/assets/icons/V DOWN.svg"
+                        alt="Volume Down"
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                       />
                     </div>
                     
                     {/* Volume Slider */}
                     <div style={{
                       height: '28px',
-                      width: '60px',
+                      width: '40px',
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'start'
+                      justifyContent: 'start',
+                      background: 'none',
+                      boxShadow: 'none'
                     }}>
                       <input
                         type="range"
@@ -1659,7 +1722,7 @@ export default function Home() {
                           appearance: 'none',
                           width: '100%',
                           height: '3px',
-                          background: `linear-gradient(to right, ${isMobile ? '#fff' : '#000'} ${volume * 100}%, ${isMobile ? '#444' : '#ddd'} ${volume * 100}%)`,
+                          background: `linear-gradient(to right, rgba(128, 128, 128, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
                           borderRadius: '5px',
                           outline: 'none'
                         }}
@@ -1678,12 +1741,10 @@ export default function Home() {
                         alignItems: 'center'
                       }}
                     >
-                      <Image 
-                        src="/assets/V UP.png" 
-                        alt="Volume Up" 
-                        width={17} 
-                        height={17}
-                        style={{ height: '17px', width: 'auto' }}
+                      <img 
+                        src="/assets/icons/V UP.svg"
+                        alt="Volume Up"
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                       />
                     </div>
                   </div>
@@ -1718,6 +1779,72 @@ export default function Home() {
                   />
                 </div>
 
+                {/* Flags */}
+                <div className="mb-0.5">
+                  <div className="flex items-center space-x-[2px] mobile-flags">
+                    <div 
+                      onClick={() => setLanguage('en')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/us-flag.svg" 
+                        alt="US Flag" 
+                        width={20} 
+                        height={13} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('fr')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/france-flag.svg" 
+                        alt="France Flag" 
+                        width={20} 
+                        height={13} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('ru')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/russia-flag.svg" 
+                        alt="Russia Flag" 
+                        width={20} 
+                        height={13} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('ko')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/korea-flag.svg" 
+                        alt="Korea Flag" 
+                        width={20} 
+                        height={13} 
+                        className="object-contain"
+                      />
+                    </div>
+                    <div 
+                      onClick={() => setLanguage('zh')}
+                      className="cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                      <Image 
+                        src="/assets/flags/china-flag.svg" 
+                        alt="China Flag" 
+                        width={20} 
+                        height={13} 
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {/* Navigation Links */}
                 <div className="flex flex-col items-start mobile-nav w-full">
                   <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
@@ -1735,7 +1862,7 @@ export default function Home() {
                 </div>
 
                 {/* Mobile Music Player */}
-                <div className="flex flex-row items-center mt-1 mb-1 w-full" style={{ maxWidth: '100%', gap: '8px' }}>
+                <div className="flex flex-row items-center mt-1 mb-1 w-full" style={{ maxWidth: '100%', gap: '4px' }}>
                   {/* Album Cover */}
                   <div style={{
                     width: '22px',
@@ -1800,12 +1927,10 @@ export default function Home() {
                         color: 'white'
                       }}
                     >
-                      <Image
-                        src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
+                      <img
+                        src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                         alt={isPlaying ? "Pause" : "Play"}
-                        width={10}
-                        height={10}
-                        style={{ height: '10px', width: 'auto' }}
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                       />
                     </div>
                     {/* Next Button */}
@@ -1820,12 +1945,10 @@ export default function Home() {
                         alignItems: 'center',
                         color: 'white'
                       }}>
-                      <Image
-                        src="/assets/SKIP.png"
+                      <img
+                        src="/assets/icons/SKIP.svg"
                         alt="Skip"
-                        width={8}
-                        height={8}
-                        style={{ height: '8px', width: 'auto' }}
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.6)' }}
                       />
                     </div>
                     {/* Volume Down Button */}
@@ -1841,12 +1964,10 @@ export default function Home() {
                         color: 'white'
                       }}
                     >
-                      <Image
-                        src="/assets/V DOWN.png"
+                      <img
+                        src="/assets/icons/V DOWN.svg"
                         alt="Volume Down"
-                        width={10}
-                        height={10}
-                        style={{ height: '10px', width: 'auto' }}
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                       />
                     </div>
                     {/* Volume Slider */}
@@ -1869,7 +1990,7 @@ export default function Home() {
                           appearance: 'none',
                           width: '100%',
                           height: '2px',
-                          background: `linear-gradient(to right, #fff ${volume * 100}%, #444 ${volume * 100}%)`,
+                          background: `linear-gradient(to right, rgba(128, 128, 128, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
                           borderRadius: '5px',
                           outline: 'none'
                         }}
@@ -1888,12 +2009,10 @@ export default function Home() {
                         color: 'white'
                       }}
                     >
-                      <Image
-                        src="/assets/V UP.png"
+                      <img
+                        src="/assets/icons/V UP.svg"
                         alt="Volume Up"
-                        width={10}
-                        height={10}
-                        style={{ height: '10px', width: 'auto' }}
+                        style={{ width: '100%', height: '100%', filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                       />
                     </div>
                   </div>

@@ -189,7 +189,7 @@ export default function PhotographyPage() {
                   width={124}
                   height={34}
                   className="object-contain"
-                  style={{ filter: 'brightness(0) invert(1)' }}
+                  style={{ filter: 'brightness(0) invert(1)', WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                   priority
                   quality={100}
                 />
@@ -199,19 +199,19 @@ export default function PhotographyPage() {
               {/* Flags */}
             <div className="flex items-center space-x-[4px] relative top-[2px]">
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
-                <Image src="/assets/us-flag.png" alt="US Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/us-flag.svg" alt="US Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
-                <Image src="/assets/france-flag.png" alt="France Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/france-flag.svg" alt="France Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ru')}>
-                <Image src="/assets/russia-flag.png" alt="Russia Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/russia-flag.svg" alt="Russia Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ko')}>
-                <Image src="/assets/korea-flag.png" alt="Korea Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/korea-flag.svg" alt="Korea Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('zh')}>
-                <Image src="/assets/china-flag.png" alt="China Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/china-flag.svg" alt="China Flag" width={24} height={16} className="object-contain" />
               </div>
               </div>
 
@@ -261,7 +261,7 @@ export default function PhotographyPage() {
                 width={84}
                 height={24}
                 className="object-contain"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                style={{ filter: 'brightness(0) invert(1)', WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                 priority
                 quality={100}
               />
@@ -272,19 +272,19 @@ export default function PhotographyPage() {
           <div className="">
             <div className="flex items-center space-x-[2px] mobile-flags">
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
-                <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/us-flag.svg" alt="US Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
-                <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/france-flag.svg" alt="France Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ru')}>
-                <Image src="/assets/russia-flag.png" alt="Russia Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/russia-flag.svg" alt="Russia Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ko')}>
-                <Image src="/assets/korea-flag.png" alt="Korea Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/korea-flag.svg" alt="Korea Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('zh')}>
-                <Image src="/assets/china-flag.png" alt="China Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/china-flag.svg" alt="China Flag" width={20} height={13} className="object-contain" />
               </div>
             </div>
           </div>
@@ -510,12 +510,10 @@ export default function PhotographyPage() {
                     alignItems: 'center'
                   }}
                 >
-                  <Image
-                    src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
+                  <img
+                    src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                     alt={isPlaying ? "Pause" : "Play"}
-                    width={15}
-                    height={15}
-                    style={{ height: '15px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                    style={{ width: '15px', height: '15px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                   />
                 </div>
                 {/* Next Button */}
@@ -530,12 +528,10 @@ export default function PhotographyPage() {
                     alignItems: 'center'
                   }}
                 >
-                  <Image
-                    src="/assets/SKIP.png"
+                  <img
+                    src="/assets/icons/SKIP.svg"
                     alt="Skip"
-                    width={12}
-                    height={12}
-                    style={{ height: '12px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                    style={{ width: '12px', height: '12px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                   />
                 </div>
                 {/* Volume Down Button */}
@@ -550,12 +546,10 @@ export default function PhotographyPage() {
                     alignItems: 'center'
                   }}
                 >
-                  <Image
-                    src="/assets/V DOWN.png"
+                  <img
+                    src="/assets/icons/V DOWN.svg"
                     alt="Volume Down"
-                    width={17}
-                    height={17}
-                    style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                    style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                   />
                 </div>
                 {/* Volume Slider */}
@@ -598,12 +592,10 @@ export default function PhotographyPage() {
                     alignItems: 'center'
                   }}
                 >
-                  <Image
-                    src="/assets/V UP.png"
+                  <img
+                    src="/assets/icons/V UP.svg"
                     alt="Volume Up"
-                    width={17}
-                    height={17}
-                    style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                    style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                   />
                 </div>
               </div>
@@ -694,12 +686,10 @@ export default function PhotographyPage() {
                   alignItems: 'center'
                 }}
               >
-                <Image
-                  src={isPlaying ? "/assets/PAUSE.png" : "/assets/PLAY.png"}
+                <img
+                  src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                   alt={isPlaying ? "Pause" : "Play"}
-                  width={15}
-                  height={15}
-                  style={{ height: '15px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '15px', height: '15px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                 />
               </div>
               {/* Next Button */}
@@ -714,12 +704,10 @@ export default function PhotographyPage() {
                   alignItems: 'center'
                 }}
               >
-                <Image
-                  src="/assets/SKIP.png"
+                <img
+                  src="/assets/icons/SKIP.svg"
                   alt="Skip"
-                  width={12}
-                  height={12}
-                  style={{ height: '12px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '12px', height: '12px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                 />
               </div>
               {/* Volume Down Button */}
@@ -734,12 +722,10 @@ export default function PhotographyPage() {
                   alignItems: 'center'
                 }}
               >
-                <Image
-                  src="/assets/V DOWN.png"
+                <img
+                  src="/assets/icons/V DOWN.svg"
                   alt="Volume Down"
-                  width={17}
-                  height={17}
-                  style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                 />
               </div>
               {/* Volume Slider */}
@@ -782,12 +768,10 @@ export default function PhotographyPage() {
                   alignItems: 'center'
                 }}
               >
-                <Image
-                  src="/assets/V UP.png"
+                <img
+                  src="/assets/icons/V UP.svg"
                   alt="Volume Up"
-                  width={17}
-                  height={17}
-                  style={{ height: '17px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
                 />
               </div>
             </div>

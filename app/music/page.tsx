@@ -167,10 +167,12 @@ export default function MusicPage() {
                 <Image
                   src="/assets/kdrama-logo.svg"
                   alt="KDRAMA Logo"
-                  width={100}
+                  width={124}
                   height={34}
-                  style={{ filter: 'brightness(0)' }}
                   className="object-contain"
+                  style={{ filter: 'brightness(0)', WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
+                  priority
+                  quality={100}
                 />
               </Link>
               </div>
@@ -178,19 +180,19 @@ export default function MusicPage() {
               {/* Flags */}
             <div className="flex items-center space-x-[4px] relative top-[2px]">
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
-                <Image src="/assets/us-flag.png" alt="US Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/us-flag.svg" alt="US Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
-                <Image src="/assets/france-flag.png" alt="France Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/france-flag.svg" alt="France Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ru')}>
-                <Image src="/assets/russia-flag.png" alt="Russia Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/russia-flag.svg" alt="Russia Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ko')}>
-                <Image src="/assets/korea-flag.png" alt="Korea Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/korea-flag.svg" alt="Korea Flag" width={24} height={16} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('zh')}>
-                <Image src="/assets/china-flag.png" alt="China Flag" width={24} height={16} className="object-contain" />
+                <Image src="/assets/flags/china-flag.svg" alt="China Flag" width={24} height={16} className="object-contain" />
               </div>
               </div>
 
@@ -237,10 +239,12 @@ export default function MusicPage() {
               <Image
                 src="/assets/kdrama-logo.svg"
                 alt="KDRAMA Logo"
-                width={68}
+                width={84}
                 height={24}
-                style={{ filter: 'brightness(0)' }}
-                className="object-contain mobile-logo"
+                className="object-contain"
+                style={{ filter: 'brightness(0)', WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
+                priority
+                quality={100}
               />
             </Link>
           </div>
@@ -249,19 +253,19 @@ export default function MusicPage() {
           <div className="">
             <div className="flex items-center space-x-[2px] mobile-flags">
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('en')}>
-                <Image src="/assets/us-flag.png" alt="US Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/us-flag.svg" alt="US Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('fr')}>
-                <Image src="/assets/france-flag.png" alt="France Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/france-flag.svg" alt="France Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ru')}>
-                <Image src="/assets/russia-flag.png" alt="Russia Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/russia-flag.svg" alt="Russia Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('ko')}>
-                <Image src="/assets/korea-flag.png" alt="Korea Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/korea-flag.svg" alt="Korea Flag" width={20} height={13} className="object-contain" />
               </div>
               <div style={{ cursor: 'pointer' }} onClick={() => setLanguage('zh')}>
-                <Image src="/assets/china-flag.png" alt="China Flag" width={20} height={13} className="object-contain" />
+                <Image src="/assets/flags/china-flag.svg" alt="China Flag" width={20} height={13} className="object-contain" />
               </div>
             </div>
           </div>
@@ -1115,6 +1119,114 @@ export default function MusicPage() {
           >
             half off rerockkk
           </a>
+        </div>
+
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '24px'
+        }}>
+          {/* Play/Pause Button */}
+          <div
+            onClick={togglePlay}
+            style={{
+              cursor: 'pointer',
+              height: '28px',
+              width: '28px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <img
+              src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
+              alt={isPlaying ? "Pause" : "Play"}
+              style={{ width: '15px', height: '15px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+            />
+          </div>
+          {/* Next Button */}
+          <div
+            onClick={nextTrack}
+            style={{
+              cursor: 'pointer',
+              height: '28px',
+              width: '28px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <img
+              src="/assets/icons/SKIP.svg"
+              alt="Skip"
+              style={{ width: '12px', height: '12px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+            />
+          </div>
+          {/* Volume Down Button */}
+          <div
+            onClick={volumeDown}
+            style={{
+              cursor: 'pointer',
+              height: '28px',
+              width: '28px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <img
+              src="/assets/icons/V DOWN.svg"
+              alt="Volume Down"
+              style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+            />
+          </div>
+          {/* Volume Slider */}
+          <div style={{
+            height: '28px',
+            width: '40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'start',
+            background: 'none',
+            boxShadow: 'none'
+          }}>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={handleVolumeChange}
+              style={{
+                WebkitAppearance: 'none',
+                appearance: 'none',
+                width: '100%',
+                height: '3px',
+                background: `linear-gradient(to right, rgba(255, 255, 255, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
+                borderRadius: '5px',
+                outline: 'none'
+              }}
+            />
+          </div>
+          {/* Volume Up Button */}
+          <div
+            onClick={volumeUp}
+            style={{
+              cursor: 'pointer',
+              height: '28px',
+              width: '28px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <img
+              src="/assets/icons/V UP.svg"
+              alt="Volume Up"
+              style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+            />
+          </div>
         </div>
       </div>
 
