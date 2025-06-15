@@ -918,10 +918,9 @@ body {
     font-family: 'SF Pro Medium', 'SF Pro', sans-serif !important;
   }
 
-  /* Adjust Chinese text for mobile */
-  html[lang="zh"] .mobile-layout .nav-item {
-    -webkit-text-stroke: 0.35px white !important;
-    letter-spacing: -0.02em !important;
+  /* Add specific font weight for Korean text in mobile view */
+  .mobile-layout .nav-item[lang="ko"] {
+    font-weight: 600 !important;
   }
 }
 

@@ -1847,16 +1847,16 @@ export default function Home() {
 
                 {/* Navigation Links */}
                 <div className="flex flex-col items-start mobile-nav w-full">
-                  <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
+                  <Link href="/artworks" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }} lang={language === 'ko' ? 'ko' : undefined}>
                     {translations.artworks}
                   </Link>
-                  <Link href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
+                  <Link href="/photography" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }} lang={language === 'ko' ? 'ko' : undefined}>
                     {translations.photography}
                   </Link>
-                  <Link href="/music" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
+                  <Link href="/music" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }} lang={language === 'ko' ? 'ko' : undefined}>
                     {translations.music}
                   </Link>
-                  <Link href="/contact" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }}>
+                  <Link href="/contact" className="nav-item py-0.5" style={{ ...navLinkStyle, color: 'white', textAlign: 'left' }} lang={language === 'ko' ? 'ko' : undefined}>
                     {translations.contact}
                   </Link>
                 </div>
