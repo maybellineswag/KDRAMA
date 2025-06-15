@@ -795,14 +795,12 @@ export default function ArtworksPage() {
                 />
               </div>
               {/* Volume Slider */}
-              <div style={{
-                height: '28px',
-                width: '40px',
+              <div className="mobile-volume-slider" style={{
+                height: '18px',
+                width: '36px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'start',
-                background: 'none',
-                boxShadow: 'none'
+                justifyContent: 'start'
               }}>
                 <input
                   type="range"
@@ -815,7 +813,7 @@ export default function ArtworksPage() {
                     WebkitAppearance: 'none',
                     appearance: 'none',
                     width: '100%',
-                    height: '3px',
+                    height: '2px',
                     background: `linear-gradient(to right, rgba(255, 255, 255, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
                     borderRadius: '5px',
                     outline: 'none'
@@ -854,6 +852,50 @@ export default function ArtworksPage() {
           .mobile-layout .nav-item {
             font-size: 13px !important;
           }
+        }
+        @media (max-width: 768px) {
+          .mobile-volume-slider {
+            width: 24px !important;
+          }
+        }
+        .mobile-volume-slider input[type=range] {
+          /* Removed height and padding from here */
+        }
+        .mobile-volume-slider input[type=range]::-webkit-slider-thumb {
+          width: 8px !important;
+          height: 8px !important;
+          background: white !important; /* Ensure it's white */
+          border-radius: 50% !important; /* Make it a circle */
+          border: none !important; /* Remove any default borders */
+          cursor: pointer !important;
+          margin-top: -3px !important; /* Vertically center the thumb on the track */
+          -webkit-appearance: none !important;
+          appearance: none !important;
+          box-shadow: none !important;
+        }
+        .mobile-volume-slider input[type=range]::-moz-range-thumb {
+          width: 8px !important;
+          height: 8px !important;
+          background: white !important;
+          border-radius: 50% !important;
+          border: none !important;
+          cursor: pointer !important;
+          margin-top: -3px !important; /* Vertically center the thumb on the track */
+          -moz-appearance: none !important;
+          appearance: none !important;
+          box-shadow: none !important;
+        }
+        .mobile-volume-slider input[type=range]::-ms-thumb {
+          width: 8px !important;
+          height: 8px !important;
+          background: white !important;
+          border-radius: 50% !important;
+          border: none !important;
+          cursor: pointer !important;
+          margin-top: -3px !important; /* Vertically center the thumb on the track */
+          -ms-appearance: none !important;
+          appearance: none !important;
+          box-shadow: none !important;
         }
         .navbar-inner {
           max-width: 1440px;

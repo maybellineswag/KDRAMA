@@ -607,6 +607,7 @@ export default function PhotographyPage() {
       {/* Mobile Bottom Bar - visible only on mobile */}
       {isMobile && (
         <div className="bottom-bar flex flex-col items-start gap-2 w-full px-3 py-3" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: '100vw', zIndex: 100 }}>
+          {/* View Switcher hidden on mobile */}
           {/* Music Player */}
           <div className="flex flex-row items-center gap-2" style={{ background: 'none', boxShadow: 'none' }}> {/* Reduced gap */}
             {/* Album Cover */}
@@ -689,7 +690,7 @@ export default function PhotographyPage() {
                 <img
                   src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                   alt={isPlaying ? "Pause" : "Play"}
-                  style={{ width: '15px', height: '15px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '100%', height: '100%', filter: 'brightness(0) invert(1)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                 />
               </div>
               {/* Next Button */}
@@ -707,7 +708,7 @@ export default function PhotographyPage() {
                 <img
                   src="/assets/icons/SKIP.svg"
                   alt="Skip"
-                  style={{ width: '12px', height: '12px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '100%', height: '100%', filter: 'brightness(0) invert(1)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.6)' }}
                 />
               </div>
               {/* Volume Down Button */}
@@ -725,18 +726,16 @@ export default function PhotographyPage() {
                 <img
                   src="/assets/icons/V DOWN.svg"
                   alt="Volume Down"
-                  style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '100%', height: '100%', filter: 'brightness(0) invert(1)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                 />
               </div>
               {/* Volume Slider */}
-              <div style={{
-                height: '28px',
-                width: '40px',
+              <div className="mobile-volume-slider" style={{
+                height: '18px',
+                width: '36px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'start',
-                background: 'none',
-                boxShadow: 'none'
+                justifyContent: 'start'
               }}>
                 <input
                   type="range"
@@ -749,7 +748,7 @@ export default function PhotographyPage() {
                     WebkitAppearance: 'none',
                     appearance: 'none',
                     width: '100%',
-                    height: '3px',
+                    height: '2px',
                     background: `linear-gradient(to right, rgba(255, 255, 255, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
                     borderRadius: '5px',
                     outline: 'none'
@@ -771,13 +770,101 @@ export default function PhotographyPage() {
                 <img
                   src="/assets/icons/V UP.svg"
                   alt="Volume Up"
-                  style={{ width: '17px', height: '17px', filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+                  style={{ width: '100%', height: '100%', filter: 'brightness(0) invert(1)', opacity: 0.8, objectFit: 'contain', transform: 'scale(0.7)' }}
                 />
               </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* Manual adjustment for very small screens */}
+      <style jsx>{`
+        @media (max-width: 330px) {
+          .mobile-layout {
+            transform: translateY(0%) scale(0.75) translateX(-8%) !important;
+          }
+          .mobile-layout .nav-item {
+            font-size: 13px !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .mobile-volume-slider {
+            width: 24px !important;
+          }
+        }
+        .mobile-volume-slider input[type=range] {
+          /* Removed height and padding from here */
+        }
+        .mobile-volume-slider input[type=range]::-webkit-slider-thumb {
+          width: 8px !important;
+          height: 8px !important;
+          background: white !important; /* Ensure it's white */
+          border-radius: 50% !important; /* Make it a circle */
+          border: none !important; /* Remove any default borders */
+          cursor: pointer !important;
+          margin-top: -3px !important; /* Vertically center the thumb on the track */
+          -webkit-appearance: none !important;
+          appearance: none !important;
+          box-shadow: none !important;
+        }
+        .mobile-volume-slider input[type=range]::-moz-range-thumb {
+          width: 8px !important;
+          height: 8px !important;
+          background: white !important;
+          border-radius: 50% !important;
+          border: none !important;
+          cursor: pointer !important;
+          margin-top: -3px !important; /* Vertically center the thumb on the track */
+          -moz-appearance: none !important;
+          appearance: none !important;
+          box-shadow: none !important;
+        }
+        .mobile-volume-slider input[type=range]::-ms-thumb {
+          width: 8px !important;
+          height: 8px !important;
+          background: white !important;
+          border-radius: 50% !important;
+          border: none !important;
+          cursor: pointer !important;
+          margin-top: -3px !important; /* Vertically center the thumb on the track */
+          -ms-appearance: none !important;
+          appearance: none !important;
+          box-shadow: none !important;
+        }
+        .navbar-inner {
+          max-width: 1440px;
+          margin: 0 auto;
+          padding-top: 10px;
+          padding-left: 32px;
+          padding-right: 32px;
+          width: 100%;
+          box-sizing: border-box;
+          transition: max-width 0.2s;
+        }
+        @media (min-width: 1800px) {
+          .navbar-inner {
+            max-width: none;
+            width: 100%;
+            padding-left: 32px;
+            padding-right: 32px;
+            margin-left: 0;
+            margin-right: 0;
+            margin: 0;
+          }
+        }
+        @media (min-width: 2200px) {
+          .navbar-inner {
+            max-width: none;
+            width: 100%;
+            padding-left: 32px;
+            padding-right: 32px;
+            margin-left: 0;
+            margin-right: 0;
+            margin: 0;
+          }
+        }
+      `}</style>
     </main>
   );
 } 
