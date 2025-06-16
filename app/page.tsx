@@ -1658,7 +1658,7 @@ export default function Home() {
                       <img
                         src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                         alt={isPlaying ? "Pause" : "Play"}
-                        style={{ width: '15px', height: '15px', opacity: 1 }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                     
@@ -1677,7 +1677,7 @@ export default function Home() {
                       <img 
                         src="/assets/icons/SKIP.svg"
                         alt="Skip"
-                        style={{ width: '12px', height: '12px', opacity: 1 }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                     
@@ -1920,14 +1920,13 @@ export default function Home() {
                         width: '18px',
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        color: 'white'
+                        alignItems: 'center'
                       }}
                     >
                       <img
                         src={isPlaying ? "/assets/icons/PAUSE.svg" : "/assets/icons/PLAY.svg"}
                         alt={isPlaying ? "Pause" : "Play"}
-                        style={{ width: '15px', height: '15px', opacity: 1 }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                     {/* Next Button */}
@@ -1939,13 +1938,74 @@ export default function Home() {
                         width: '18px',
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        color: 'white'
+                        alignItems: 'center'
                       }}>
                       <img
                         src="/assets/icons/SKIP.svg"
                         alt="Next"
-                        style={{ width: '15px', height: '15px', opacity: 1 }}
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
+                      />
+                    </div>
+                    {/* Volume Down Button */}
+                    <div
+                      onClick={volumeDown}
+                      style={{
+                        cursor: 'pointer',
+                        height: '18px',
+                        width: '18px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <img
+                        src="/assets/icons/V DOWN.svg"
+                        alt="Volume Down"
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
+                      />
+                    </div>
+                    {/* Volume Slider */}
+                    <div className="mobile-volume-slider" style={{
+                      height: '18px',
+                      width: '36px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'start'
+                    }}>
+                      <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                        style={{
+                          WebkitAppearance: 'none',
+                          appearance: 'none',
+                          width: '100%',
+                          height: '2px',
+                          background: `linear-gradient(to right, rgba(128, 128, 128, 0.8) ${volume * 100}%, #444 ${volume * 100}%)`,
+                          borderRadius: '5px',
+                          outline: 'none'
+                        }}
+                      />
+                    </div>
+                    {/* Volume Up Button */}
+                    <div
+                      onClick={volumeUp}
+                      style={{
+                        cursor: 'pointer',
+                        height: '18px',
+                        width: '18px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <img
+                        src="/assets/icons/V UP.svg"
+                        alt="Volume Up"
+                        style={{ width: '17px', height: '17px', opacity: 1 }}
                       />
                     </div>
                   </div>

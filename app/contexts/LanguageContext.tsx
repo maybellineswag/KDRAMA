@@ -29,8 +29,8 @@ const translations = {
     contact: 'contact'
   },
   ru: {
-    artworks: 'работы',
-    photography: 'фотография',
+    artworks: 'Произведения',
+    photography: 'Фотоработы',
     music: 'музыка',
     contact: 'контакт'
   },
