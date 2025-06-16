@@ -1272,12 +1272,35 @@ interface MusicPlayerContextType {
 const MusicPlayerContext = createContext<MusicPlayerContextType | undefined>(undefined);
 
 export function MusicPlayerProvider({ children }: { children: ReactNode }) {
-  const [isPlaying, setIsPlaying] = useState(false); // start paused by default
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [volume, setVolume] = useState(1);
   const [shuffledTracks, setShuffledTracks] = useState<Track[]>([]);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [hasRestored, setHasRestored] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
+
+  // Preload cover art for a track
+  const preloadCoverArt = (track: Track) => {
+    if (!track?.cover) return;
+    const img = new Image();
+    img.src = track.cover;
+  };
+
+  // Detect Safari
+  useEffect(() => {
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariBrowser);
+  }, []);
+
+  // Initialize audio for Safari
+  useEffect(() => {
+    if (isSafari && audioRef.current) {
+      // Force Safari to initialize the audio context
+      audioRef.current.load();
+      audioRef.current.volume = volume;
+    }
+  }, [isSafari, volume]);
 
   // Fisher-Yates shuffle
   const shuffleArray = (array: Track[]) => {
@@ -1292,11 +1315,19 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   // On mount, always shuffle the playlist and start from the first track
   useEffect(() => {
     if (tracks.length > 0) {
-      setShuffledTracks(shuffleArray(tracks));
+      const shuffled = shuffleArray(tracks);
+      setShuffledTracks(shuffled);
       setCurrentTrackIndex(0);
+      // Preload next track's cover art
+      if (shuffled[1]) {
+        preloadCoverArt(shuffled[1]);
+      }
       setTimeout(() => {
         if (audioRef.current) {
           audioRef.current.currentTime = 0;
+          if (isSafari) {
+            audioRef.current.load();
+          }
         }
         setHasRestored(true);
       }, 0);
@@ -1310,27 +1341,65 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   }, [volume]);
 
   const nextTrack = () => {
-    setCurrentTrackIndex((prev) => (prev + 1) % shuffledTracks.length);
+    const nextIndex = (currentTrackIndex + 1) % shuffledTracks.length;
+    setCurrentTrackIndex(nextIndex);
+    // Preload the next track's cover art
+    const nextNextIndex = (nextIndex + 1) % shuffledTracks.length;
+    if (shuffledTracks[nextNextIndex]) {
+      preloadCoverArt(shuffledTracks[nextNextIndex]);
+    }
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
+      if (isSafari) {
+        audioRef.current.load();
+      }
     }
   };
 
   // Ensure playback resumes after skipping if isPlaying is true
   useEffect(() => {
     if (audioRef.current && isPlaying) {
-      audioRef.current.play().catch(() => {});
+      if (isSafari) {
+        // For Safari, we need to ensure the audio is loaded before playing
+        audioRef.current.load();
+        setTimeout(() => {
+          audioRef.current?.play().catch(() => {});
+        }, 100);
+      } else {
+        audioRef.current.play().catch(() => {});
+      }
     }
-  }, [currentTrackIndex, isPlaying]);
+  }, [currentTrackIndex, isPlaying, isSafari]);
 
   const togglePlay = () => {
     if (!audioRef.current) return;
+    
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.play().catch(() => {}); // catch and ignore NotAllowedError
-      setIsPlaying(true);
+      if (isSafari) {
+        // For Safari, ensure audio is loaded before playing
+        audioRef.current.load();
+        setTimeout(() => {
+          audioRef.current?.play()
+            .then(() => {
+              setIsPlaying(true);
+            })
+            .catch((error) => {
+              console.error('Safari play error:', error);
+            });
+        }, 100);
+      } else {
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.error('Error playing audio:', error);
+            setIsPlaying(false);
+          });
+      }
     }
   };
 
@@ -1381,13 +1450,21 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       volumeUp,
       audioRef
     }}>
-      {/* Only one audio element for the whole app */}
       <audio
         ref={audioRef}
         src={shuffledTracks[currentTrackIndex]?.src}
         onEnded={nextTrack}
         preload="auto"
         style={{ display: 'none' }}
+        controls={false}
+        playsInline
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onLoadedMetadata={() => {
+          if (isSafari && audioRef.current) {
+            audioRef.current.load();
+          }
+        }}
       />
       {children}
     </MusicPlayerContext.Provider>
